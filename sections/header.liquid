@@ -27,7 +27,8 @@
 
   .site-nav__link,
   .site-nav__dropdown-link {
-    font-size: {{ section.settings.type_navigation_size }}px;
+    font-size: {{ section.settings.type_navigation_size }}
+    px;
   }
 
   {% if section.settings.type_navigation_size < 18 %}
@@ -51,9 +52,7 @@
       data-sticky="{{ sticky_header }}"
       data-overlay="{{ overlay_header }}">
       <div class="header-width">
-        <div
-          class="header-layout header-layout--{{ section.settings.main_menu_alignment }}"
-          data-logo-align="{{ logo_alignment }}">
+        <div class="header-layout header-layout--{{ section.settings.main_menu_alignment }}" data-logo-align="{{ logo_alignment }}">
 
           {% if logo_alignment == 'left' %}
             <div class="header-item header-item--logo">
@@ -73,7 +72,12 @@
                 {% if settings.search_enable %}
                   <div class="site-nav medium-down--hide">
                     <a href="{{ routes.search_url }}" class="site-nav__link site-nav__link--icon js-search-header js-no-transition">
-                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"/></svg>
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        role="presentation"
+                        class="icon icon-search"
+                        viewBox="0 0 64 64"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42" /></svg>
                       <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
                     </a>
                   </div>
@@ -89,7 +93,12 @@
                   type="button"
                   class="site-nav__link site-nav__link--icon js-drawer-open-nav"
                   aria-controls="NavDrawer">
-                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-hamburger" viewBox="0 0 64 64"><path d="M7 15h51M7 32h43M7 49h51"/></svg>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="icon icon-hamburger"
+                    viewBox="0 0 64 64"><path d="M7 15h51M7 32h43M7 49h51" /></svg>
                   <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
                 </button>
               </div>
@@ -120,16 +129,40 @@
       <div class="site-header__search-container">
         <div class="site-header__search">
           <div class="page-width">
-            <form action="{{ routes.search_url }}" method="get" id="HeaderSearchForm" class="site-header__search-form" role="search">
-              <input type="hidden" name="type" value="{{ settings.search_type }}">
+            <form
+              action="{{ routes.search_url }}"
+              method="get"
+              id="HeaderSearchForm"
+              class="site-header__search-form"
+              role="search">
+              <input
+                type="hidden"
+                name="type"
+                value="{{ settings.search_type }}">
               <button type="submit" class="text-link site-header__search-btn">
-                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"/></svg>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  role="presentation"
+                  class="icon icon-search"
+                  viewBox="0 0 64 64"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42" /></svg>
                 <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
               </button>
-              <input type="search" name="q" value="{{ search.terms | escape | replace: '*', '' }}" placeholder="{{ 'general.search.placeholder' | t }}" class="site-header__search-input" aria-label="{{ 'general.search.placeholder' | t }}">
+              <input
+                type="search"
+                name="q"
+                value="{{ search.terms | escape | replace: '*', '' }}"
+                placeholder="{{ 'general.search.placeholder' | t }}"
+                class="site-header__search-input"
+                aria-label="{{ 'general.search.placeholder' | t }}">
             </form>
             <button type="button" class="js-search-header-close text-link site-header__search-btn">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"/></svg>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="presentation"
+                class="icon icon-close"
+                viewBox="0 0 64 64"><path d="M19 17.61l27.12 27.13m0-27.12L19 44.74" /></svg>
               <span class="icon__fallback-text">{{ 'general.accessibility.close_modal' | t | json }}</span>
             </button>
           </div>
@@ -139,7 +172,10 @@
             <div class="page-width">
               <div id="PredictiveResults"></div>
               <div class="text-center predictive-results__footer">
-                <button type="button" class="btn btn--small" data-predictive-search-button>
+                <button
+                  type="button"
+                  class="btn btn--small"
+                  data-predictive-search-button>
                   <small>
                     {{ 'general.search.view_more' | t }}
                   </small>
@@ -154,25 +190,27 @@
 </div>
 
 <script>
-// When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
+  // When the user scrolls the page, execute myFunction
+  window.onscroll = function() {
+    myFunction()
+  };
 
 // Get the header
-var header = document.getElementById("sticker-header");
+  var header = document.getElementById("sticker-header");
 
 // Get the offset position of the navbar
-var sticky = header.offsetTop;
+  var sticky = header.offsetTop;
 
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("site-header--stuck2");
-  } else {
-    header.classList.remove("site-header--stuck2");
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("site-header--stuck2");
+    } else {
+      header.classList.remove("site-header--stuck2");
+    }
   }
-}
 </script>
-  
+
 {% schema %}
   {
     "name": "Header and menus",
@@ -204,12 +242,10 @@ function myFunction() {
           {
             "value": "center-left",
             "label": "Logo center, menu left"
-          },
-          {
+          }, {
             "value": "center",
             "label": "Logo center, menu below"
-          },
-          {
+          }, {
             "value": "center-drawer",
             "label": "Logo center, menu drawer"
           }
@@ -224,8 +260,7 @@ function myFunction() {
           {
             "value": "normal",
             "label": "Normal"
-          },
-          {
+          }, {
             "value": "sticky",
             "label": "Sticky"
           }
@@ -236,19 +271,16 @@ function myFunction() {
         "id": "sticky_index",
         "label": "Overlay header over homepage",
         "default": false
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "sticky_collection",
         "label": "Overlay header over collection",
         "info": "(if collection image is enabled)",
         "default": false
-      },
-      {
+      }, {
         "type": "header",
         "content": "Typography"
-      },
-      {
+      }, {
         "type": "range",
         "id": "type_navigation_size",
         "label": "Text size",
@@ -256,34 +288,28 @@ function myFunction() {
         "min": 12,
         "max": 40,
         "unit": "px"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "type_navigation_style",
         "label": "Use heading font"
-      },
-      {
+      }, {
         "type": "header",
         "content": "Announcement bar"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "show_announcement",
         "label": "Show an announcement"
-      },
-      {
+      }, {
         "type": "text",
         "id": "announcement_text",
         "label": "Announcement text",
         "default": "Free shipping and returns",
         "info": "When closed, the announcement will remain closed until the next visit. Change the text to see it again."
-      },
-      {
+      }, {
         "type": "url",
         "id": "announcement_link",
         "label": "Announcement link"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "announcement_closable",
         "label": "Allow users to close announcement"
@@ -299,14 +325,12 @@ function myFunction() {
             "type": "image_picker",
             "id": "logo",
             "label": "Logo"
-          },
-          {
+          }, {
             "type": "image_picker",
             "id": "logo-inverted",
             "label": "White logo",
             "info": "Used when on top of an image"
-          },
-          {
+          }, {
             "type": "range",
             "id": "desktop_logo_width",
             "label": "Desktop logo width",
@@ -315,8 +339,7 @@ function myFunction() {
             "max": 400,
             "step": 10,
             "unit": "px"
-          },
-          {
+          }, {
             "type": "range",
             "id": "mobile_logo_width",
             "label": "Mobile logo width",
