@@ -43,7 +43,7 @@
   <div class="header-wrapper{% if overlay_header %} header-wrapper--overlay is-light{% endif %}">
 
     {% if section.settings.show_announcement %}
-      {% include 'announcement-bar' %}
+      {% render 'announcement-bar' %}
     {% endif %}
 
     <header
@@ -56,13 +56,13 @@
 
           {% if logo_alignment == 'left' %}
             <div class="header-item header-item--logo">
-              {% include 'header-logo-block' %}
+              {% render 'header-logo-block' %}
             </div>
           {% endif %}
 
           {% if logo_alignment == 'left' and section.settings.main_menu_alignment != 'left-drawer' %}
             <div class="header-item header-item--navigation{% if section.settings.main_menu_alignment == 'left-center' %} text-center{% endif %}">
-              {% include 'header-desktop-nav' %}
+              {% render '21nav' %}
             </div>
           {% endif %}
 
@@ -85,7 +85,7 @@
               {% endif %}
 
               {% if section.settings.main_menu_alignment == 'center-left' %}
-                {% include 'header-desktop-nav' %}
+                {% render '21nav' %}
               {% endif %}
 
               <div class="site-nav{% unless section.settings.main_menu_alignment == 'center-drawer' %} large-up--hide{% endunless %}">
@@ -105,24 +105,24 @@
             </div>
 
             {% if section.settings.main_menu_alignment == 'center-split' %}
-              {% include 'header-split-nav' %}
+              {% render '21nav' %}
             {% endif %}
 
             {% if section.settings.main_menu_alignment != 'center-split' %}
               <div class="header-item header-item--logo">
-                {% include 'header-logo-block' %}
+                {% render 'header-logo-block' %}
               </div>
             {% endif %}
           {% endif %}
 
           <div class="header-item header-item--icons">
-            {% include 'header-icons' %}
+            {% render 'header-icons' %}
           </div>
         </div>
 
         {% if section.settings.main_menu_alignment == 'center' %}
           <div class="text-center">
-            {% include 'header-desktop-nav' %}
+            {% render '21nav' %}
           </div>
         {% endif %}
       </div>
