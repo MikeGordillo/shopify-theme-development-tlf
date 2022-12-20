@@ -1,0 +1,132 @@
+<div id="apply-resume" style="display:none">
+
+</div>
+
+
+<section class="aft-modal aft-modalWindow" id="popupTen">
+  <section class="aft-modalWrapper">
+      <h2 class="h3 text-spacing">Choose an option to apply</h2>
+  <ul class="apply-options">
+    <li class="upload" style="color:#2e2e2e">{% render 'upload-apply' %} <a href="mailto:careers@tlfapparel.com?Subject={{ article.title }}&body=">Email Resume</a></li>
+    {% if article.metafields.career.zipcruiter %}
+    <li class="ziprecruiter" style="color:#2e2e2e"><a href="{{ article.metafields.career.zipcruiter }}" target="_blank">Apply with {% render 'ziprecruiter' %}</a></li>
+    {% endif %}
+    {% if article.metafields.career.linkedin %}
+    <li class="linkedin" style="color:#2e2e2e"><a href="{{ article.metafields.career.linkedin }}" target="_blank">Apply with {% render 'linkedin' %}</a></li>
+    {% endif %}
+    {% if article.metafields.career.indeed %}
+    <li class="indeed" style="color:#2e2e2e"><a href="{{ article.metafields.career.indeed }}" target="_blank">Apply with {% render 'indeed' %}</a></li>
+    {% endif %}
+  </ul>
+
+  </section>
+  <a class="aft-closeBtn">X</a>
+</section>
+<section class="aft-modal aft-overlay"></section>
+
+<style>
+  section.aft-modalWrapper h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+section.aft-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
+}
+section.aft-modalWindow {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    z-index: 999 !important;
+    min-height: 400px;
+    margin-left: -200px;
+    background: #fff;
+    cursor: default;
+}
+section.aft-modal.aft-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: rgba(52, 52, 52, 0.5);
+  z-index: 997;
+  cursor: pointer;
+}
+
+section.aft-modalWrapper p {
+  font-family: "Montserrat";
+  text-align: center;
+  font-size: 10px;
+  line-height: 15px;
+  color: #000000;
+}
+  
+  section.aft-modalWrapper p a {
+    text-decoration: underline;
+}
+
+section.aft-modalWindow section.aft-modalWrapper {
+  margin: 60px;
+  padding: 15px;
+  text-align: center;
+  line-height: 20px;
+}
+.aft-closeBtn {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px 22px;
+  color: #000000;
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+  
+  @media only screen and (max-width: 600px) {
+    section.aft-modalWindow section.aft-modalWrapper {
+    margin: 30px;
+    padding: 5px;
+    text-align: left;
+    line-height: 20px;
+    height: 340px;
+}
+  section.aft-modalWindow {
+    width: 365px;
+    min-height: 345px;
+    margin-left: -183px;
+}
+    section.aft-modalWrapper p {
+    font-size: 8px;
+    line-height: 12px;
+}
+  }
+</style>
+
+<script>
+  settings = {
+  //Model Popup
+  objModalPopupBtn: ".aft-modalButton",
+  objModalCloseBtn: ".aft-overlay, .aft-closeBtn",
+  objModalDataAttr: "data-popup"
+};
+$(settings.objModalPopupBtn).bind("click", function () {
+  if ($(this).attr(settings.objModalDataAttr)) {
+    var strDataPopupName = $(this).attr(settings.objModalDataAttr);
+
+    //Fade In Modal Pop Up
+    $(".aft-overlay, #" + strDataPopupName).fadeIn();
+  }
+});
+
+//On clicking the modal background
+$(settings.objModalCloseBtn).bind("click", function () {
+  $(".aft-modal").fadeOut();
+});
+</script>

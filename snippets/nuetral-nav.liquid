@@ -1,0 +1,143 @@
+<style>
+  .colorfilter2 {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    float: left;
+    margin: 0px 6px 6px 0px;
+    display: inline-grid;
+}
+  li.sizes2 {
+    display: inline-block;
+    padding-bottom: 20px;
+}
+  
+.colorfilter2 .colorContainer2 {
+    border-radius: 4px;
+}
+  
+  .size2 {
+    display: inline-block;
+    float: left;
+    list-style: none;
+    background: #eee;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0px 2px 2px 0px;
+    cursor: pointer;
+}
+</style>
+<nav class="nav-new">
+  <ul class="list">
+    <li>
+      <a href="javascript:void(0)" class="filtercategory">SHOP BY GENDER</a>
+      <ul>
+        <li>
+          <a href="/collections/mens">MEN</a>
+        </li>
+        <li>
+          <a href="/collections/womens">WOMEN</a>
+        </li>        
+      </ul>
+    </li>
+        <li>
+      <a href="javascript:void(0)" class="filtercategory">MEN STYLES</a>
+      <ul>
+        <li>
+          <a href="/collections/mens">MEN ALL PRODUCTS</a>
+        </li>
+        <li>
+          <a href="/collections/mens-new-releases">MEN NEW RELEASES</a>
+        </li>        
+        <li>
+          <a href="/collections/mens-best-sellers">MEN BEST SELLERS</a>
+        </li>
+      </ul>
+    </li>
+            <li>
+      <a href="javascript:void(0)" class="filtercategory">WOMEN STYLES</a>
+      <ul>
+        <li>
+          <a href="/collections/womens">WOMEN ALL PRODUCTS</a>
+        </li>
+        <li>
+          <a href="/collections/womens-new-releases">WOMEN NEW RELEASES</a>
+        </li>        
+        <li>
+          <a href="/collections/womens-best-sellers">WOMEN BEST SELLERS</a>
+        </li>
+      </ul>
+    </li>
+            <li>
+      <a href="javascript:void(0)" class="filtercategory">MEN CATEGORIES</a>
+      <ul>
+        <li>
+          <a href="/collections/mens-joggers-sweatpants">MEN JOGGERS</a>
+        </li>
+        <li>
+          <a href="/collections/mens-tanks-sleeveless">MEN TANK TOPS</a>
+        </li>        
+        <li>
+          <a href="/collections/mens-shorts">MEN SHORTS</a>
+        </li>
+      </ul>
+    </li>
+                <li>
+      <a href="javascript:void(0)" class="filtercategory">WOMEN CATEGORIES</a>
+      <ul>
+        <li>
+          <a href="/collections/womens-leggings">WOMEN LEGGINGS</a>
+        </li>
+        <li>
+          <a href="/collections/womens-sports-bras">WOMEN SPORTS BRAS</a>
+        </li>        
+        <li>
+          <a href="/collections/womens-shorts">WOMEN SHORTS</a>
+        </li>
+      </ul>
+    </li>
+<li class="sizes2">
+      <a href="javascript:void(0)" class="filtercategory">SIZE</a>
+      <ul class="sizes2">
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-xsmall" class="sizefilter2">
+          <div class="size2">XS</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-small" class="sizefilter2">
+          <div class="size2">S</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-medium" class="sizefilter2">
+          <div class="size2">M</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-large" class="sizefilter2">
+          <div class="size2">L</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-xlarge" class="sizefilter2">
+         <div class="size2">XL</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-2xlarge" class="sizefilter2">
+          <div class="size2">2XL</div>
+        </a></li>
+      </ul>
+    </li>
+<li class="colors2">
+      <a href="javascript:void(0)" class="filtercategory">COLOR</a>
+      <div class="nav-cp2">
+        <div class="colorPicker2">
+          <div class="colorList2">
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}black" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(0, 0, 0);"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}white" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="border: 1px solid black;"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}gray" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(128, 128, 128)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}blue" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(1, 0, 205);"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}red" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(255, 0, 0);"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}green" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(0, 128, 0)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}yellow" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(255, 255, 2)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}purple" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(148, 0, 211)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}brown" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(140, 69, 20)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}orange" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(255, 153, 0)"></div></a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>

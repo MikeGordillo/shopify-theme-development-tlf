@@ -1,0 +1,89 @@
+<div class="social-sharing career">
+  <div class="sbutton-blog">
+    <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 12.3998C12.3667 12.3998 11.8 12.6498 11.3667 13.0415L5.425 9.58317C5.46667 9.3915 5.5 9.19984 5.5 8.99984C5.5 8.79984 5.46667 8.60817 5.425 8.4165L11.3 4.9915C11.75 5.40817 12.3417 5.6665 13 5.6665C14.3833 5.6665 15.5 4.54984 15.5 3.1665C15.5 1.78317 14.3833 0.666504 13 0.666504C11.6167 0.666504 10.5 1.78317 10.5 3.1665C10.5 3.3665 10.5333 3.55817 10.575 3.74984L4.7 7.17484C4.25 6.75817 3.65833 6.49984 3 6.49984C1.61667 6.49984 0.5 7.6165 0.5 8.99984C0.5 10.3832 1.61667 11.4998 3 11.4998C3.65833 11.4998 4.25 11.2415 4.7 10.8248L10.6333 14.2915C10.5917 14.4665 10.5667 14.6498 10.5667 14.8332C10.5667 16.1748 11.6583 17.2665 13 17.2665C14.3417 17.2665 15.4333 16.1748 15.4333 14.8332C15.4333 13.4915 14.3417 12.3998 13 12.3998ZM13 2.33317C13.4583 2.33317 13.8333 2.70817 13.8333 3.1665C13.8333 3.62484 13.4583 3.99984 13 3.99984C12.5417 3.99984 12.1667 3.62484 12.1667 3.1665C12.1667 2.70817 12.5417 2.33317 13 2.33317ZM3 9.83317C2.54167 9.83317 2.16667 9.45817 2.16667 8.99984C2.16667 8.5415 2.54167 8.1665 3 8.1665C3.45833 8.1665 3.83333 8.5415 3.83333 8.99984C3.83333 9.45817 3.45833 9.83317 3 9.83317ZM13 15.6832C12.5417 15.6832 12.1667 15.3082 12.1667 14.8498C12.1667 14.3915 12.5417 14.0165 13 14.0165C13.4583 14.0165 13.8333 14.3915 13.8333 14.8498C13.8333 15.3082 13.4583 15.6832 13 15.6832Z" fill="#2E2E2E"></path>
+    </svg>
+    <span class="social-sharing__title" aria-hidden="true">Share</span>
+    <ul class="smenu-blog">
+      <li class="facebook">
+    <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" class="social-sharing__link" title="{{ 'general.social.alt_text.share_on_facebook' | t }}">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-facebook" viewBox="0 0 32 32"><path fill="#fff" d="M18.56 31.36V17.28h4.48l.64-5.12h-5.12v-3.2c0-1.28.64-2.56 2.56-2.56h2.56V1.28H19.2c-3.84 0-7.04 2.56-7.04 7.04v3.84H7.68v5.12h4.48v14.08h6.4z"/></svg>
+      <span class="visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+    </a>
+      </li>
+      <li class="twitter">
+    <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" class="social-sharing__link" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-twitter" viewBox="0 0 32 32"><path fill="#444" d="M31.281 6.733q-1.304 1.924-3.13 3.26 0 .13.033.408t.033.408q0 2.543-.75 5.086t-2.282 4.858-3.635 4.108-5.053 2.869-6.341 1.076q-5.282 0-9.65-2.836.913.065 1.5.065 4.401 0 7.857-2.673-2.054-.033-3.668-1.255t-2.266-3.146q.554.13 1.206.13.88 0 1.663-.261-2.184-.456-3.619-2.184t-1.435-3.977v-.065q1.239.652 2.836.717-1.271-.848-2.021-2.233t-.75-2.983q0-1.63.815-3.195 2.38 2.967 5.754 4.678t7.319 1.907q-.228-.815-.228-1.434 0-2.608 1.858-4.45t4.532-1.842q1.304 0 2.51.522t2.054 1.467q2.152-.424 4.01-1.532-.685 2.217-2.771 3.488 1.989-.261 3.619-.978z"/></svg>
+      <span class="visually-hidden">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
+    </a>
+      </li>
+    </ul>
+  </div>
+
+  <a href="#" class="aft-modalButton" data-popup="popupTen">
+    <button onclick="ApplyFunction()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.4166 7.91683H7.91659V13.4168H6.08325V7.91683H0.583252V6.0835H6.08325V0.583496H7.91659V6.0835H13.4166V7.91683Z" fill="#2E2E2E" />
+    </svg>
+    <span class="social-sharing__title" aria-hidden="true">Apply</span>
+    <span class="visually-hidden">Apply</span>
+    </button>
+  </a>
+
+</div>
+
+<style>
+.sbutton-blog {
+    font-family: 'Poppins', sans-serif;
+    color: #2e2e2e;
+    display: flex;
+    position: relative;
+    font-size: .9375em;
+    padding-right: 42px;
+    align-items: center;
+}
+
+.sbutton-blog:hover {
+  cursor: pointer;
+}
+
+ul.smenu-blog {
+  border-radius: 60px;
+  color: #ffffff;
+  background-color: #2e2e2e;
+  margin: 0 !important;
+  visibility: hidden;
+  padding: 0;
+  position: absolute;
+  top: 0px;
+}
+
+.smenu-blog li {
+  list-style-type: none;
+  margin: 0;
+  padding: 7px;
+}
+
+.smenu-blog li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.smenu-blog.share {
+  visibility: visible;
+  top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  min-width: 80px;
+  justify-content: space-evenly;
+}
+
+</style>
+
+<script>
+  $('.sbutton-blog').on('click', function(event) {  
+  $('.smenu-blog').toggleClass('share');
+});
+</script>

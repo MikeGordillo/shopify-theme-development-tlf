@@ -1,0 +1,407 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "3f882c37-c2bf-47fc-bdea-6ed0826e4f20": {
+      "type": "media-queries-hero-no-overlay",
+      "disabled": true,
+      "blocks": {
+        "template--15762260984004__3f882c37-c2bf-47fc-bdea-6ed0826e4f20-16704467286a9dfe8b-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FREE-GIFT-HP-BANNER-DESKTOP-DEC9.jpg",
+            "image_link": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "link_text": "",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FREE-GIFT-HP-BANNER-MOBILE-DEC9.jpg",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "mobile_link_img": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "mobile_link_text": "",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762260984004__3f882c37-c2bf-47fc-bdea-6ed0826e4f20-16704467286a9dfe8b-0"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15748847599812__41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b-1665773833fa6fcd0f-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1214_HP-Banner_HolidayGifts_Desktop.pg_96b83672-d152-45bc-9af1-2143bc260427.jpg",
+            "image_link": "",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1214_HP-Banner_HolidayGifts_Mobile.jpg",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "",
+            "mobile_link_img": "",
+            "mobile_link_text": "",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15748847599812__41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b-1665773833fa6fcd0f-0"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 30,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "18a19482-c1e3-4802-971b-48c217473b46": {
+      "type": "media-queries-hero-no-overlay",
+      "disabled": true,
+      "blocks": {
+        "template--15762260984004__18a19482-c1e3-4802-971b-48c217473b46-166794177897589e44-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1129_CyberWeek_Desktop-Men.gif",
+            "image_link": "\/collections\/mens",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/mens",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1129_CyberWeek_Mobile-Men.gif",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/mens",
+            "mobile_link_img": "\/collections\/mens",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762260984004__18a19482-c1e3-4802-971b-48c217473b46-166794177897589e44-0"
+      ],
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 40,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "6544fd8f-0375-4f52-9c0c-3874597a88ad": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762260984004__6544fd8f-0375-4f52-9c0c-3874597a88ad-16682077861382ce49-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1129_HP-Banner_TLFNewReleases_Desktop.jpg",
+            "image_link": "",
+            "focal_point": "center center",
+            "title": "TAKE LIFE FURTHER",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/mens-take-life-further-collection",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1129_HP-Banner_TLFNewReleases_Mobile.jpg",
+            "mobile_title": "TAKE LIFE FURTHER",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/mens-take-life-further-collection",
+            "mobile_link_img": "",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762260984004__6544fd8f-0375-4f52-9c0c-3874597a88ad-16682077861382ce49-0"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "6128f0a6-8eb8-40f4-9ae2-f09bf11cd9eb": {
+      "type": "product-slider-homepage",
+      "settings": {
+        "title": "MEN'S TAKE LIFE FURTHER COLLECTION",
+        "collection1": "mens-take-life-further-collection",
+        "per_row": 4,
+        "link": "https:\/\/tlfapparel.com\/collections\/take-life-further-coming-soon",
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "cd49a590-677b-44a8-9f74-68d51e88050e": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "MEN'S REDEFINE IMPOSSIBLE COLLECTION",
+        "home_featured_products": "mens-redefine-impossible-collection",
+        "per_row": 4,
+        "rows": 1,
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "46ded2cc-63fe-4fac-94d6-66524c851e7e": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762260984004__46ded2cc-63fe-4fac-94d6-66524c851e7e-166917064516cbf74f-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1214_HP-Banner_NewReleases_M-Desktop.jpg",
+            "image_link": "",
+            "focal_point": "center center",
+            "title": "NEW RELEASES",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/mens-new-releases",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1212_HP-Banner_NewReleases_M-Mobile.jpg",
+            "mobile_title": "NEW RELEASES",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/mens-new-releases",
+            "mobile_link_img": "",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762260984004__46ded2cc-63fe-4fac-94d6-66524c851e7e-166917064516cbf74f-0"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "33c7fe9d-a8fa-474b-9993-9554a4356498": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762260984004__33c7fe9d-a8fa-474b-9993-9554a4356498-166855005783e5b218-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1213_B1G2-Free_Desktop_829d15c2-f677-43cf-9cfb-c132c3c88dcc.jpg",
+            "image_link": "shopify:\/\/collections\/mens-outlet",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/mens-outlet",
+            "link_text": "SHOP BUY 1, GET 2 FREE",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1213_B1G2-Free_Mobile_ac61267f-0bd5-49e4-895f-b01f9554c205.jpg",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/mens-outlet",
+            "mobile_link_img": "shopify:\/\/collections\/mens-outlet",
+            "mobile_link_text": "SHOP BUY 1, GET 2 FREE",
+            "mobile_text_align": "vertical-bottom horizontal-center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762260984004__33c7fe9d-a8fa-474b-9993-9554a4356498-166855005783e5b218-0"
+      ],
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "9e72de63-c9ae-4ca7-90c8-217ca0950403": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762260984004__9e72de63-c9ae-4ca7-90c8-217ca0950403-16684633917efffab5-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_M-Essentials_Desktop.jpg",
+            "image_link": "",
+            "focal_point": "center center",
+            "title": "COLD WEATHER ESSENTIALS",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/mens-fall-essentials",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_M-Essentials_Mobile.jpg",
+            "mobile_title": "COLD WEATHER ESSENTIALS",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/mens-fall-essentials",
+            "mobile_link_img": "",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762260984004__9e72de63-c9ae-4ca7-90c8-217ca0950403-16684633917efffab5-0"
+      ],
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "c98bdceb-1f01-4139-8391-e8690d1a8d9c": {
+      "type": "Two_Under_Top",
+      "blocks": {
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_M-Best.jpg",
+            "width": "50%",
+            "alignment": "bottom-middle",
+            "custom-all-product-title": "BEST SELLERS",
+            "custom-all-product-subtitle": "",
+            "custom-shop-button": "Shop",
+            "collection-redirect-url1": "shopify:\/\/collections\/mens-best-sellers"
+          }
+        },
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_M-Trending.jpg",
+            "width": "50%",
+            "alignment": "top-middle",
+            "custom-all-product-title": "TRENDING",
+            "custom-all-product-subtitle": "",
+            "custom-shop-button": "Shop",
+            "collection-redirect-url1": "shopify:\/\/collections\/mens-trending-must-haves"
+          }
+        }
+      },
+      "block_order": [
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-0",
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-1"
+      ],
+      "settings": {
+      }
+    },
+    "e05f5faf-ffff-411b-8b3c-e46ab82b2730": {
+      "type": "featured-content",
+      "settings": {
+        "title": "TLF ON YOU",
+        "text": "<p><\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": true,
+        "divider": false
+      }
+    },
+    "efe3c43e-fdf9-4bea-9625-1ff3027d6ff4": {
+      "type": "four-sixty-ugc",
+      "settings": {
+      }
+    },
+    "fb59b8ec-5297-4ec1-9588-a4bd0d136d49": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-0": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        },
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-1": {
+          "type": "html",
+          "settings": {
+            "code": "<h2>Custom content<\/h2><p>Use this advanced section to build your own layouts or to add custom HTML or scripts.<\/p>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-0",
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "space_around": false
+      }
+    },
+    "66cb1403-022c-4f06-a5a0-c0a239c1ee20": {
+      "type": "banner-title",
+      "disabled": true,
+      "settings": {
+        "title": "TLF ON YOU",
+        "align_text": "center"
+      }
+    },
+    "6e76f2ec-0798-4b92-b981-caf5ac31fbb8": {
+      "type": "banner-title",
+      "disabled": true,
+      "settings": {
+        "title": "Tag us with @TLFapparel to be featured",
+        "align_text": "center"
+      }
+    },
+    "063dd40b-4733-447c-8e70-0729a4f21bce": {
+      "type": "smsbump_footer_form_embeded_footer_95032",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "3f882c37-c2bf-47fc-bdea-6ed0826e4f20",
+    "41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b",
+    "18a19482-c1e3-4802-971b-48c217473b46",
+    "6544fd8f-0375-4f52-9c0c-3874597a88ad",
+    "6128f0a6-8eb8-40f4-9ae2-f09bf11cd9eb",
+    "cd49a590-677b-44a8-9f74-68d51e88050e",
+    "46ded2cc-63fe-4fac-94d6-66524c851e7e",
+    "33c7fe9d-a8fa-474b-9993-9554a4356498",
+    "9e72de63-c9ae-4ca7-90c8-217ca0950403",
+    "c98bdceb-1f01-4139-8391-e8690d1a8d9c",
+    "e05f5faf-ffff-411b-8b3c-e46ab82b2730",
+    "efe3c43e-fdf9-4bea-9625-1ff3027d6ff4",
+    "fb59b8ec-5297-4ec1-9588-a4bd0d136d49",
+    "66cb1403-022c-4f06-a5a0-c0a239c1ee20",
+    "6e76f2ec-0798-4b92-b981-caf5ac31fbb8",
+    "063dd40b-4733-447c-8e70-0729a4f21bce"
+  ]
+}

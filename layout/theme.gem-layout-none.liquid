@@ -1,0 +1,432 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+{% include "starapps-core" %}
+{% include 'best-option-initializer' %}
+{% render 'pagefly-head' %}
+  {% render 'elevar-head' %}
+<meta name="uri-translation" content="on" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
+  
+  <meta name="robots" content="index, follow" />
+
+<!-- OneTrust Cookies Consent Notice start for tlfapparel.com -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/c1f044da-a82a-44ae-8a16-eea5e5cb9c72/OtAutoBlock.js" ></script>
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="c1f044da-a82a-44ae-8a16-eea5e5cb9c72" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for tlfapparel.com -->
+
+{% if '/collections' == request.path or request.path == '/collections/all' %}
+{% assign shopUrl = shop.url %}
+<script type="text/javascript">
+window.location = '{{ shopUrl }}';
+</script>
+{% endif %}
+  
+  <meta charset="utf-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="geo.region" content="US-FL" />
+  {% if template contains 'collection' %}
+  <meta name="keywords" content="{% if current_tags contains 'MENS' %}{{ collection.metafields.keywords.mens }}{% endif %}{% if current_tags contains 'WOMENS' %}{{ collection.metafields.keywords.womens }}{% endif %}">
+  {% endif %}
+  <meta name="geo.placename" content="Fort Lauderdale" />
+  <meta name="geo.position" content="26.368306;-80.128932" />
+  <meta name="ICBM" content="26.368306, -80.128932" />
+    <link rel="preconnect dns-prefetch" href="https://fonts.shopifycdn.com">
+  <link rel="preconnect dns-prefetch" href="https://cdn.shopify.com">
+  <link rel="preconnect dns-prefetch" href="https://v.shopify.com"> 
+  <link rel="preconnect dns-prefetch" href="https://cdn.shopifycloud.com">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.shopify.com/s/files/1/2665/0346/files/apple-icon-180x180.png?16672348967371393278">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://cdn.shopify.com/s/files/1/2665/0346/files/android-icon-192x192.png?16672348967371393278">
+  <link rel="manifest" href="https://cdn.shopify.com/s/files/1/2665/0346/files/manifest.json?16672348967371393278">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" defer="defer"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" defer="defer"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" defer="defer"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta name="ahrefs-site-verification" content="6ef01c4498bf379180ca898ee9564783dfd5e3e32cbf5570c2f69af978bda03b">
+  <meta name="google-site-verification" content="GooGhywoiu9839t543j0s7543uw1 - pls add {TLFApparel@gmail.com} to GA account {111884617} with ‘Manage Users and Edit’ permissions - date {05-02-2021}."/>
+  {% if template contains 'product' %}
+    <meta property="og:type" content="product" />
+    <meta property="og:title" content="{{ product.title }}" />
+    <meta property="og:description" content="{{ page_description | escape }}" />
+    <meta property="og:url" content="{{ product.url }}"/>
+    <meta property="og:site_name" content="{{ shop.name }}" />
+    <meta property="product:price:amount" content="{{ product.price | money_without_currency }}" />
+    <meta property="product:price:currency" content="{{ shop.currency }}" />
+    <meta property="og:availability" content="{% if product.available %}instock{% else %}out of stock{% endif %}" />
+  {% endif %}
+  <script src="{{ 'jquery-3.5.1.min.js' | asset_url }}"	></script>
+  
+  <!-- Start of LiveChat (www.livechatinc.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 12285222;
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechatinc.com/chat-with/12285222/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TLF Apparel",
+  "url": "https://tlfapparel.com",
+  "logo": "https://cdn.shopify.com/s/files/1/2665/0346/files/tlf_logo_black.png?v=1601314556",
+  "alternateName": "Take Life Further",
+  "sameAs": [
+    "https://www.facebook.com/tlfapparel",
+    "https://www.instagram.com/tlfapparel",
+    "https://www.youtube.com/user/tlfapparel",
+    "https://twitter.com/tlfapparel",
+    "https://tiktok.com/@tlfapparel",
+    "https://pinterest.com/tlfapparel",
+    "https://www.linkedin.com/company/tlf-apparel"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+1-954-204-0296",
+      "contactType": "customer service",
+      "areaServed": "US",
+      "availableLanguage": [
+        "en",
+        "es"
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "TLF Apparel",
+  "url": "https://tlfapparel.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://tlfapparel.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+  
+    <!-- Twitter universal website tag code -->
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','o36or');
+twq('track','PageView');
+</script>
+<!-- End Twitter universal website tag code -->
+  
+  {% if customer %}
+  <script>
+    var user = {'event':'customer_data'};
+    {% if customer.id %}
+    user.id = "{{ customer.id }}";
+    {% endif %}
+    {% if customer.accepts_marketing %}
+    user.accepts_marketing = "{{ customer.accepts_marketing }}";
+    {% endif %}
+    {% if customer.tags %}
+    user.tags = "";
+    {% for tag in customer.tags %}
+    user.tags += ",{{ tag }}";
+    {% endfor %}
+    {% endif %}
+    {% if customer.email %}
+    user.em = "{{ customer.email }}";
+    {% endif %}
+    {% if customer.phone %}
+    user.ph = "{{ customer.phone }}";
+    {% endif %}
+    {% if customer.first_name %}
+    user.fn = "{{ customer.first_name }}";
+    user.fn = user.fn.replace("&#39;","'"); // fixes encoding error with apostrophes
+    {% endif %}
+    {% if customer.last_name %}
+    user.ln = "{{ customer.last_name }}";
+    user.ln = user.ln.replace("&#39;","'"); // fixes encoding error with apostrophes
+    {% endif %}
+    {% if customer.default_address %}
+    user.cn = "{{ customer.default_address.country_code }}";
+    user.st = "{{ customer.default_address.province_code }}";
+    user.ct = "{{ customer.default_address.city }}";
+    user.zp = "{{ customer.default_address.zip }}";
+    user.ph = "{{ customer.default_address.phone }}";
+    {% endif %}
+    {% if customer.total_spent %}
+    user.ltv = {{ customer.total_spent | money_without_currency}};
+    {% endif %}
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(user);
+  </script>
+  {% endif %}
+
+  <!-- Global site tag (gtag.js) - Google Ads: 1010621149 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1010621149"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-1010621149', {'allow_enhanced_conversions': true});
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111884617-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111884617-1');
+ 
+  gtag('config', 'G-RD6XCCJLFB');
+</script>
+  
+  
+  {%- if settings.favicon -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+  
+  
+{% unless template contains 'collection' or  template contains 'product' %} 
+
+
+<title>{{ page_title }} | TLF Apparel</title>
+{% endunless %}
+
+  
+{% if template contains 'collection' and current_tags %}   
+<title>{% unless template contains 'collection' and collection.url contains 'outlet' %}{% if current_tags contains 'WOMENS' %}Women's{%- endif -%}{% if current_tags contains 'MENS' %}Men's{% endif %}{% endunless %} {{ collection.title }} | TLF Apparel</title>
+{% endif %}
+
+  
+{% if template contains 'collection' and current_tags == blank  %} 
+<title>		
+{{ collection.title }} | TLF Apparel
+</title>    
+{% endif %}
+  
+  
+{%- if template contains 'product' -%}
+{% if product.metafields.seoPageTitle.seo_page_title %}
+<title>{{ product.metafields.seoPageTitle.seo_page_title }}</title>
+{% else %}  
+<title>{{ product.title }} | TLF Apparel</title>
+{% endif %}
+{% endif %}
+
+
+<meta name="description" {% if page_description %}content="{{ page_description }}"{% else %}content="Activewear, is more than apparel, its workout clothes redefined by TLF Apparel for fit, performance, and style. Free Shipping & Returns"{% endif %}>
+
+
+  {% include 'social-meta-tags' %}
+
+  {% include 'font-face' %}
+  
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+
+
+{%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+{%- assign time_now = 'now' | date: '%s' %}
+{%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+{%- assign diffSeconds = time_now | minus: yotpo_live_time %}
+{%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
+{{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    window.theme = window.theme || {};
+    theme.routes = {
+      cart: "{{ routes.cart_url }}",
+      cartAdd: "{{ routes.cart_add_url }}",
+      cartChange: "{{ routes.cart_change_url }}"
+    };
+    theme.strings = {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+      willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+      willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+      waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+      cartSavings: {{ 'cart.general.savings_html' | t: savings: '[savings]' | json }},
+      cartEmpty: {{ 'cart.general.empty' | t | json }},
+      cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+    };
+    theme.settings = {
+      dynamicVariantsEnable: true,
+      dynamicVariantType: {{ settings.variant_type | json }},
+      cartType: {{ settings.cart_type | json }},
+      moneyFormat: {{ shop.money_format | json }},
+      predictiveSearch: {{ settings.predictive_search_enabled }},
+      predictiveSearchType: {{ settings.search_type | json }},
+      inventoryThreshold: {{ settings.inventory_threshold }},
+      quickView: {{ settings.quick_shop_enable }},
+      themeName: 'TLF Apparel',
+      themeVersion: "5.0.5"
+    };
+  </script>
+
+ {% capture h_content %}
+    {{ content_for_header }}
+    {% endcapture %}
+    {{ h_content | remove: "jstags" }}
+ {% comment %}
+  <script src="{{ 'footer-language.min.js' | asset_url }}" defer="defer"></script>
+  {% endcomment %}
+  {% if page.handle contains 'search' %}
+  <script src="{{ 'isp_script.js' | asset_url }}" defer="defer"></script>
+  {% endif %}
+  <script src="{{ 'vendor-scripts-v9.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+
+  {%- if shop.enabled_currencies.size > 1 -%}
+    <link rel="preload" as="style" href="{{ 'currency-flags.css' | asset_url }}" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ 'currency-flags.css' | asset_url }}"></noscript>
+  {%- endif -%}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+  {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  {%- endif -%}
+  
+  
+
+
+  
+  <!-- Cross Sell custom code start. Do not change -->
+  {%include 'cross-sell-custom'%}
+  <!-- Cross Sell custom code end. Do not change -->
+
+  
+  
+  
+  
+{% if template contains 'collection' %}{{ 'https://cdn.shopify.com/s/files/1/0382/4185/files/ajaxinate.js?937' | script_tag }}{% endif %}
+
+  <!-- Yotpo JavaScript -->
+<script type="text/javascript">
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/nV0XhEI36DEX5xuuKQav17AyvLlidQlyGDH2XtWp/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script> 
+<!-- End of Yotpo JavaScript --> 
+ 
+ 
+{% render 'pagefly-header' %}
+
+
+<script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/vLM_160_KqQPL2l55GpovQ" async></script>
+
+{% include 'hic-tag' %}
+
+
+{% render 'tapcart-banner' %}
+  
+  <!-- Algolia head -->
+    {{ 'algolia_config.js' | asset_url | script_tag }}
+
+
+
+
+
+
+<script type="text/template" id="template_algolia_money_format">{% include 'algolia_money_format' %}</script>
+<script type="text/template" id="template_algolia_current_collection_id">{% include 'algolia_current_collection_id' %}</script>
+<script type="text/template" id="template_algolia_autocomplete">{% include 'algolia_autocomplete.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete.css">{% include 'algolia_autocomplete.css.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_pages_empty">{% include 'algolia_autocomplete_pages_empty.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_page">{% include 'algolia_autocomplete_page.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_collection">{% include 'algolia_autocomplete_collection.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_collections_empty">{% include 'algolia_autocomplete_collections_empty.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_article">{% include 'algolia_autocomplete_article.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_articles_empty">{% include 'algolia_autocomplete_articles_empty.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_product">{% include 'algolia_autocomplete_product.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_products_empty">{% include 'algolia_autocomplete_products_empty.hogan' %}</script>
+<script type="text/template" id="template_algolia_autocomplete_footer">{% include 'algolia_autocomplete_footer.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search">{% include 'algolia_instant_search.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search.css">{% include 'algolia_instant_search.css.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search_stats">{% include 'algolia_instant_search_stats.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search_facet_show_more">{% include 'algolia_instant_search_facet_show_more.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search_facet_item">{% include 'algolia_instant_search_facet_item.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search_current_refined_values_item">{% include 'algolia_instant_search_current_refined_values_item.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search_product">{% include 'algolia_instant_search_product.hogan' %}</script>
+<script type="text/template" id="template_algolia_instant_search_no_result">{% include 'algolia_instant_search_no_result.hogan' %}</script>
+{{ 'algolia_dependency_font-awesome-4-4-0.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'algolia_externals.js' | asset_url }}" defer></script>
+{{ 'algolia_init.js' | asset_url | script_tag }}
+<script src="{{ 'algolia_analytics.js' | asset_url }}" defer></script>
+<script src="{{ 'algolia_translations.js' | asset_url }}" defer></script>
+<script src="{{ 'algolia_helpers.js' | asset_url }}" defer></script>
+<script src="{{ 'algolia_autocomplete.js' | asset_url }}" defer></script>
+<script src="{{ 'algolia_facets.js' | asset_url }}" defer></script>
+<script src="{{ 'algolia_sort_orders.js' | asset_url }}" defer></script>
+<script src="{{ 'algolia_instant_search.js' | asset_url }}" defer></script>
+  <!-- /Algolia head -->
+  
+  
+  <!--infiniteHits Widget-->
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/hogan.js@3.0.2/dist/hogan-3.0.2.min.js" integrity="sha256-jIAAmB65ff5CEFvV6DRfRWjHFwqq+AHeV4le8f8PYp4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js" integrity="sha256-YVWQosorZnr6fALvOW9VALYuInld27RkSPkElGBdCaU=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/search-insights@1.6.3/dist/search-insights.min.js" integrity="sha256-8r3eU2ketKjC+f59eAY6ejwSsgPjNY5Ca1yt67nz2TM=" crossorigin="anonymous"></script>
+
+  
+  
+  
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+
+  {% render 'qikify-apps' %}
+  {% unless template contains 'search' %} 
+    <!-- Infinite Scroll code start. Do not change --> {% if collection.all_products_count > 1 or product.id > 1 %} <script type="text/javascript" src="{{ 'infinitescroll2022.js' | asset_url }}"></script> {% endif %} <!-- nfinite Scroll code end. Do not change --><script type="text/javascript" src="https://cdn.shopify.com/s/files/1/2665/0346/files/zaius-notification-service.js?v=1642203284" ></script>
+  {% endunless %}
+  
+{% if handle contains 'back-in-stock' %}
+<meta name="robots" content="noindex">
+{% elsif handle contains '/collections/about-tlf-apparel' %}
+<meta name="robots" content="noindex">
+{% elsif handle contains 'influencer' %}
+<meta name="robots" content="noindex">
+{% endif %}
+<!--Gem_Page_Header_Script-->
+{% render 'gem-app-header-scripts' %}
+<!--End_Gem_Page_Header_Script-->
+</head>
+  
+              
+
+<body>
+<div class="gem-container">
+	{{ content_for_layout }}
+</div><!-- end .gem-container -->
+<!--Gem_Page_Footer_Script-->
+{% render 'gem-app-footer-scripts' %}
+<!--End_Gem_Page_Footer_Script-->
+</body>
+</html>

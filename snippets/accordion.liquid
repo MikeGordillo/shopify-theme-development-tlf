@@ -1,0 +1,59 @@
+<style>
+  .accordian {
+  font-size: .85em;
+  margin-top: 18px;
+}
+
+.accordian h5 {
+  font-size: 1.25rem !important;
+}
+
+#product-description {
+    
+}
+
+#product-description ul {
+    margin: 0px 0px 0px 0px;
+}
+
+#product-description li {
+  list-style: none;
+    font-size: .85em;
+    font-weight: bold;
+}
+
+#product-description li p {
+    margin: 0px 0px 10px 0px;
+}
+  
+</style>
+
+<div class="accordian">
+  <a href="#product-description" data-accordian-action="">
+    <h5>Product Description<span>+</span></h5>
+  </a>
+  <div id="product-description" data-accordian-target="">
+    <br>
+    <ul>
+    <li>{{ product.metafields.accordion.bullet_points }}</li>
+    </ul>
+    <br>
+    {{ product.metafields.accordion.product_description }}
+    <br><br>Complete the look with the:<br>
+    {{ product.metafields.accordion.complete_look }}
+    </div>
+  <a href="#product-technology-benefits" data-accordian-action="">
+    <h5>Product Technology Benefits <span>+</span></h5>
+  </a>
+  <div id="product-technology-benefits" data-accordian-target="">
+    <br>
+  {{ product.metafields.accordion.product_benefits }}  
+    </div>
+  <a href="#technical-specs" data-accordian-action="">
+    <h5>Technical Specs <span>+</span></h5>
+  </a>
+  <div id="technical-specs" data-accordian-target="">
+    <br>
+    {{ product.metafields.accordion.technical_specs }}
+    </div><br>
+</div>

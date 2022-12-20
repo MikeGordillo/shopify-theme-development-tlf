@@ -1,0 +1,8 @@
+02/02/22 - 9:30 AM
+Disabled Algolia on collection pages -GM
+
+02/04/22 - 1:00 PM
+Fixed lazyloading on collection pages -GM
+
+02/17/22
+Added media query scss for footer SMSbump- KP

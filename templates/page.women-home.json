@@ -1,0 +1,418 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "4a3c5cff-e66b-475c-a171-fbdcdff43c93": {
+      "type": "media-queries-hero-no-overlay",
+      "disabled": true,
+      "blocks": {
+        "template--15762261541060__4a3c5cff-e66b-475c-a171-fbdcdff43c93-1670448259910a1e5f-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FREE-GIFT-HP-BANNER-DESKTOP-DEC9.jpg",
+            "image_link": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "link_text": "",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FREE-GIFT-HP-BANNER-MOBILE-DEC9.jpg",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "mobile_link_img": "shopify:\/\/collections\/free-gift-with-purchase-holiday-deals-app-exclusive",
+            "mobile_link_text": "",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762261541060__4a3c5cff-e66b-475c-a171-fbdcdff43c93-1670448259910a1e5f-0"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "7b35475a-41ab-4e7b-b569-39cc3c2bac2e": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762261541060__7b35475a-41ab-4e7b-b569-39cc3c2bac2e-1668016558dfb05cc5-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1214_HP-Banner_HolidayGifts_Desktop_4661d34e-84ff-4860-9de5-40d366f62dc5.jpg",
+            "image_link": "",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1214_HP-Banner_HolidayGifts_Mobile_50034140-8c02-4cd5-83e5-ccf377afb914.jpg",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "",
+            "mobile_link_img": "",
+            "mobile_link_text": "",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762261541060__7b35475a-41ab-4e7b-b569-39cc3c2bac2e-1668016558dfb05cc5-0"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 30,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "d52c8dcd-ef0c-4593-9532-deea32e7d4b3": {
+      "type": "media-queries-hero-no-overlay",
+      "disabled": true,
+      "blocks": {
+        "template--15759787000004__d52c8dcd-ef0c-4593-9532-deea32e7d4b3-1666990099aa904b8c-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1129_CyberWeek_Desktop-Women.gif",
+            "image_link": "\/collections\/womens",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/womens",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1129_CyberWeek_Mobile-Women.gif",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/womens",
+            "mobile_link_img": "\/collections\/womens",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15759787000004__d52c8dcd-ef0c-4593-9532-deea32e7d4b3-1666990099aa904b8c-0"
+      ],
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 40,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15748847599812__41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b-1665773833fa6fcd0f-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1219_HP-Banner_Genesis_Desktop_8a20167d-8ffe-4620-9d41-5e78c6d85fbe.jpg",
+            "image_link": "shopify:\/\/collections\/womens-genesis",
+            "focal_point": "center center",
+            "title": "GENESIS IS BACK",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/womens-genesis",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1219_HP-Banner_Genesis_Mobile_b6e5898d-7737-4ffd-a06e-c1856f12b573.jpg",
+            "mobile_title": "GENESIS IS BACK",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/womens-genesis",
+            "mobile_link_img": "shopify:\/\/collections\/womens-genesis",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15748847599812__41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b-1665773833fa6fcd0f-0"
+      ],
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "1af32b3f-fa24-4708-ab9d-ac2dba11178c": {
+      "type": "hero-video",
+      "disabled": true,
+      "settings": {
+        "title": "DARE TO",
+        "title_size": 80,
+        "subheading": "REDEFINE IMPOSSIBLE",
+        "link_text": "Shop",
+        "link": "",
+        "text_align": "vertical-bottom horizontal-center",
+        "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/2665\/0346\/files\/COSMIC-DESKTOP_f210fe60-f1dd-4ae4-929f-4236f8a6d171.gif?v=1666820931",
+        "section_height": "650px",
+        "mobile_height": "auto"
+      }
+    },
+    "cb4c0af8-6468-43d2-85c4-461c9d954df5": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762261541060__cb4c0af8-6468-43d2-85c4-461c9d954df5-1669171033c9bbcb23-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1219_HP-Banner_Reset_Desktop_bc24a3ac-c4a1-43dd-b1b5-4fa5f6bf9e13.jpg",
+            "image_link": "shopify:\/\/collections\/womens-reset-fleece-collection",
+            "focal_point": "center center",
+            "title": "NEW FLEECE MUST HAVES",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/womens-reset-fleece-collection",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1219_HP-Banner_Reset_Mobile_54a29b00-2678-4b21-a741-cdd0f59127ab.jpg",
+            "mobile_title": "NEW FLEECE\nMUST HAVES",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/womens-reset-fleece-collection",
+            "mobile_link_img": "shopify:\/\/collections\/womens-reset-fleece-collection",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762261541060__cb4c0af8-6468-43d2-85c4-461c9d954df5-1669171033c9bbcb23-0"
+      ],
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 0,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "3cdffd17-d1dd-41c5-ab47-fce31221c1c7": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762261541060__3cdffd17-d1dd-41c5-ab47-fce31221c1c7-166854923231ca169c-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1213_B1G2-Free_Desktop_829d15c2-f677-43cf-9cfb-c132c3c88dcc.jpg",
+            "image_link": "shopify:\/\/collections\/womens-outlet",
+            "focal_point": "center center",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/womens-outlet",
+            "link_text": "SHOP BUY 1, GET 2 FREE",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1213_B1G2-Free_Mobile_ac61267f-0bd5-49e4-895f-b01f9554c205.jpg",
+            "mobile_title": "",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/womens-outlet",
+            "mobile_link_img": "shopify:\/\/collections\/womens-outlet",
+            "mobile_link_text": "SHOP BUY 1, GET 2 FREE",
+            "mobile_text_align": "vertical-bottom horizontal-center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762261541060__3cdffd17-d1dd-41c5-ab47-fce31221c1c7-166854923231ca169c-0"
+      ],
+      "settings": {
+        "margin_top": 40,
+        "margin_bottom": 40,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "8965e70a-6e20-4863-bd74-99a1b108de83": {
+      "type": "product-slider-homepage",
+      "disabled": true,
+      "settings": {
+        "title": "WOMEN'S NEW RELEASES",
+        "collection1": "womens-new-releases",
+        "per_row": 4,
+        "link": "shopify:\/\/collections\/womens-new-releases",
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "a9f168ac-d8da-412c-b37a-0651361c1d2b": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "template--15762261541060__a9f168ac-d8da-412c-b37a-0651361c1d2b-16684631711131de64-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_W-Essentials_Desktop_7d519319-27be-4188-88cc-bd433f329369.jpg",
+            "image_link": "\/collections\/womens-fall-essentials",
+            "focal_point": "center center",
+            "title": "COLD WEATHER ESSENTIALS",
+            "title_size": 70,
+            "subheading": "",
+            "link": "shopify:\/\/collections\/womens-fall-essentials",
+            "link_text": "SHOP",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_W-Essentials_Mobile.jpg",
+            "mobile_title": "COLD WEATHER ESSENTIALS",
+            "mobile_title_size": 40,
+            "mobile_subheading": "",
+            "mobile_link": "shopify:\/\/collections\/womens-fall-essentials",
+            "mobile_link_img": "\/collections\/womens-fall-essentials",
+            "mobile_link_text": "SHOP",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "template--15762261541060__a9f168ac-d8da-412c-b37a-0651361c1d2b-16684631711131de64-0"
+      ],
+      "settings": {
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "c98bdceb-1f01-4139-8391-e8690d1a8d9c": {
+      "type": "Two_Under_Top",
+      "blocks": {
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_W-Best.jpg",
+            "width": "50%",
+            "alignment": "top-middle",
+            "custom-all-product-title": "BEST SELLERS",
+            "custom-all-product-subtitle": "",
+            "custom-shop-button": "Shop",
+            "collection-redirect-url1": "shopify:\/\/collections\/womens-best-sellers"
+          }
+        },
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FW22-1208_HP-Banner_W-Trending.jpg",
+            "width": "50%",
+            "alignment": "top-middle",
+            "custom-all-product-title": "TRENDING",
+            "custom-all-product-subtitle": "",
+            "custom-shop-button": "Shop",
+            "collection-redirect-url1": "shopify:\/\/collections\/womens-trending-must-haves"
+          }
+        }
+      },
+      "block_order": [
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-0",
+        "template--15748847599812__c98bdceb-1f01-4139-8391-e8690d1a8d9c-1665774094767fd500-1"
+      ],
+      "settings": {
+      }
+    },
+    "12aae761-9a5e-4877-adec-9cd23625f194": {
+      "type": "featured-content",
+      "settings": {
+        "title": "TLF ON YOU",
+        "text": "<p><\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": true,
+        "divider": false
+      }
+    },
+    "07d9e2f4-0f34-49d0-9093-2421658be78b": {
+      "type": "four-sixty-ugc",
+      "settings": {
+      }
+    },
+    "fb59b8ec-5297-4ec1-9588-a4bd0d136d49": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-0": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        },
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-1": {
+          "type": "html",
+          "settings": {
+            "code": "<h2>Custom content<\/h2><p>Use this advanced section to build your own layouts or to add custom HTML or scripts.<\/p>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-0",
+        "template--15748847599812__fb59b8ec-5297-4ec1-9588-a4bd0d136d49-1665775847e9d0390f-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "space_around": false
+      }
+    },
+    "eebe50c4-4074-49c4-9ca1-e50e65e6860f": {
+      "type": "banner-title",
+      "disabled": true,
+      "settings": {
+        "title": "TLF ON YOU",
+        "align_text": "center"
+      }
+    },
+    "c5d81495-1a3a-45d3-8664-e19b50249805": {
+      "type": "banner-title",
+      "disabled": true,
+      "settings": {
+        "title": "Tag us with @TLFapparel to be featured",
+        "align_text": "center"
+      }
+    },
+    "455ae65e-f309-401e-928a-156466f91dc3": {
+      "type": "smsbump_footer_form_embeded_footer_95032",
+      "settings": {
+      }
+    },
+    "05863a29-8587-4189-91d7-190e4e65096b": {
+      "type": "smsbump_footer_form_embeded_footer_136317",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "4a3c5cff-e66b-475c-a171-fbdcdff43c93",
+    "7b35475a-41ab-4e7b-b569-39cc3c2bac2e",
+    "d52c8dcd-ef0c-4593-9532-deea32e7d4b3",
+    "41aa9a47-1d1f-4ff4-9801-6ad654f0ab9b",
+    "1af32b3f-fa24-4708-ab9d-ac2dba11178c",
+    "cb4c0af8-6468-43d2-85c4-461c9d954df5",
+    "3cdffd17-d1dd-41c5-ab47-fce31221c1c7",
+    "8965e70a-6e20-4863-bd74-99a1b108de83",
+    "a9f168ac-d8da-412c-b37a-0651361c1d2b",
+    "c98bdceb-1f01-4139-8391-e8690d1a8d9c",
+    "12aae761-9a5e-4877-adec-9cd23625f194",
+    "07d9e2f4-0f34-49d0-9093-2421658be78b",
+    "fb59b8ec-5297-4ec1-9588-a4bd0d136d49",
+    "eebe50c4-4074-49c4-9ca1-e50e65e6860f",
+    "c5d81495-1a3a-45d3-8664-e19b50249805",
+    "455ae65e-f309-401e-928a-156466f91dc3",
+    "05863a29-8587-4189-91d7-190e4e65096b"
+  ]
+}

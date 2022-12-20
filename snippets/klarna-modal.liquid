@@ -1,0 +1,121 @@
+<a href="#" class="klrn-modalButton" data-popup="popupTwelve" style="color:#868686">More info</a>
+
+<section class="klrn-modal klrn-modalWindow" id="popupTwelve">
+  <section class="klrn-modalWrapper">
+    <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/klarna-message2.svg?v=1658938806" alt="klarna logo 2">
+        <p style="max-width: 100%; color: rgb(120, 117, 115); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Arial, sans-serif; font-weight: 400; font-size: 12px; line-height: 20px; text-rendering: geometricprecision; -webkit-font-smoothing: antialiased; text-align: left; word-break: break-word; margin-bottom: -10px; margin-top: -5px; padding-bottom: 4px; padding-top: 1px; letter-spacing: 0px; text-size-adjust: none;">See payment <a tabindex="0" aria-label="Klarna payment terms (Opens in a new window)" href="https://cdn.klarna.com/1.0/shared/content/legal/terms/0/en_us/sliceitinx" target="_blank" style="border-radius: 2px; color: rgb(120, 117, 115); cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Arial, sans-serif; font-weight: 400; outline: 0px; text-decoration: underline rgb(120, 117, 115); text-rendering: geometricprecision; transition: color 0.2s ease 0s; -webkit-font-smoothing: antialiased;">terms</a>. A higher initial payment may be required for some consumers. CA residents: Loans made or arranged pursuant to a California Financing Law license.</p>
+  </section>
+  <a class="klrn-closeBtn">X</a>
+</section>
+<section class="klrn-modal klrn-overlay"></section>
+
+<style>
+section.klrn-modalWindow section.klrn-modalWrapper img {
+  margin-bottom: 40px;
+}
+a.klrn-modalButton {
+    text-decoration: underline;
+}
+section.klrn-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
+}
+section.klrn-modalWindow {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  z-index: 999 !important;
+  width: 600px;
+  min-height: 540px;
+  margin-left: -300px;
+  background: #fff;
+  cursor: default;
+}
+section.klrn-modal.klrn-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: rgba(52, 52, 52, 0.5);
+  z-index: 997;
+  cursor: pointer;
+}
+
+section.klrn-modalWrapper p {
+  font-family: "Montserrat";
+  text-align: center;
+  font-size: 10px;
+  line-height: 15px;
+  color: #000000;
+}
+  
+  section.klrn-modalWrapper p a {
+    text-decoration: underline;
+}
+
+section.klrn-modalWindow section.klrn-modalWrapper {
+  margin: 30px;
+  padding: 20px 40px;
+  text-align: center;
+  line-height: 20px;
+  height: auto;
+}
+.klrn-closeBtn {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px 22px;
+  color: #000000;
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+  
+  @media only screen and (max-width: 600px) {
+    section.klrn-modalWindow section.klrn-modalWrapper {
+    margin: 30px;
+    padding: 15px;
+    text-align: left;
+    line-height: 20px;
+    height: auto;
+}
+  section.klrn-modalWindow {
+    width: 365px;
+    min-height: 345px;
+    margin-left: -183px;
+}
+    section.klrn-modalWrapper p {
+    font-size: 8px;
+    line-height: 12px;
+}
+  }
+</style>
+
+<script>
+  settings = {
+  //Model Popup
+  objModalPopupBtn: ".klrn-modalButton",
+  objModalCloseBtn: ".klrn-overlay, .klrn-closeBtn",
+  objModalDataAttr: "data-popup"
+};
+$(settings.objModalPopupBtn).bind("click", function () {
+  if ($(this).attr(settings.objModalDataAttr)) {
+    var strDataPopupName = $(this).attr(settings.objModalDataAttr);
+
+    //Fade In Modal Pop Up
+    $(".klrn-overlay, #" + strDataPopupName).fadeIn();
+  }
+});
+
+//On clicking the modal background
+$(settings.objModalCloseBtn).bind("click", function () {
+  $(".klrn-modal").fadeOut();
+});
+</script>

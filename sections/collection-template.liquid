@@ -1,0 +1,1274 @@
+<!--Redirect collections/all to home page-->
+
+
+
+{% if '/collections' == request.path or request.path == '/collections/all' %}
+{% assign shopUrl = shop.url %}
+<script type="text/javascript">
+window.location = '{{ shopUrl }}';
+</script>
+{% endif %}
+<!--End redirect  -->
+
+
+{%- assign per_row = section.settings.per_row -%}
+{% assign paginate_by = per_row | times: 21 %}
+{% if section.settings.collection_tags_style == 'inline' and collection.all_tags.size > 0 %}
+  {% assign paginate_by = paginate_by | minus: 1 %}
+{% elsif section.settings.collection_subnav_style == 'inline' %}
+  {% assign paginate_by = paginate_by | minus: 1 %}
+{% endif %}
+
+{% for product in collection.products %}
+{% if product.tags contains 'ACCESSORIES' or  product.tags contains 'hats' %}
+{% assign displayProducts = false %}
+{% endif %}
+{% endfor %}
+
+{% paginate collection.products by paginate_by %}
+
+<div
+  id="CollectionSection"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template"
+  {% if section.settings.parallax %}data-parallax="true"{% endif %}>
+  
+  {%- if section.settings.collection_image_enable and collection.image -%}
+    <div class="collection-hero loading--delayed">
+      {%- if section.settings.parallax -%}
+        <div class="parallax-container">
+          <div
+            class="parallax-image collection-hero__image lazyload"
+            data-bgset="{% include 'bgset', image: collection.image %}"
+            data-sizes="auto">
+          </div>
+        </div>
+      {%- else -%}
+        {%- assign img_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img class="collection-hero__image image-fit lazyload"
+          src=""
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ collection.image.aspect_ratio }}"
+          data-sizes="auto"
+          data-parent-fit="cover"
+          alt="{{ collection.image.alt | escape }}">
+        <noscript>
+          <img class="collection-hero__image image-fit"
+            src="{{ collection.image | img_url: '1400x' }}"
+            alt="{{ collection.image.alt | escape }}">
+        </noscript>
+      {%- endif -%}
+
+      <div class="collection-hero__content">
+        <div class="page-width">
+          <header class="section-header section-header--hero">
+            <h1 class="section-header__title section-header__title--medium">
+              <div class="animation-cropper">
+                <div class="animation-contents collection-title">
+                </div>
+              </div>
+            </h1>
+          </header>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="page-width page-content default-margin">
+    
+{% include 'breadcrumbs' %}
+{% render 'collection-info' %}
+  
+
+
+    {% if section.settings.collection_tags_style == 'dropdown' or section.settings.collection_sort_enable %}
+      <div class="collection-filter">
+        <div class="grid grid--uniform">
+
+        {% if section.settings.collection_tags_style == 'dropdown' %}
+          <div class="grid__item small--one-half medium-up--one-quarter">
+            <label for="SortTags" class="hidden-label">{{ 'collections.filters.title_tags' | t }}</label>
+            <select name="SortTags" id="SortTags">
+              {% if current_tags %}
+                {% if collection.handle %}
+                  <option value="{{ routes.collections_url }}/{{ collection.handle }}">{{ 'collections.filters.all_tags' | t }}</option>
+                {% elsif collection.current_type %}
+                  <option value="{{ collection.current_type | url_for_type }}">{{ 'collections.filters.all_tags' | t }}</option>
+                {% elsif collection.current_vendor %}
+                  <option value="{{ collection.current_vendor | url_for_vendor }}">{{ 'collections.filters.all_tags' | t }}</option>
+                {% endif %}
+              {% else %}
+                {% if current_tags contains tag %}
+                  <option value="">{{ 'collections.filters.all_tags' | t }}</option>
+                {% else %}
+                  <option value="">{{ 'collections.filters.title_tags' | t }}</option>
+                {% endif %}
+              {% endif %}
+              {% for tag in collection.all_tags %}
+                {% include 'filter-out-custom-tags' %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}"{% if current_tags contains tag %} selected="selected"{% endif %}>{{ tag }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+      
+    
+        {% if section.settings.collection_sort_enable %}
+          <div class="grid__item small--one-half medium-up--one-quarter float-right">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
+            <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
+              <option value="title-ascending"{% if sort_by == collection.default_sort_by %} selected="selected"{% endif %}>{{ 'collections.sorting.title' | t }}</option>
+              {% for option in collection.sort_options %}
+                <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>{{ option.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+        </div>
+      </div>
+    {% endif %} 
+      
+    <div id="CollectionAjaxResult">
+      <div id="CollectionAjaxContent">
+        <div id="filterDrawer" class="menu-drawer">
+          <span style="font-size:1.1em;cursor:pointer" onclick="openNav()">&#9776; Filter</span>
+        </div>
+        <div id="collection-container">
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
+            {% if collection.handle contains 'womens-outlet' %}
+            {% include 'womens-outlet-nav' %}
+                
+            {% elsif collection.handle contains 'mens-outlet' %}
+            {% include 'mens-outlet-nav' %}
+            
+            {% elsif collection.handle contains 'womens' %}
+            {% include 'womens-nav' %}
+
+            {% elsif collection.handle contains 'mens' %}
+            {% include 'mens-nav' %}
+
+            {% elsif collection.handle contains 'hyper-power' %}
+            {% include 'womens-nav' %}
+               
+            {% else %}
+            {% include 'nuetral-nav' %}
+              
+            {% endif %}
+            
+          </div>
+        <div id="new-nav">
+          <div class="grid__item {{ grid_item_width }}">
+            
+            {% if collection.handle contains 'womens-outlet' %}
+            {% include 'womens-outlet-nav' %}
+
+            {% elsif collection.handle contains 'mens-outlet' %}
+            {% include 'mens-outlet-nav' %} 
+            
+            {% elsif collection.handle contains 'womens' %}
+            {% include 'womens-nav' %}
+
+            {% elsif collection.handle contains 'mens' %}
+            {% include 'mens-nav' %}
+
+            {% elsif collection.handle contains 'hyper-power' %}
+            {% include 'womens-nav' %}
+               
+            {% else %}
+            {% include 'nuetral-nav' %}
+              
+            {% endif %}
+                   
+          </div>
+        </div>
+
+        <div class="grid grid--uniform grid--uniform-collection">
+          {% assign grid_item_width = 'small--one-half medium-up--one-third' %}
+
+          {% case per_row %}
+          {% when 1 %}
+            {%- assign grid_item_width = '' -%}
+          {% when 2 %}
+            {%- assign grid_item_width = 'medium-up--one-half' -%}
+          {% when 3 %}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+          {% when 4 %}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-third one-third-new' -%}
+          {% when 5 %}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+          {% endcase %}
+
+          {%- assign have_sidebar = false -%}
+          {%- assign tag_count = 0 -%}
+          {%- assign tag_limit = 7 -%}
+          {%- assign have_extra_tags = false -%}
+          {% if section.settings.collection_tags_style == 'inline' %}
+            {% if collection.all_tags.size > 0 %}
+              <div class="grid__item {{ grid_item_width }}">
+                <ul class="tags tags--vertical">
+                  <li{% unless current_tags %} class="tag--active"{% endunless %}>
+                    {% if collection.handle %}
+                      <a href="{{ routes.collections_url }}/{{ collection.handle }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {% elsif collection.current_type %}
+                      <a href="{{ collection.current_type | url_for_type }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {% elsif collection.current_vendor %}
+                      <a href="{{ collection.current_vendor | url_for_vendor }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {% endif %}
+                  </li>
+
+                  {% for tag in collection.all_tags %}
+                    {%- assign tag_count = tag_count | plus: 1 -%}
+                    {% include 'filter-out-custom-tags' %}
+                    {%- assign tag_with_hyphens = tag | replace: ' ', '-' -%}
+                    {% if tag_count == tag_limit %}
+                      {%- assign have_extra_tags = true -%}
+                      </ul>
+                      <div id="TagList-{{ section.id }}" class="collapsible-content collapsible-content--all">
+                        <ul class="tags tags--vertical collapsible-content__inner collapsible-content__inner--no-translate">
+                    {% endif %}
+                    {% if current_tags contains tag or current_tags contains tag_with_hyphens %}
+                      <li class="tag--active">
+                        {{ tag | link_to_remove_tag: tag | replace: 'title=', 'class="js-no-transition" title=' | replace: 'view=ajax', '' }}
+                      </li>
+                    {% else %}
+                      <li>
+                        {{ tag | link_to_tag: tag | replace: 'title=', 'class="js-no-transition" title=' | replace: 'view=ajax', '' }}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if have_extra_tags %}
+                    </div>
+                  {% endif %}
+                </ul>
+
+                {%- assign show_button_limit = tag_limit | minus: 1  -%}
+                {% if tag_count > show_button_limit %}
+                  <p>
+                    <button type="button" class="collapsible-trigger collapsible--auto-height collapsible-trigger-btn btn btn--tertiary tags-toggle" aria-controls="TagList-{{ section.id }}">
+                      <span class="collapsible-label__closed">{{ 'collections.general.see_more' | t }}</span>
+                      <span class="collapsible-label__open">{{ 'collections.general.see_less' | t }}</span>
+                    </button>
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% elsif section.settings.collection_subnav_style == 'inline' %}
+            {% if linklists.main-menu.levels > 0 %}
+              {% for link in linklists.main-menu.links %}
+                {% if link.active %}
+                  {% if link.links.size > 0 %}
+                    {%- assign have_sidebar = true -%}
+                  {% endif %}
+                {% elsif link.child_active %}
+                  {%- assign have_sidebar = true -%}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if have_sidebar %}
+              <div class="grid__item {{ grid_item_width }} grid__item--{{ section.id }}">
+                <ul class="tags tags--vertical">
+                  {% if linklists.main-menu.levels > 0 %}
+                    {% for link in linklists.main-menu.links %}
+                      {% if link.active %}
+                        {% include 'subcollection-list', links: link.links %}
+                      {% elsif link.child_active %}
+                        {% for sub_link in link.links %}
+                          {% if sub_link.active or sub_link.child_active %}
+                            {% if sub_link.levels > 0 %}
+                              {% include 'subcollection-list', links: sub_link.links %}
+                            {% else %}
+                              {% include 'subcollection-list', links: link.links %}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endfor %}
+
+                    {% if have_extra_tags %}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </ul>
+
+                {%- assign show_button_limit = tag_limit | minus: 1  -%}
+                {% if tag_count > show_button_limit %}
+                  <p>
+                    <button type="button" class="collapsible-trigger collapsible--auto-height collapsible-trigger-btn btn btn--tertiary tags-toggle" aria-controls="TagList-{{ section.id }}">
+                      <span class="collapsible-label__closed">{{ 'collections.general.see_more' | t }}</span>
+                      <span class="collapsible-label__open">{{ 'collections.general.see_less' | t }}</span>
+                    </button>
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endif %}
+          <ul class="tags tags--vertical">
+<!-- Desktop Collection Banners Womens  -->
+   {% if collection.url == 'https://tlfapparel.page.link/app' %}
+         <style>
+       .collection-description{
+           display:none;
+            }
+
+         h1.section-header__title.collection-title{
+          display:none;
+            }
+         </style>
+        {% endif %}  
+  {% if collection.url == 'https://tlfapparel.page.link/app' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-oversized-fits' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-shorts' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-joggers-sweatpants' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-leggings' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/womens-hoodies-sweatshirts-jackets' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+
+   {% if collection.url == '/collections/womens-tanks-sleeveless' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-sports-bras' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-crop-tops' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-long-sleeves' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/womens-short-sleeves' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+<!--   end womens categories -->
+
+  
+  <!--   start here mens categories -->
+
+   {% if collection.url == '/collections/mens-oversized-fits' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-5-inch-shorts-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-joggers-sweatpants' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-shorts' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-leggings-baselayers' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-hoodies-sweatshirts-jackets' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-tanks-sleeveless' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-stringers-drop-arm-tanks' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-long-sleeves' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-short-sleeves' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-graphic-t' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+ 
+
+<!--   end here categories men -->
+  
+  
+     {% if collection.url == '/collections/womens' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-new-releases' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-best-sellers' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/womens-fall-essentials' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/womens-trending-must-haves' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+
+   {% if collection.url == '/collections/mens' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/mens-new-releases' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/mens-best-sellers' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+   {% if collection.url == '/collections/mens-fall-essentials' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %} 
+   {% if collection.url == '/collections/mens-trending-must-haves' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+
+   {% if collection.url == '/collections/hats' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+  
+
+  {% if collection.url == '/collections/mens-take-life-further-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}  
+
+   {% if collection.url == '/collections/cosmic-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+    {% if collection.url == '/collections/mens-redefine-impossible-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/mens-gym-to-street-performance-drops' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+  
+   {% if collection.url == '/collections/mens-new-gym-to-street-lifestyle-drops' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/mens-vital-performance-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/mens-vital' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/mens-league' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/mens-element' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/mens-core' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/mens-graphix' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   <!--   women -->
+
+   {% if collection.url == '/collections/women-hyper-power-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/womens-sculpt-seamless-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+   {% if collection.url == '/collections/womens-gym-to-street-performance-drops' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+   {% if collection.url == '/collections/womens-new-gym-to-street-lifestyle-drops' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+   {% if collection.url == '/collections/womens-boost-collection' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/womens-contour' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/womens-tempo-glo' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+   {% if collection.url == '/collections/womens-react-seamless' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+   {% if collection.url == '/collections/womens-tempo-ribbed' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+   {% if collection.url == '/collections/womens-shine' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+   {% if collection.url == '/collections/womens-genesis' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+   {% if collection.url == '/collections/womens-tempo' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+ {% if collection.url == '/collections/womens-train-n-run' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+ {% if collection.url == '/collections/womens-essentials' %}
+          <div id="overstock-images">
+          <div class="banner-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-DESKTOP_6ba19b9c-69bc-456a-a2a7-750b2c72bdf3.jpg?v=1671052508">
+          </a>
+          </div>
+        {% endif %}
+
+
+
+
+  
+  {% if collection.url == '/collections/mens-outlet' %}
+          <div id="overstock-images">
+          <div class="tops-image">
+          <a href="/collections/mens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-TOPS-DESKTOP_d80a8c76-34b4-4035-8fb9-e8b32bdcb71f.jpg?v=1670969119">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/mens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN--BOTTOMS--DESKTOP_70961803-8646-4141-8cfb-3e9040a8bb74.jpg?v=1670969119" alt="Men's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/mens-outlet-tops' %}
+          <div id="overstock-images">
+          <div class="tops-image">
+          <a href="/collections/mens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-ALL-DESKTOP_20b9633d-b1af-472a-9f0a-012f6b99fec7.jpg?v=1670969119" alt="Men's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/mens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN--BOTTOMS--DESKTOP_70961803-8646-4141-8cfb-3e9040a8bb74.jpg?v=1670969119" alt="Men's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/mens-outlet-bottoms' %}
+          <div id="overstock-images">
+          <div class="tops-image">
+          <a href="/collections/mens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-ALL-DESKTOP_20b9633d-b1af-472a-9f0a-012f6b99fec7.jpg?v=1670969119" alt="Men's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/mens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-TOPS-DESKTOP_d80a8c76-34b4-4035-8fb9-e8b32bdcb71f.jpg?v=1670969119" alt="Men's Overstock Tops">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/womens-outlet' %}
+          <div id="overstock-images">
+          <div class="tops-image">
+          <a href="/collections/womens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-TOPS-DESKTOP_162eb5a1-a0e8-41c7-a602-b46d8035e049.jpg?v=1670969119" alt="Women's Overstock Tops">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/womens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-BOTTOMS-DESKTOP_de8ebc16-e7de-45ef-a478-1f74bc10ddcf.jpg?v=1670969119" alt="Women's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/womens-outlet-tops' %}
+          <div id="overstock-images">
+          <div class="tops-image">
+          <a href="/collections/womens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-ALL-DESKTOP_9fadc079-579b-4aae-a5ab-9e98c12494e2.jpg?v=1670969119" alt="Women's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/womens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-BOTTOMS-DESKTOP_de8ebc16-e7de-45ef-a478-1f74bc10ddcf.jpg?v=1670969119" alt="Women's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/womens-outlet-bottoms' %}
+          <div id="overstock-images">
+          <div class="tops-image">
+          <a href="/collections/womens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-ALL-DESKTOP_9fadc079-579b-4aae-a5ab-9e98c12494e2.jpg?v=1670969119" alt="Women's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/womens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-TOPS-DESKTOP_162eb5a1-a0e8-41c7-a602-b46d8035e049.jpg?v=1670969119" alt="Women's Overstock Tops">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+          </ul>
+          {% for product in collection.products %}
+            {% unless product.tags contains 'VIP' %}
+            {% include 'product-grid-item' %}
+            {% endunless %}
+          {% else %}
+            <div class="grid__item">
+              <p>{{ 'collections.general.no_matches' | t }}</p>
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if settings.quick_shop_enable %}
+          {% for product in collection.products %}
+            {% if product.available %}
+              {% include 'quick-shop-modal' %}
+            {% endif %}
+          {% endfor %}
+        {% endif %} 
+      </div>
+    </div>
+ 
+    {%- if section.settings.description_position == 'bottom' -%}
+      {% if collection.description != blank %}
+        <hr class="hr--clear hr--small">
+        <div class="rte">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    {%- endif -%}
+  
+  </div>
+            {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+  
+      <div class="btn btn hidden visible-xs" id="21" type="button" data-toggle="collapse" data-target="#collection-bottom" aria-expanded="false" aria-controls="collection-bottom">
+    Learn more about {{ collection.title | remove: "Collection" | titlecase }}  +
+    </div>
+    
+  {% unless collection.handle == 'hats' %}
+        <div class="collapse dont-collapse-sm" id="collection-bottom">
+            {% if current_tags contains 'WOMENS' %}
+            {% comment %}{{ collection.metafields.my_fields.bottom_collection_womens }}{% endcomment %}
+            {{ collection.metafields.descbottom.women }}
+            {% elsif current_tags contains 'MENS' %}
+            {% comment %}{{ collection.metafields.my_fields.bottom_collection_mens }}{% endcomment %}
+            {{ collection.metafields.descbottom.men }}
+            {% elsif collection.metafields.my_fields.bottom_collection_description %}
+            {{ collection.metafields.my_fields.bottom_collection_description }}
+            {% else %}
+            {{ collection.metafields.desc.bottom }}
+            {% endif %}
+            </div>
+  {% endunless %}
+</div>
+
+<style>
+    .banner-image{
+width:98.5%;
+margin-left:7px;
+}
+  
+   @media (min-width: 768px) {
+    .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+   
+    
+    }
+     #21{
+     background-color:transparent!important;
+     color:grey!important;
+     }
+     
+     
+   }
+    
+  #\32 1{
+  background-color: transparent!important;
+  color: darkgray!important;
+  font-size:12px!important;
+    margin-bottom: 10px;
+
+  }
+  
+  
+    #collection-bottom {
+    text-align: center;
+    font-size: 13px;
+	color: grey;
+    width: 80%;
+    margin: 0 auto 20px auto;
+    border: 1px #cfcfcf solid;
+    padding: 20px;
+}
+    #Huratips-Pagination a {
+    position: relative;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+    border-radius: 5rem;
+    cursor: pointer;
+    padding: 1.5rem 3rem;
+    width: fit-content;
+    font-weight: 700;
+    outline: none;
+    border: 0px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+      margin: 0 auto;
+}
+
+@media(min-width: 1000px) {
+#Huratips-Pagination {
+    width: 85%;
+    margin-left: auto;
+}
+}
+
+#Huratips-Pagination {
+    padding-bottom: 45px;
+}
+.accordion {
+    color: #6f6f6f;
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    max-width: 500px;
+    min-height: 55px;
+    text-align: center;
+}
+.accordion:after {
+  color: #797979;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.panel {
+  padding: 0 18px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+  header.section-header.collectiontitle .panel {
+    box-shadow: none;
+}
+</style>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("filterDrawer");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+
+<script>
+  
+  var showQuickSell = function quickSell() {
+    $(".grid-product__image-mask").hover(function(){
+      $(this).find(".upsell-desktop").css("display","block");
+    },function(){
+      $(this).find(".upsell-desktop").css("display","none");
+    });     
+        $('.quick-buy').click(function(e) {
+      var variantID = parseInt(e.target.value);
+      // Opens-up the cart drawer
+      function openDrawer() {
+        $('body').trigger('added.ajaxProduct');
+        $(".noproducts").css('display', 'none');
+      }
+      $('body').trigger('added.ajaxProduct');
+      jQuery.ajax ({
+        url: '/cart/add.js',
+        type: 'POST',
+        dataType: 'json',
+        'contentType': 'application/json',
+        data: JSON.stringify({
+          quantity: 1,
+          id: variantID
+        }),
+        success: function(){openDrawer();},
+      });
+    });
+  };
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var endlessScroll = new Ajaxinate({
+      container: '#Huratips-Loop',
+      pagination: '#Huratips-Pagination',
+      method: 'click',
+      offset: 0,
+      callback: showQuickSell
+    });
+
+    
+    $(".grid-product__image-mask").hover(function(){
+      $(this).find(".upsell-desktop").css("display","block");
+    },function(){
+      $(this).find(".upsell-desktop").css("display","none");
+    });        
+   
+    $(".mobile-upsell-button").on('click', function(){
+      $(this).parent().find(".upsell-mobile").toggleClass("show");
+    });
+    $(".quickbuy-box-mobile").on('click', function(){
+      $(this).parents().find(".upsell-mobile").removeClass("show");
+    });
+  
+
+    $('.quick-buy').click(function(e) {
+      var variantID = parseInt(e.target.value);
+      // Opens-up the cart drawer
+      function openDrawer() {
+        $('body').trigger('added.ajaxProduct');
+        $(".noproducts").css('display', 'none');
+      }
+      $('body').trigger('added.ajaxProduct');
+      jQuery.ajax ({
+        url: '/cart/add.js',
+        type: 'POST',
+        dataType: 'json',
+        'contentType': 'application/json',
+        data: JSON.stringify({
+          quantity: 1,
+          id: variantID
+        }),
+        success: function(){openDrawer();},
+      });
+    });
+  });
+</script>
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Collection pages",
+    "settings": [
+      {
+        "type": "range",
+        "id": "per_row",
+        "label": "Products per row",
+        "default": 4,
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_image_enable",
+        "label": "Show collection image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "parallax",
+        "label": "Parallax image",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "description_position",
+        "label": "Collection description position",
+        "default": "top",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top of page"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom of page"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_subnav_style",
+        "label": "Subnavigation style",
+        "default": "inline",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_tags_style",
+        "label": "Tag filter style",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "info": "Only one option can use Inline style at a time"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_sort_enable",
+        "label": "Show sort options",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,194 @@
+<nav class="nav-new">
+  <ul class="list">
+    <li>
+      <a href="javascript:void(0)" class="title">COLLECTIONS</a>
+      <ul>
+         <li>
+        <a href="/collections/mens-take-life-further-collection">TAKE LIFE FURTHER</a>
+        </li>
+       
+        <li>
+        <a href="/collections/cosmic-collection">COSMIC</a>
+        </li>
+        
+         <li>
+          <a href="/collections/mens-redefine-impossible-collection">REDEFINE IMPOSSIBLE</a>
+        </li>
+      
+         <li>
+          <a href="/collections/mens-new-gym-to-street-lifestyle-drops">GYM-TO-STREET LIFESTYLE</a>
+        </li>
+      
+        <li>
+          <a href="/collections/mens-vital">VITAL</a>
+        </li>
+        <li>
+          <a href="/collections/mens-league">LEAGUE</a>
+        </li>             
+        <li>
+          <a href="/collections/mens-element">ELEMENT</a>
+        </li>
+        <li>
+          <a href="/collections/mens-core">CORE</a>
+        </li>
+        <li>
+          <a href="/collections/mens-graphix">GRAPHIX</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void(0)" class="title">STYLES</a>
+      <ul>
+         <li>
+          <a href="/collections/mens-oversized-fits">OVERSIZED FITS</a>
+        </li>
+         <li>
+          <a href="/collections/mens-5-inch-shorts-collection">5" SHORTS</a>
+        </li>
+       <li>
+          <a href="/collections/mens-joggers-sweatpants">JOGGERS &amp; SWEATPANTS</a>
+        </li>
+         <li>
+          <a href="/collections/mens-shorts">SHORTS</a>
+        </li>
+        <li>
+          <a href="/collections/mens-leggings-baselayers">LEGGINGS &amp; TIGHTS</a>
+        </li>        
+        <li>
+          <a href="/collections/mens-hoodies-sweatshirts-jackets">HOODIES-SWEATSHIRTS &amp; JACKETS</a>
+        </li>
+        <li>
+          <a href="/collections/mens-tank-tops-sleeveless">TANK TOPS &amp; SLEEVELESS</a>
+        </li>
+        <li>
+          <a href="/collections/mens-stringers-drop-arm-tanks">STRINGERS & DROP ARM TANKS</a>
+        </li>
+        <li>
+          <a href="/collections/mens-long-sleeves">LONG SLEEVES</a>
+        </li>
+        <li>
+          <a href="/collections/mens-short-sleeves">SHORT SLEEVES</a>
+        </li>
+        <li>
+          <a href="/collections/mens-graphic-t-shirt">GRAPHIC T's</a>
+        </li>
+      </ul>
+
+      <div class="scroll-container">
+       <li>
+      <a href="javascript:void(0)" class="title">TRENDING MUST HAVES</a>
+      <ul>
+        <li>
+          <a href="/collections/mens-trending-must-haves">MEN</a>
+        </li>
+        </ul>
+           </li>
+     <li>
+      <a href="javascript:void(0)" class="title">NEW RELEASES</a>
+      <ul>
+        <li>
+          <a href="/collections/mens-new-releases">MEN</a>
+        </li>
+      </ul>
+     </li>
+    <li>
+      <a href="javascript:void(0)" class="title">BEST SELLERS</a>
+      <ul>
+        <li>
+          <a href="/collections/mens-best-sellers">MEN</a>
+        </li>
+      </ul>
+    </li>
+       <li>
+      <a href="javascript:void(0)" class="title">WINTER ESSENTIALS</a>
+      <ul>
+        <li>
+          <a href="/collections/mens-fall-essentials">MEN</a>
+        </li>
+      </ul>
+       </li>
+<!--            <li>
+      <a href="javascript:void(0)" class="filtercategory">BLACK FRIDAY DAILY DEALS</a>
+      <ul>
+        <li>
+          <a href="/collections/daily-deals-mens">MEN</a>
+        </li>
+      </ul>
+           </li> -->
+                <li>
+      <a href="javascript:void(0)" class="title">BUY 1 GET 2 FREE BLOWOUT DEALS</a>
+      <ul>
+        <li>
+          <a href="/collections/mens-outlet">MEN</a>
+        </li>     
+      </ul>
+    </li>
+   
+<!--         <li>
+      <a href="javascript:void(0)" class="filtercategory">BACK IN STOCK</a>
+      <ul>
+        <li>
+          <a href="/collections/mens-back-in-stock">MEN</a>
+        </li>
+      </ul>
+    </li> -->
+<li class="sizes2">
+      <a href="javascript:void(0)" class="title">SIZE</a>
+      <ul class="sizes2">
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-small" class="sizefilter2">
+          <div class="size2">S</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-medium" class="sizefilter2">
+          <div class="size2">M</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-large" class="sizefilter2">
+          <div class="size2">L</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-xlarge" class="sizefilter2">
+         <div class="size2">XL</div>
+        </a></li>
+        <li><a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}in-stock-2xlarge" class="sizefilter2">
+          <div class="size2">2XL</div>
+        </a></li>
+      </ul>
+    </li>
+<li class="colors2">
+      <a href="javascript:void(0)" class="title">COLOR</a>
+      <div class="nav-cp2">
+        <div class="colorPicker2">
+          <div class="colorList2">
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}black" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(0, 0, 0);"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}white" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="border: 1px solid black;"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}gray" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(128, 128, 128)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}blue" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(1, 0, 205);"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}red" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(255, 0, 0);"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}green" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(0, 128, 0)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}yellow" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(255, 255, 2)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}purple" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(148, 0, 211)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}brown" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(140, 69, 20)"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}orange" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: rgb(255, 153, 0)"></div></a>
+          </div>
+        </div>
+      </div>
+    </li>
+  <br>
+    <li id="move" class="colors2">
+      <a href="javascript:void(0)" class="title">PATTERN</a>
+      <div class="nav-cp2">
+        <div class="colorPicker2">
+          <div class="colorList2">
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}tie-dye" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: url(https://cdn.shopify.com/s/files/1/2665/0346/files/MicrosoftTeams-image_9.jpg?v=1666891465);"></div></a>
+            <a href="{{ collection.url | append: "/" }}{% for tag in current_tags %}{% if current_tags %}{{ tag | downcase }}+{% else %}{% endif %}{% endfor %}camo" class="colorfilter2"><div title="#FF6900" class="colorContainer" style="background: url(https://cdn.shopify.com/s/files/1/2665/0346/files/MicrosoftTeams-image_8.jpg?v=1666891465);"></div></a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .scroll-container {
+    overflow-x: hidden!important;
+    overflow-y: auto!important;
+  }
+</style>

@@ -1,0 +1,58 @@
+.blog-articles {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+.main-blog.career .text-left {
+    text-align: center !important;
+}
+}
+
+@media screen and (min-width: 750px) {
+  .blog-articles {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .blog-articles > *:first-child,
+  .blog-articles > *:nth-child(4),
+  .blog-articles > *:last-child:nth-child(2),
+  .blog-articles > *:last-child:nth-child(5) {
+    grid-column: span 2;
+    text-align: center;
+  }
+}
+
+.main-blog.career .blog-articles__article {
+    margin-bottom: 0px;
+}
+
+.main-blog.career h1, .main-blog.career h2 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-blog.career .blog-articles__article.article {
+    border-bottom: 1px solid #ececec;
+    padding: 25px 0;
+}
+
+.main-blog.career {
+    margin-top: 50px;
+}
+
+.main-blog.career .blog-articles {
+    padding-top: 20px;
+}
+
+.main-blog.career .article-card__header {
+    margin-bottom: 0.2rem;
+}
+
+.main-blog.career .pagination {
+    margin-bottom: 95px;
+    align-items: center;
+}
+
+.main-blog.career .text-left {
+    margin: 60px 0 100px 0;
+}

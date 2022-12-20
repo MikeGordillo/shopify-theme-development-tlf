@@ -1,0 +1,654 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+
+    
+(function( jQuery ){
+  var $module = jQuery('#m-1658336814917').children('.module');
+  var videoUrl = jQuery.trim($module.attr('data-url'));
+  var autoPause = $module.attr('data-autopause');
+  var autoPlay = $module.attr('data-autoplay');
+  var videoloop = $module.attr('data-videoloop');
+  var videoMute = $module.attr('data-videomute');
+  var byline = $module.attr('data-byline');
+  var showtitle = $module.attr('data-showtitle');
+  var showportrait = $module.attr('data-showportrait');
+
+  setTimeout(function() {
+    var videoWrapper = $module.children('.vimeo_video');
+    videoWrapper.empty().append('<div id="vimeo-wrapper-1658336814917"></div>');
+
+    var options = {
+      url: videoUrl,
+      loop: videoloop,
+      autoplay: autoPlay,
+      autopause: autoPause,
+      byline: byline,
+      title: showtitle,
+      muted: videoMute,
+      portrait: showportrait
+    };
+    var player = new Vimeo.Player("vimeo-wrapper-1658336814917", options);
+
+    player.on('loaded', function() {	
+      var $playerFrame = $module.find('iframe');	
+      var width = parseInt($playerFrame.attr('width'));	
+      var height = parseInt($playerFrame.attr('height'));	
+      if (width != NaN && height != NaN) {	
+        $module.find('.videoFullScreen').css('padding-bottom', (height / width * 100) + '%');	
+      }	
+    });	
+    
+    $module.on('pausevideo', function() {	
+      player.pause();	
+    });
+  }, 100);
+})( window.GemQuery || jQuery );
+    
+(function( jQuery ){
+  var $module = jQuery('#m-1658175974262').children('.module');
+  var videoUrl = jQuery.trim($module.attr('data-url'));
+  var autoPause = $module.attr('data-autopause');
+  var autoPlay = $module.attr('data-autoplay');
+  var videoloop = $module.attr('data-videoloop');
+  var videoMute = $module.attr('data-videomute');
+  var byline = $module.attr('data-byline');
+  var showtitle = $module.attr('data-showtitle');
+  var showportrait = $module.attr('data-showportrait');
+
+  setTimeout(function() {
+    var videoWrapper = $module.children('.vimeo_video');
+    videoWrapper.empty().append('<div id="vimeo-wrapper-1658175974262"></div>');
+
+    var options = {
+      url: videoUrl,
+      loop: videoloop,
+      autoplay: autoPlay,
+      autopause: autoPause,
+      byline: byline,
+      title: showtitle,
+      muted: videoMute,
+      portrait: showportrait
+    };
+    var player = new Vimeo.Player("vimeo-wrapper-1658175974262", options);
+
+    player.on('loaded', function() {	
+      var $playerFrame = $module.find('iframe');	
+      var width = parseInt($playerFrame.attr('width'));	
+      var height = parseInt($playerFrame.attr('height'));	
+      if (width != NaN && height != NaN) {	
+        $module.find('.videoFullScreen').css('padding-bottom', (height / width * 100) + '%');	
+      }	
+    });	
+    
+    $module.on('pausevideo', function() {	
+      player.pause();	
+    });
+  }, 100);
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    window.__gfAnimate.registerScroll(jQuery("#e-1658333243329"), '{"animation":{"screens":{"lg":true,"md":true,"sm":true,"xs":true},"name":"fade_in-down","delay":0,"duration":500},"interaction":{"key":"scroll-into-view","type":"level2"}}');
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  // var $module = jQuery('#m-1658241380478').children('.module');
+  // You can add custom Javascript code right here.
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  var $module = jQuery('#m-1658182293367');
+  $module.gfV4Parallax();
+})( window.GemQuery || jQuery );
+    
+(function( jQuery ){
+    var $module = jQuery('#m-1658182332168').children('.module');
+    $module.gfV1Countdown({
+        id: "1658182332168",
+        idSlug: "1658182332168"
+    });
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  // var $module = jQuery('#m-1658347788472').children('.module');
+  // You can add custom Javascript code right here.
+})( window.GemQuery || jQuery );
+    
+(function( jQuery ){
+  var $module = jQuery('#m-1658340540815');
+  $module.gfV4Parallax();
+})( window.GemQuery || jQuery );
+    
+(function( jQuery ){
+    var $module = jQuery('#m-1658340540871').children('.module');
+    $module.gfV1Countdown({
+        id: "1658340540871",
+        idSlug: "1658340540871"
+    });
+})( window.GemQuery || jQuery );
+    
+    
+(function( jQuery ){
+  // var $module = jQuery('#m-1658349064859').children('.module');
+  // You can add custom Javascript code right here.
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  try {
+    var $module = jQuery('#m-1658343731303').children('.module');   
+    var navspeed = $module.data('navspeed'),
+      autoplaytimeout = $module.data('autoplaytimeout'),
+      autoplayhoverpause = $module.data('autoplayhoverpause'),
+      navlg = $module.data('navlg'),
+      navmd = $module.data('navmd'),
+      navsm = $module.data('navsm'),
+      navxs = $module.data('navxs'),
+      collg = $module.data('collg'),
+      colmd = $module.data('colmd'),
+      colsm = $module.data('colsm'),
+      colxs = $module.data('colxs'),
+      dotslg = $module.data('dotslg'),
+      dotsmd = $module.data('dotsmd'),
+      dotssm = $module.data('dotssm'),
+      dotsxs = $module.data('dotsxs'),
+      marginlg = parseInt($module.data('marginlg')),
+      marginmd = parseInt($module.data('marginmd')),
+      marginsm = parseInt($module.data('marginsm')),
+      marginxs = parseInt($module.data('marginxs'));
+
+    var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+    if(mode == 'production') {
+    var autoplay = $module.data('autoplay'), 
+        autoRefresh = true, 
+        loop = $module.data('loop');
+    } else {
+    var autoplay = 0, 
+        autoRefresh = false, 
+        loop = 0;
+    }
+
+    var initCarousel = function() {
+      $module.owlCarousel({
+        mouseDrag: false,
+        autoplayHoverPause: autoplayhoverpause,
+        autoplay: autoplay,
+        autoRefresh: autoRefresh,
+        autoplaySpeed: navspeed,
+        autoplayTimeout: autoplaytimeout,
+        loop: loop,
+        navSpeed: navspeed,
+        autoWidth: !1,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:colxs,
+            nav: navxs,
+            dots:dotsxs,
+            margin: marginxs
+          },
+          768:{
+            items:colsm,
+            nav: navsm,
+            dots:dotssm,
+            margin: marginsm
+          },
+          992:{
+            items:colmd,
+            nav: navmd,
+            dots:dotsmd,
+            margin: marginmd
+          },
+          1200:{
+            items:collg,
+            nav: navlg,
+            dots:dotslg,
+            margin: marginlg
+          }
+        },
+        onInitialized: function () {
+          $module.closest('.module-wrap[data-label="Carousel"]').addClass('gf-carousel-loaded');
+          jQuery(window).trigger("resize");
+        }
+      });
+    }
+    
+    // Fix nested carousel bug	
+    if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {	
+      setTimeout(function() {	
+        initCarousel();	
+      }, 300)	
+    } else {	
+      initCarousel();	
+    }
+  } catch(err) {}
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  try {
+    var $module = jQuery('#m-1658351146596').children('.module');   
+    var navspeed = $module.data('navspeed'),
+      autoplaytimeout = $module.data('autoplaytimeout'),
+      autoplayhoverpause = $module.data('autoplayhoverpause'),
+      navlg = $module.data('navlg'),
+      navmd = $module.data('navmd'),
+      navsm = $module.data('navsm'),
+      navxs = $module.data('navxs'),
+      collg = $module.data('collg'),
+      colmd = $module.data('colmd'),
+      colsm = $module.data('colsm'),
+      colxs = $module.data('colxs'),
+      dotslg = $module.data('dotslg'),
+      dotsmd = $module.data('dotsmd'),
+      dotssm = $module.data('dotssm'),
+      dotsxs = $module.data('dotsxs'),
+      marginlg = parseInt($module.data('marginlg')),
+      marginmd = parseInt($module.data('marginmd')),
+      marginsm = parseInt($module.data('marginsm')),
+      marginxs = parseInt($module.data('marginxs'));
+
+    var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+    if(mode == 'production') {
+    var autoplay = $module.data('autoplay'), 
+        autoRefresh = true, 
+        loop = $module.data('loop');
+    } else {
+    var autoplay = 0, 
+        autoRefresh = false, 
+        loop = 0;
+    }
+
+    var initCarousel = function() {
+      $module.owlCarousel({
+        mouseDrag: false,
+        autoplayHoverPause: autoplayhoverpause,
+        autoplay: autoplay,
+        autoRefresh: autoRefresh,
+        autoplaySpeed: navspeed,
+        autoplayTimeout: autoplaytimeout,
+        loop: loop,
+        navSpeed: navspeed,
+        autoWidth: !1,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:colxs,
+            nav: navxs,
+            dots:dotsxs,
+            margin: marginxs
+          },
+          768:{
+            items:colsm,
+            nav: navsm,
+            dots:dotssm,
+            margin: marginsm
+          },
+          992:{
+            items:colmd,
+            nav: navmd,
+            dots:dotsmd,
+            margin: marginmd
+          },
+          1200:{
+            items:collg,
+            nav: navlg,
+            dots:dotslg,
+            margin: marginlg
+          }
+        },
+        onInitialized: function () {
+          $module.closest('.module-wrap[data-label="Carousel"]').addClass('gf-carousel-loaded');
+          jQuery(window).trigger("resize");
+        }
+      });
+    }
+    
+    // Fix nested carousel bug	
+    if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {	
+      setTimeout(function() {	
+        initCarousel();	
+      }, 300)	
+    } else {	
+      initCarousel();	
+    }
+  } catch(err) {}
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  var $module = jQuery('#m-1658352599288').children('.module');
+  var videoUrl = jQuery.trim($module.attr('data-url'));
+  var autoPause = $module.attr('data-autopause');
+  var autoPlay = $module.attr('data-autoplay');
+  var videoloop = $module.attr('data-videoloop');
+  var videoMute = $module.attr('data-videomute');
+  var byline = $module.attr('data-byline');
+  var showtitle = $module.attr('data-showtitle');
+  var showportrait = $module.attr('data-showportrait');
+
+  setTimeout(function() {
+    var videoWrapper = $module.children('.vimeo_video');
+    videoWrapper.empty().append('<div id="vimeo-wrapper-1658352599288"></div>');
+
+    var options = {
+      url: videoUrl,
+      loop: videoloop,
+      autoplay: autoPlay,
+      autopause: autoPause,
+      byline: byline,
+      title: showtitle,
+      muted: videoMute,
+      portrait: showportrait
+    };
+    var player = new Vimeo.Player("vimeo-wrapper-1658352599288", options);
+
+    player.on('loaded', function() {	
+      var $playerFrame = $module.find('iframe');	
+      var width = parseInt($playerFrame.attr('width'));	
+      var height = parseInt($playerFrame.attr('height'));	
+      if (width != NaN && height != NaN) {	
+        $module.find('.videoFullScreen').css('padding-bottom', (height / width * 100) + '%');	
+      }	
+    });	
+    
+    $module.on('pausevideo', function() {	
+      player.pause();	
+    });
+  }, 100);
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  try {
+    var $module = jQuery('#m-1658356444293').children('.module');   
+    var navspeed = $module.data('navspeed'),
+      autoplaytimeout = $module.data('autoplaytimeout'),
+      autoplayhoverpause = $module.data('autoplayhoverpause'),
+      navlg = $module.data('navlg'),
+      navmd = $module.data('navmd'),
+      navsm = $module.data('navsm'),
+      navxs = $module.data('navxs'),
+      collg = $module.data('collg'),
+      colmd = $module.data('colmd'),
+      colsm = $module.data('colsm'),
+      colxs = $module.data('colxs'),
+      dotslg = $module.data('dotslg'),
+      dotsmd = $module.data('dotsmd'),
+      dotssm = $module.data('dotssm'),
+      dotsxs = $module.data('dotsxs'),
+      marginlg = parseInt($module.data('marginlg')),
+      marginmd = parseInt($module.data('marginmd')),
+      marginsm = parseInt($module.data('marginsm')),
+      marginxs = parseInt($module.data('marginxs'));
+
+    var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+    if(mode == 'production') {
+    var autoplay = $module.data('autoplay'), 
+        autoRefresh = true, 
+        loop = $module.data('loop');
+    } else {
+    var autoplay = 0, 
+        autoRefresh = false, 
+        loop = 0;
+    }
+
+    var initCarousel = function() {
+      $module.owlCarousel({
+        mouseDrag: false,
+        autoplayHoverPause: autoplayhoverpause,
+        autoplay: autoplay,
+        autoRefresh: autoRefresh,
+        autoplaySpeed: navspeed,
+        autoplayTimeout: autoplaytimeout,
+        loop: loop,
+        navSpeed: navspeed,
+        autoWidth: !1,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:colxs,
+            nav: navxs,
+            dots:dotsxs,
+            margin: marginxs
+          },
+          768:{
+            items:colsm,
+            nav: navsm,
+            dots:dotssm,
+            margin: marginsm
+          },
+          992:{
+            items:colmd,
+            nav: navmd,
+            dots:dotsmd,
+            margin: marginmd
+          },
+          1200:{
+            items:collg,
+            nav: navlg,
+            dots:dotslg,
+            margin: marginlg
+          }
+        },
+        onInitialized: function () {
+          $module.closest('.module-wrap[data-label="Carousel"]').addClass('gf-carousel-loaded');
+          jQuery(window).trigger("resize");
+        }
+      });
+    }
+    
+    // Fix nested carousel bug	
+    if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {	
+      setTimeout(function() {	
+        initCarousel();	
+      }, 300)	
+    } else {	
+      initCarousel();	
+    }
+  } catch(err) {}
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  var $module = jQuery('#m-1658356638038').children('.module');
+  var videoUrl = jQuery.trim($module.attr('data-url'));
+  var autoPause = $module.attr('data-autopause');
+  var autoPlay = $module.attr('data-autoplay');
+  var videoloop = $module.attr('data-videoloop');
+  var videoMute = $module.attr('data-videomute');
+  var byline = $module.attr('data-byline');
+  var showtitle = $module.attr('data-showtitle');
+  var showportrait = $module.attr('data-showportrait');
+
+  setTimeout(function() {
+    var videoWrapper = $module.children('.vimeo_video');
+    videoWrapper.empty().append('<div id="vimeo-wrapper-1658356638038"></div>');
+
+    var options = {
+      url: videoUrl,
+      loop: videoloop,
+      autoplay: autoPlay,
+      autopause: autoPause,
+      byline: byline,
+      title: showtitle,
+      muted: videoMute,
+      portrait: showportrait
+    };
+    var player = new Vimeo.Player("vimeo-wrapper-1658356638038", options);
+
+    player.on('loaded', function() {	
+      var $playerFrame = $module.find('iframe');	
+      var width = parseInt($playerFrame.attr('width'));	
+      var height = parseInt($playerFrame.attr('height'));	
+      if (width != NaN && height != NaN) {	
+        $module.find('.videoFullScreen').css('padding-bottom', (height / width * 100) + '%');	
+      }	
+    });	
+    
+    $module.on('pausevideo', function() {	
+      player.pause();	
+    });
+  }, 100);
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  // var $module = jQuery('#m-1658410816474').children('.module');
+  // You can add custom Javascript code right here.
+})( window.GemQuery || jQuery );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+(function( jQuery ){
+  // var $module = jQuery('#m-1658414104008').children('.module');
+  // You can add custom Javascript code right here.
+})( window.GemQuery || jQuery );
+    

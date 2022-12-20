@@ -1,0 +1,123 @@
+{% if settings.show_breadcrumbs %}
+
+{% unless template.name == 'index' or template.name == 'cart' or template.name == 'collection' %}
+  <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+
+{% if template.name == 'product' %}
+<div id="product_breadcrumb">
+<li>
+{% unless product.title contains 'Hat' %}
+{% if product.tags contains 'MENS' %}
+<a href="/collections/all-products/mens" aria-current="page">Mens</a> <span class="guilsinglright">›</span>
+{% endif %}
+{% if product.tags contains 'WOMENS' %}
+<a href="/collections/all-products/womens" aria-current="page">Womens</a> <span class="guilsinglright">›</span>
+{% endif %}
+{% endunless %}
+{% if product.tags contains 'GIFT CARD' %}
+<a href="/" aria-current="page">Home</a> <span class="guilsinglright">›</span>
+{% endif %}
+{% if product.tags contains 'HATS' %}
+<a href="/" aria-current="page">Home</a> <span class="guilsinglright">›</span>
+{% endif %}
+</li>
+
+<li>
+  {% if product.type == 'MEN GRAPHIC T-SHIRTS' %}<a href="/collections/graphic-t-shirts/mens">Graphic T-shirts</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'MEN HOODIES-SWEATSHIRTS & JACKETS' %}<a href="/collections/hoodies-sweatshirts-jackets/mens">Hoodies & Jackets</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'MEN JOGGERS & PANTS' %}<a href="/collections/joggers-pants/mens">Joggers & Pants</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'MEN LEGGINGS & TIGHTS' %}<a href="/collections/leggings-tights/mens">Leggings & Tights</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'MEN LONG SLEEVES' %}<a href="/collections/long-sleeves/mens">Long Sleeves</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'MEN SHORT SLEEVES' %}<a href="/collections/short-sleeves/mens">Short Sleeves</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'MEN SHORTS' %}<a href="/collections/shorts/mens">Shorts</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'MEN TANK TOPS & SLEEVELESS' %}<a href="/collections/tank-tops-sleeveless/mens">Tank Tops & Sleeveless</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN LEGGINGS & TIGHTS' %}<a href="/collections/leggings-tights/womens">Leggings & Tights</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN CAPRIS & CROPS' %}<a href="/collections/crop-tops/womens">Capris & Crops</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN CROP TOPS' %}<a href="/collections/crop-tops/womens">Crop Tops</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN HOODIES-SWEATSHIRTS & JACKETS' %}<a href="/collections/hoodies-sweatshirts-jackets/womens">Hoodies & Jackets</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN JOGGERS & PANTS' %}<a href="/collections/joggers-pants/womens">Joggers & Pants</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN LONG SLEEVES' %}<a href="/collections/long-sleeves/womens">Long Sleeves</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN SHORT SLEEVES' %}<a href="/collections/short-sleeves/womens">Short Sleeves</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN SHORTS' %}<a href="/collections/shorts/womens">Shorts</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN SPORTS BRAS' %}<a href="/collections/sports-bras/womens">Sports Bras</a> <span class="guilsinglright">›</span>{% endif %}
+{% if product.type == 'WOMEN TANK TOPS & SLEEVELESS' %}<a href="/collections/tank-tops-sleeveless/womens">Sports Bras</a> <span class="guilsinglright">›</span>{% endif %}
+</li>
+
+<li><a href="{{ product.url }}" aria-current="page"> {{ product.title }}</a></li>
+</div>
+
+<style>
+  @media only screen and (max-width: 600px) {
+    #product_breadcrumb {
+    font-size: .8em !important
+  }
+  }
+#product_breadcrumb {
+    font-weight: 300;
+    font-size: .75em;
+  }
+  #product_breadcrumb li {
+    display: inline-block;
+    color: #2e2e2e;
+  }
+  #product_breadcrumb li a {
+    color: #868686;
+    text-decoration: none;
+  }
+  span.guilsinglright {
+    padding: 0px 5px;
+}
+</style>
+   
+    
+    
+    {% elsif template.name == 'collection'%}
+	{% if current_tags contains 'WOMENS' %}
+    WOMENS
+    {% elsif current_tags contains 'MENS' %}
+    MENS
+    {% else %}
+    TLF APPAREL
+    {% endif %}
+       <span class="divider" aria-hidden="true" style="color:black">&nbsp; | &nbsp;</span>
+
+    <div style="text-transform:uppercase">{{ collection.handle | replace: '-', ' ' }}</div>
+ 
+
+    {% elsif template.name == 'blog' %}
+
+      <span class="divider" aria-hidden="true">/</span>
+      {% if current_tags %}
+        {{ blog.title | link_to: blog.url }}
+        <span class="divider" aria-hidden="true">/</span>
+        <span>{{ current_tags | join: " + " }}</span>
+      {% else %}
+      <span>{{ blog.title }}</span>
+      {% endif %}
+
+    {% elsif template.name == 'article' %}
+
+      <span class="divider" aria-hidden="true">/</span>
+      {{ blog.title | link_to: blog.url }}
+      <span class="divider" aria-hidden="true">/</span>
+      <span>{{ article.title }}</span>
+
+    {% elsif template.name == 'page' %}
+
+      <h1>{{ page.title }}</h1>
+
+    {% elsif template.name == 'search' %}
+
+      <span class="divider" aria-hidden="true">/</span>
+      <span>{{ page_title | replace: '*', '' }}</span>
+
+    {% else %}
+
+      <span class="divider" aria-hidden="true">/</span>
+      <span>{{ page_title }}</span>
+
+    {% endif %}
+  </nav>
+{% endunless %}
+
+{% endif %}

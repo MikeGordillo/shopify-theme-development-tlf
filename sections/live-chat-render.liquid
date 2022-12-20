@@ -1,0 +1,54 @@
+{% schema %}
+  {
+    "name": "Chat Icon Delay",
+    "class": "chat_delay_input",
+    "settings": [
+      {
+        "type": "text",
+        "id": "chat_icon_delay",
+        "label": "Chat Icon Delay",
+        "default": "0"
+      }
+	],
+    "presets": [
+      {
+        "name": "Chat Icon Delay",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<style>
+  
+  .chatNotVisible {
+  	visibility: hidden!important;
+    opacity: 0!important;
+  }
+  
+</style>
+
+<script>
+  
+  window.onload = function() {
+    let chatIconDelay = "{{ section.settings.chat_icon_delay }}";
+    
+    makeChatDisappearOnPageLoad();
+    
+    setTimeout(function() {
+      showChatButton();
+    }, parseInt(chatIconDelay) * 1000);
+  }
+  
+  function makeChatDisappearOnPageLoad() {
+  	document.getElementById("chat-widget-container").classList.add("chatNotVisible");
+  }
+  
+  function showChatButton() {
+	document.getElementById("chat-widget-container").classList.remove("chatNotVisible");  
+    document.getElementById("chat-widget-container").style.opacity = "1";
+    document.getElementById("chat-widget-container").style.transition = "opacity 0.4s ease-in";
+  }
+  
+</script>

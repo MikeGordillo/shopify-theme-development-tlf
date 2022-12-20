@@ -1,0 +1,267 @@
+<!-- GTranslate: https://gtranslate.io/ -->
+<style>
+  .switcher {
+    font-family: Arial;
+    font-size: 10pt;
+    text-align: left;
+    cursor: pointer;
+    overflow: hidden;
+    width: 163px;
+    line-height: 17px;
+  }
+
+  .switcher a {
+    text-decoration: none;
+    display: block;
+    font-size: 10pt;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+
+  .switcher a img {
+    vertical-align: middle;
+    display: inline;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .switcher a:hover img {
+    opacity: 1;
+  }
+
+  .switcher .selected {
+    background: #ffffff linear-gradient(180deg, #ffffff 0%, #ffffff 70%);
+    position: relative;
+    z-index: 9999;
+  }
+
+  .switcher .selected a {
+    border: 1px solid #ffffff;
+    color: #666666;
+    padding: 3px 5px;
+    width: 151px;
+  }
+
+  .switcher .selected a:after {
+    height: 25px;
+    display: inline-block;
+    position: absolute;
+    right: 6px;
+    width: 15px;
+    background-position: 50%;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjUiPjxwYXRoIGZpbGw9IiM2NjYiIGQ9Ik0wIDBzMy40IDQuNCAzLjUgNC40QzMuNyA0LjQgNy4xIDAgNy4xIDBIMHoiLz48L3N2Zz4=");
+    background-repeat: no-repeat;
+    content: "" !important;
+    transition: all .2s;
+  }
+
+  .switcher .selected a.open:after {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+
+  .switcher .selected a:hover {
+    background: #ffffff
+  }
+
+  .switcher .option {
+    position: relative;
+    z-index: 9998;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    background-color: #eeeeee;
+    display: none;
+    width: 161px;
+    max-height: 198px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .switcher .option a {
+    color: #000000;
+    padding: 3px 5px;
+  }
+
+  .switcher .option a:hover {
+    background: #ffffff;
+  }
+
+  .switcher .option a.selected {
+    background: #ffffff;
+  }
+
+  #selected_lang_name {
+    float: none;
+  }
+
+  .l_name {
+    float: none !important;
+    margin: 0;
+  }
+
+  .switcher .option::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  }
+
+  .switcher .option::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .switcher .option::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
+    background-color: #888;
+  }
+</style>
+
+<div class="switcher notranslate">
+  <div class="selected">
+    <a href="#" onclick="return false;"><img src="//gtranslate.io/shopify/assets/flags/16/en.png" height="16" width="16" alt="en" /> English</a>
+  </div>
+  <div class="option">
+    <a href="https://tlfapparel.com" onclick="doGTranslate('en|en');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="English" class="nturl selected"><img data-gt-lazy-src="//gtranslate.io/shopify/assets/flags/16/en.png" height="16" width="16" alt="en" /> English</a><a href="https://fr.tlfapparel.com" onclick="doGTranslate('en|fr');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="French" class="nturl"><img data-gt-lazy-src="//gtranslate.io/shopify/assets/flags/16/fr.png" height="16" width="16" alt="fr" /> French</a><a href="https://de.tlfapparel.com" onclick="doGTranslate('en|de');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="German" class="nturl"><img data-gt-lazy-src="//gtranslate.io/shopify/assets/flags/16/de.png" height="16" width="16" alt="de" /> German</a><a href="https://it.tlfapparel.com" onclick="doGTranslate('en|it');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Italian" class="nturl"><img data-gt-lazy-src="//gtranslate.io/shopify/assets/flags/16/it.png" height="16" width="16" alt="it" /> Italian</a><a href="https://ru.tlfapparel.com" onclick="doGTranslate('en|ru');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Russian" class="nturl"><img data-gt-lazy-src="//gtranslate.io/shopify/assets/flags/16/ru.png" height="16" width="16" alt="ru" /> Russian</a><a href="https://es.tlfapparel.com" onclick="doGTranslate('en|es');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Spanish" class="nturl"><img data-gt-lazy-src="//gtranslate.io/shopify/assets/flags/16/es.png" height="16" width="16" alt="es" /> Spanish</a>
+  </div>
+</div>
+<script>
+  function GTranslateGetCurrentLang() {
+    if (typeof document.getElementsByTagName('html')[0] != 'undefined') return document.getElementsByTagName('html')[0].getAttribute('lang');
+    return null;
+  }
+
+  function gt_loadScript(url, callback) {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    if (script.readyState) {
+      script.onreadystatechange = function() {
+        if (script.readyState == "loaded" || script.readyState == "complete") {
+          script.onreadystatechange = null;
+          callback()
+        }
+      }
+    } else {
+      script.onload = function() {
+        callback()
+      }
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script)
+  }
+  var gtSwitcherJS = function($) {
+    $(document).ready(function() {
+      var allowed_languages = ["ar", "bn", "nl", "en", "tl", "fr", "de", "gu", "hi", "ga", "it", "ja", "kn", "mr", "ps", "pl", "pt", "pa", "ru", "sd", "es", "ta", "te", "ur"];
+      var accept_language = navigator.language.toLowerCase() || navigator.userLanguage.toLowerCase();
+      switch (accept_language) {
+        case 'zh-cn':
+          var preferred_language = 'zh-CN';
+          break;
+        case 'zh':
+          var preferred_language = 'zh-CN';
+          break;
+        case 'zh-tw':
+          var preferred_language = 'zh-TW';
+          break;
+        case 'zh-hk':
+          var preferred_language = 'zh-TW';
+          break;
+        case 'he':
+          var preferred_language = 'iw';
+          break;
+        default:
+          var preferred_language = accept_language.substr(0, 2);
+          break;
+      }
+      if (preferred_language != 'en' && typeof navigator.userAgent != 'undefined' && /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent) == false && GTranslateGetCurrentLang() != preferred_language && document.cookie.match('gt_auto_switch') == null && allowed_languages.indexOf(preferred_language) >= 0) {
+        window.gt_autoswitch_interval = setInterval(function() {
+          if (typeof window.gtranslate_installed == 'undefined') return;
+          clearInterval(window.gt_autoswitch_interval);
+          doGTranslate('en|' + preferred_language);
+          document.cookie = 'gt_auto_switch=1; expires=Thu, 05 Dec 2030 08:08:08 UTC; path=/; domain=.' + location.host.replace(/^www\./, '');
+        }, 500);
+      }
+    });
+    $('.switcher .selected').click(function() {
+      $('.switcher .option a img').each(function() {
+        if (!$(this)[0].hasAttribute('src')) $(this).attr('src', $(this).attr('data-gt-lazy-src'))
+      });
+      if (!($('.switcher .option').is(':visible'))) {
+        $('.switcher .option').stop(true, true).delay(100).slideDown(500);
+        $('.switcher .selected a').toggleClass('open')
+      }
+    });
+    $('.switcher .option').bind('mousewheel', function(e) {
+      var options = $('.switcher .option');
+      if (options.is(':visible')) options.scrollTop(options.scrollTop() - e.originalEvent.wheelDelta / 10);
+      return false;
+    });
+    $('body').not('.switcher').bind('click', function(e) {
+      if ($('.switcher .option').is(':visible') && e.target != $('.switcher .option').get(0)) {
+        $('.switcher .option').stop(true, true).delay(100).slideUp(500);
+        $('.switcher .selected a').toggleClass('open')
+      }
+    });
+    if (typeof GTranslateGetCurrentLang == 'function')
+      if (GTranslateGetCurrentLang() != null) $(document).ready(function() {
+        var lang_html = $('div.switcher div.option').find('img[alt="' + GTranslateGetCurrentLang() + '"]').parent().html();
+        if (typeof lang_html != 'undefined') $('div.switcher div.selected a').html(lang_html.replace('data-gt-lazy-', ''));
+      });
+  };
+  gt_loadScript("//code.jquery.com/jquery-1.12.4.min.js", function() {
+    jQuery_gtranslate = jQuery.noConflict(true);
+    gtSwitcherJS(jQuery_gtranslate);
+  });
+</script>
+
+<script>
+  var gt_request_uri = (typeof __st != 'undefined') ? '/' + __st.pageurl.split('/').slice(1).join('/') : location.pathname + location.search;
+
+  function doGTranslate(lang_pair) {
+    if (lang_pair.value) lang_pair = lang_pair.value;
+    if (lang_pair == '') return;
+    var lang = lang_pair.split('|')[1];
+    if (typeof _gaq != 'undefined') {
+      _gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname + location.pathname + location.search]);
+    } else {
+      if (typeof ga == 'function') ga('send', 'event', 'GTranslate', lang, location.hostname + location.pathname + location.search);
+    }
+    var plang = location.hostname.split('.')[0];
+    if (plang.length != 2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw' && plang != 'hmn' && plang != 'haw' && plang != 'ceb') plang = 'en';
+    location.href = location.protocol + '//' + (lang == 'en' ? '' : lang + '.') + location.hostname.replace('www.', '').replace(RegExp('^' + plang + '[.]'), '') + (typeof gt_request_uri != 'undefined' ? gt_request_uri : location.pathname + location.search);
+  }
+</script>
+<style>
+  a.glink {
+    text-decoration: none;
+  }
+
+  a.glink span {
+    margin-right: 3px;
+    font-size: 10px;
+    vertical-align: middle;
+  }
+
+  a.glink img {
+    vertical-align: middle;
+    display: inline;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  a.glink:hover img {
+    opacity: 1;
+  }
+</style>
+<script>
+  setTimeout(function() {
+    if (typeof window.gtranslate_installed == "undefined" && typeof console != "undefined") console.log("To uninstall GTranslate properly please follow the instructions on https://docs.gtranslate.io/how-tos/how-to-remove-gtranslate-app-from-shopify")
+  }, 4000);
+</script>

@@ -1,0 +1,64 @@
+{%- assign product = all_products[section.settings.featured_product] -%}
+
+<div id="ProductSection-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  {% if settings.product_zoom_enable %}
+    data-image-zoom="true"
+  {% endif %}
+  {% if settings.inventory_enable %}
+    data-inventory="true"
+  {% endif %}
+  {% if settings.inventory_transfers_enable %}
+    data-incoming-inventory="true"
+  {% endif %}>
+  {% if section.blocks.size > 0 %}
+
+  {% include 'product-template-variables' %}
+{% endif %}
+
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item medium-up--one-half">
+        {% include 'product-images-slider',
+          section_id: section.id,
+          thumbnail_position: section.settings.thumbnail_position,
+          thumbnail_arrows: section.settings.thumbnail_arrows,
+          video_looping: section.settings.enable_video_looping,
+          video_style: section.settings.product_video_style
+        %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Featured product",
+    "class": "index-section",
+    "class": "index-section--hero index-margin",
+    "max_blocks": 4,
+    "settings": [
+{        "type": "product",
+        "id": "featured_product",
+        "label": "Product"}
+    ],
+"blocks":[    {
+        "type": "image",
+        "name": "Slide",
+        "settings": [
+{
+        "type": "product",
+        "id": "featured_product",
+        "label": "Product"
+      }]}
+],
+    "presets": [
+      {
+        "name": "Featured product T2",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}

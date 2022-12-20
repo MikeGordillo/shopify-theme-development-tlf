@@ -1,0 +1,201 @@
+<style>
+	/* BUTTON STYLINGM, PRODUCT PAGES, IF DYNAMIC BUTTONS ARE NOT CHECKED... */  
+  	button#not-dynamic.shopify-payment-button__button.shopify-payment-button__button--unbranded._2ogcW-Q9I-rgsSkNbRiJzA._2EiMjnumZ6FVtlC7RViKtj._2-dUletcCZ2ZL1aaH0GXxT:disabled {
+    	background-color: #d3d3d3;
+        color: rgb(169, 169, 169);
+	}
+  
+  	button#not-dynamic.shopify-payment-button__button.shopify-payment-button__button--unbranded._2ogcW-Q9I-rgsSkNbRiJzA._2EiMjnumZ6FVtlC7RViKtj._2-dUletcCZ2ZL1aaH0GXxT {
+        font-size: 18px;
+        font-weight: 500;
+        background-color: #909090;
+        border-radius: 50px;
+        padding: 23px 40px;
+        line-height: 1;
+        transition: .3s;
+      	cursor: pointer;
+        width: 100%;
+     	margin-top: 15px;
+    }
+  
+    .shopify-cleanslate ._2EiMjnumZ6FVtlC7RViKtj {
+		border-radius: 50px!important;
+      	padding: 25px 40px!important;
+      	line-height: 1.2!important;
+      	max-height: 69px!important;
+    }
+  #afterpay-new {
+    margin-top: 7px;
+}
+  button.message{
+width:412px;
+height:77px;
+font-family:'Poppins';
+border-radius:50px;
+font-size:x-large;
+text-align:center;
+
+}
+  @media only screen and (max-width: 600px) {
+  button.message {
+    width:333px;
+  }
+}
+  .space{
+    padding-top:17px;
+    padding-bottom:17px;
+  }
+  .text-1 {
+    margin-bottom: 5px;
+    padding-top: 12px;
+}
+</style>
+
+
+<!--Mike disabling add to cart button on product   -->
+
+
+
+<!--   Message for sizing based on product title -->
+      {% if product.tags contains "WOMENS" and product.tags contains "MESH TECH DNA"%}
+        <h3 style="color:#868686;" class='text-1'>FOR LOOSE FIT AS SHOWN ON MODEL SIZE UP.</h3>
+        {% endif %}
+
+      {% if product.tags contains "MENS" and product.tags contains "MESH TECH DNA"%}
+        <h3 style="color:#868686;" class='text-1'>DESIGN IS FITTED, PLEASE SIZE UP FOR A MORE RELAXED FIT.</h3>
+        {% endif %}
+      
+    {% if check_item=='true' %}
+    <div class="space">
+     <button class="message" type="button" disabled style="background-color:grey; color:white;">App Exclusive</button>
+    </div>
+  {% else %}
+   {% capture form_id %}AddToCartForm-{{ section_id }}{% endcapture %}
+{% form 'product', product, id: form_id, class: 'product-single__form' %}
+  {% unless product.has_only_default_variant %}
+    {% for option in product.options_with_values %}
+      {% if settings.variant_type == 'button' %}
+        {% include 'variant-button', section_id: section_id, option_drop: option %}
+      {% else %}
+        {% include 'variant-dropdown', section_id: section_id %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+
+    
+
+  <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js">
+    {% for variant in product.variants %}
+      {% if variant.available %}
+        <option {% if variant == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
+        </option>
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+        </option>
+      {% endif %}
+    {% endfor %}
+ 
+  </select>
+  
+  {% if settings.quantity_enable %}
+    <div class="product__quantity product__quantity--{{ settings.variant_type }}">
+      <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label>
+      {% include 'quantity-input', id: section_id, qty: 1, min: 1 %}
+    </div>
+  {% endif %}
+
+  {%- assign enable_dynamic_buttons = false -%}
+  {% if settings.enable_payment_button and template != 'product.preorder' %}
+    {%- assign enable_dynamic_buttons = true -%}
+  {% endif %}
+  {% if product.tags contains 'OUTLET' %}
+  <h3 class='clearance'>ALL OUTLET ITEM SALES ARE FINAL. NO RETURNS OR EXCHANGES.</h3>
+  <h3 class='clearance2'>LIMIT OF 6 DEALS PER ORDER.
+  <br>ONLY APPLICABLE ON ITEMS TAGGED WITH BUY 1, GET 2 FREE.</h3>
+  {% endif %}
+  
+  {% if product.tags contains 'FinalSaleItems' %}
+  <h3 class='clearance'>FINAL SALE ITEM. NO RETURNS OR EXCHANGES.</h3>
+  {% endif %}
+  {% if enable_dynamic_buttons %}
+    <div class="payment-buttons">
+  {% endif %}
+
+    <button
+      {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
+      name="add"
+      id="AddToCart-{{ section_id }}"
+      class="{% if enable_dynamic_buttons %}btn--tertiary{% else %}btn{% endif %} btn--full btn--no-animate add-to-cart red-btn"
+      {% unless current_variant.available %} disabled="disabled"{% endunless %}
+       {% unless variant.option2.selected %} disabled="disabled"{% endunless %}>
+      <span id="AddToCartText-{{ section_id }}">
+        {% unless variant.option2.selected %} 
+        {{ 'products.product.select_size' | t }}
+        {% else %}
+        {% if current_variant.available %}
+        {% if template == 'product.preorder' %}
+        {{ 'products.product.preorder' | t }}
+        {% else %}
+        {{ 'products.product.add_to_cart' | t }}
+        {% endif %}
+
+        {% else %}
+        {{ 'products.product.sold_out' | t }}
+
+
+
+        
+        {% endif %}
+        {% endunless %}     
+      </span>
+    </button>
+  
+<div class='email-back-in-stock'></div>
+    {% if enable_dynamic_buttons %}
+      {{ form | payment_button }}
+    {% endif %}
+
+  {% if enable_dynamic_buttons %}
+    </div>
+  {% endif %}
+
+  <div id="VariantsJson-{{ section_id }}" class="hide" aria-hidden="true">
+    {{ product.variants | json }}
+  </div>
+  {% if product.options.size > 1 %}
+    <div id="CurrentVariantJson-{{ section_id }}" class="hide" aria-hidden="true">
+      {{ current_variant | json }}
+    </div>
+  {% endif %}
+{% endform %}
+
+<div class="klarna-container">
+
+  <div class="klarna">
+  {% include 'icon-klarna.liquid' %}
+  </div>
+  <span class="klarna-text"> <span style="font-weight:bold;">4</span> interest-free payments of <span style="font-weight:bold;">{{ product.price | divided_by: 4 | money }}.</span><br>
+  <span style="color:#868686;padding-top: 5px;display: block;font-size: 12px;">Split the cost of your purchase into 4 interest-free payments, paid every 2 weeks. No interest. {% render 'klarna-modal' %}</span></span>
+</div>
+<div id="afterpay-new"><img style="position: absolute;width:60px;" src="https://cdn.shopify.com/s/files/1/2665/0346/files/afterpay.svg?v=1626878772" alt="Afterpay logo">
+<span class="afterpay-text"> <span style="font-weight:bold;">4</span> interest-free payments of <span style="font-weight:bold;">{{ product.price | divided_by: 4 | money }}.</span><br>
+  <span style="color:#868686;padding-top: 5px;display: block;font-size: 12px;">1st payment made at checkout, and additional 3 payments taken every 2 weeks. {% render 'afterpay-modal' %}</span></span></div>
+<div id="shoppay-installments"><img style="position: absolute;width:60px;" src="https://cdn.shopify.com/s/files/1/2665/0346/files/ShopPay-Affirm.svg?v=1627999672" alt="Shoppay logo">
+<span class="afterpay-text"> <span style="font-weight:bold;">4</span> interest-free payments of <span style="font-weight:bold;">{{ product.price | divided_by: 4 | money }}.</span><br>
+  <span style="color:#868686;padding-top: 5px;display: block;font-size: 12px;">1st payment made at checkout, and additional 3 payments taken every 2 weeks. {% render 'shoppay-modal' %}</span></span></div>
+{% endif %}
+
+  <script>
+function hideForm() {
+var no_form = document.getElementById("form#AddToCartForm-7281989943492");
+if (no_form.style.display === "block") {
+no_form.style.display = "block";
+} else {
+no_form.style.display = "none";
+}
+}
+</script>

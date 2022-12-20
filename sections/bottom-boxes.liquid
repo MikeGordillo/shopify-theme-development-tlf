@@ -1,0 +1,225 @@
+  <div class="custom-content-container">
+  <div class="custom-content">
+  {% for block in section.blocks %}
+    {% case block.settings.width %}
+      {% when '25%' %}
+        {%- assign block_width = 'small--one-whole one-quarter' -%}
+      {% when '33%' %}
+        {%- assign block_width = 'small--one-whole one-third' -%}
+      {% when '50%' %}
+        {%- assign block_width = 'small--one-whole one-half' -%}
+      {% when '66%' %}
+        {%- assign block_width = 'small--one-whole two-thirds' -%}
+      {% when '75%' %}
+        {%- assign block_width = 'small--one-whole three-quarters' -%}
+      {% when '100%' %}
+        {%- assign block_width = 'one-whole' -%}
+    {% endcase %}
+    <div class="custom__item {{ block_width }} {% if block.settings.alignment %}align--{{ block.settings.alignment }}{% endif %}" {{ block.shopify_attributes }}>
+      <div class="custom__item-inner custom__item-inner--{{ block.type }} {% if block.settings.image == blank and block.type == 'image' %} custom__item-inner--placeholder-image{% endif %}">
+            <div class="aos-animate">
+                <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;">
+                  <div id="bottom-box-text">
+                    <div class="bottom-box-information">
+                      <div class="bottom-box-text-1">{{ block.settings.custom-all-product-title }}</div>
+                      <div class="bottom-box-text-3">{{ block.settings.custom-all-product-subtitle-mini }}</div>
+                  		<div class="bottom-box-text-2">{{ block.settings.custom-all-product-subtitle }}</div>
+                    </div>
+                    <a href="{{ block.settings.collection-redirect-url }}"><div class="btn btn--small bottom-boxes">SHOP</div></a>
+                  </div>
+                  {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img class="lazyload"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080, 1600]"
+                      data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ block.settings.image.alt }}">
+                  <noscript>
+                    <img class="lazyloaded" src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.image.alt }}">
+                  </noscript>
+                </div>        
+            </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  </div>
+
+{% schema %}
+   {
+    "name": "Bottom Boxes",
+	"class": "index-margin",
+    "max_blocks": 4,
+    "blocks": [
+         {
+           "type": "html",
+           "name": "Bottom Boxes",
+           "settings": [
+                {
+                  "type": "textarea",
+                  "id": "code",
+                  "label": "HTML",
+                  "default": "<h2>Custom content</h2><p>Use this advanced section to build your own layouts or to add custom HTML or scripts.</p>"
+                },
+                {
+                  "type": "select",
+                  "id": "width",
+                  "label": "Width",
+                  "default": "50%",
+                  "options": [
+                    {
+                      "value": "25%",
+                      "label": "25%"
+                    },
+                    {
+                      "value": "33%",
+                      "label": "33%"
+                    },
+                    {
+                      "value": "50%",
+                      "label": "50%"
+                    },
+                    {
+                      "value": "66%",
+                      "label": "66%"
+                    },
+                    {
+                      "value": "75%",
+                      "label": "75%"
+                    },
+                    {
+                      "value": "100%",
+                      "label": "100%"
+                    }
+                  ]
+                },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "info": "Aligns when next to other custom content",
+            "options": [
+              {
+                "value": "top-middle",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "top-middle",
+            "info": "Aligns when next to other custom content",
+            "options": [
+              {
+                "value": "top-middle",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom"
+              }
+            ]
+          },
+		  {
+			"type": "text",
+			"id": "custom-all-product-title",
+			"label": "Card Title"
+		  },
+		  {
+			"type": "text",
+			"id": "custom-all-product-subtitle",
+			"label": "Card Subtitle"
+		  },
+		  {
+			"type": "text",
+			"id": "custom-all-product-subtitle-mini",
+			"label": "Card Subtitle Mini"
+		  },
+		  {
+			"type": "url",
+			"id": "collection-redirect-url",
+			"label": "Collection Url"
+		  }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Bottom Boxes",
+        "category": "Advanced layout",
+        "blocks": [
+          {
+            "type": "image",
+            "settings": {
+              "width": "50%"
+            }
+          },
+          {
+            "type": "image",
+            "settings": {
+              "width": "50%"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

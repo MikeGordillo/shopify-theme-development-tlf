@@ -1,0 +1,43 @@
+{% unless product.title == "E-Gift Card" %}
+<label class="colors_label">COLOR</label>
+
+<div id="thumbnail-slider">
+      <div class="inner">
+        
+<ul class="swatches">
+  
+<div class="swatch-gallery active">
+  <a href="/products/{{ product.handle }}">
+    <img src="{{ product | img_url }}" alt="{{ product.title }} - {{ product.type }} - TLF Apparel | Take Life Further" width="60" height="auto">
+<div class="tlf_product_color">{{ product.variants.first.option1 }}</div>
+  </a>
+  </div>
+
+{% assign collection = collections.all %}
+{% paginate collections.all.products by 1000 %}
+{% assign productName = product.title %}
+{% assign productKuler = product.variants.first.option1 %}
+{% assign productSpecies = product.type %}
+{% for product in collection.products %}
+{% if product.title == productName and product.variants.first.option1 != productKuler and product.type == productSpecies %}
+	<li style="display: inline-block; z-index: 0;">
+  		<div class="swatch-gallery">
+  			<a href="/products/{{ product.handle }}">
+    			<img src="{{ product | img_url }}" alt="{{ product.title }} - {{ product.type }} - TLF Apparel | Take Life Further" width="60" height="auto">
+    			<div class="tlf_product_color">{{ product.variants.first.option1 }}</div>
+  			</a>
+  		</div>
+  	</li>
+  
+{% endif %}
+{% endfor %}
+{% endpaginate %}
+
+</ul>
+        
+      </div>
+</div>
+
+<div id="tlf_product_hover_color">{{ product.variants.first.option1 }}</div>
+<div id="tlf_color" style="display:none;">{{ product.variants.first.option1 }}</div>
+{% endunless %}

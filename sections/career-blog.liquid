@@ -1,0 +1,117 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+
+{%- paginate blog.articles by 20 -%}
+
+  <div class="main-blog career page-width">
+    <h1 class="title--primary">Search for all open positions at TLF</h1>
+    <p class="top-career-description" style="color:#909090;font-size:.875em">EXPLANATION HOW TO APPLY (UPLOAD RESUME, ZIPREcruiter, EMAIL), SOFT COPY.</p>
+
+    <div class="blog-articles">    
+{% assign articles = blogs.careers.articles | sort: 'title' %}
+{% for article in articles %}
+        <div class="blog-articles__article article">
+          {%- render 'career-article-card', article: article, show_image: section.settings.show_image, show_date: section.settings.show_date, show_author: section.settings.show_author -%}
+        </div>
+      {%- endfor -%}
+            <div class="text-left">
+    <a href="/pages/careers" class="return-link" style="font-size:14px;font-family: 'Poppins', sans-serif;text-decoration:underline;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.69418 1.74367C9.40835 1.45784 8.94751 1.45784 8.66168 1.74367L3.81418 6.59117C3.58668 6.81867 3.58668 7.18617 3.81418 7.41367L8.66168 12.2612C8.94751 12.547 9.40835 12.547 9.69418 12.2612C9.98001 11.9753 9.98001 11.5145 9.69418 11.2287L5.47085 6.9995L9.70001 2.77034C9.98001 2.49034 9.98001 2.02367 9.69418 1.74367Z" fill="#2E2E2E" /></svg>Go back</a>
+  </div>
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+<style>
+  @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .main-blog.career {
+    padding: 0 75px;
+}
+
+}
+  @media only screen and (min-width: 750px) {
+.main-blog.career h1 {
+    font-size: 2em;
+    font-weight: 500;
+}
+  }
+    @media only screen and (min-width: 1000px) {
+.main-blog.career h1 {
+    font-size: 2.625em;
+}
+  }
+  .main-blog.career .article-card__info {
+    text-align: left;
+    padding: 0;
+}
+.main-blog.career span.caption-with-letter-spacing {
+    color: #909090;
+}
+  .main-blog.career .article-card__header h2 {
+    font-weight: 600;
+}
+  .main-blog.career .blog-articles {
+    display: block !important;
+}
+  .main-blog.career .article-card__header {
+    display: flex;
+    flex-direction: column;
+}
+  .main-blog.career .blog-articles__article {
+    padding: 3rem 0 0.5rem 0;
+}
+  .main-blog.career .pagination__item--current:after, .main-blog.career .pagination__item:hover:after {
+    display: none;
+}
+  .main-blog.career .pagination__item--current {
+    background-color: #2e2e2e;
+    border-radius: 50%;
+    color: #ffffff;
+}
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label",
+      "info": "t:sections.main-blog.settings.show_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    }
+  ]
+}
+{% endschema %}

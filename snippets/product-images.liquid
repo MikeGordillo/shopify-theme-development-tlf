@@ -1,0 +1,298 @@
+   {% if product.metafields.product.imagetemp != blank and product.media.size == 1 %}
+{%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+
+{% unless product.empty? %}
+  <div
+    data-product-images
+    data-zoom="{{ settings.product_zoom_enable }}"
+    data-has-slideshow="true">
+    <div class="product__photos product__photos-{{ section_id }} product__photos--{{ thumbnail_position }}">
+      <div class="product__main-photos" data-aos data-product-single-media-group>
+        <div id="ProductPhotos-{{ section_id }}">
+          {%- for media in product.media -%}
+   
+            {%- include 'media',
+              media: media,
+              featured_media: featured_media,
+              isModal: isModal,
+              video_looping: video_looping,
+              video_style: video_style
+            -%}
+
+  
+
+          {%- endfor -%}
+        </div>
+
+        {% assign first_3d_model = product.media | where: 'media_type', 'model' | first %}
+
+        {%- if first_3d_model -%}
+          <button
+            aria-label="{{ 'products.product.view_in_space_label' | t }}"
+            class="product-single__view-in-space"
+            data-shopify-xr
+            data-shopify-model3d-id="{{ first_3d_model.id }}"
+            data-shopify-title="{{ product.title }}"
+            data-shopify-xr-hidden
+          >
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-3d" viewBox="18.24 17.35 24.52 28.3"><path fill="#3A3A3A" d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z"/></svg>
+            <span class='product-single__view-in-space-text'>
+              {{ 'products.product.view_in_space' | t }}
+            </span>
+          </button>
+        {%- endif -%}
+
+        <div class="product__photo-dots product__photo-dots--{{ section_id }}"></div>
+      </div>
+
+      <div
+        id="ProductThumbs-{{ section_id }}"
+        class="product__thumbs product__thumbs--{{ thumbnail_position }} {% if product.images.size == 1 %} hide{% endif %}"
+        data-position="{{ thumbnail_position }}"
+        data-arrows="{{ thumbnail_arrows }}"
+        data-aos>
+        {%- if product.media.size > 1 -%}
+          {%- for media in product.media -%}
+            <div class="product__thumb-item"
+              data-index="{{ forloop.index0 }}">
+              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: media.preview_image.aspect_ratio }}%;">
+                <a
+                  href="{{ media.preview_image | img_url: product_zoom_size }}"
+                  class="product__thumb product__thumb-{{ section_id }} js-no-transition"
+                  data-index="{{ forloop.index0 }}"
+                  data-id="{{ media.id }}">
+                  {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+                    <span class="product__thumb-icon">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="18.24 17.35 24.52 28.3"><path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/></svg>
+                    </span>
+                  {%- endif -%}
+                  {%- if media.media_type == 'model' -%}
+                    <span class="product__thumb-icon">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-3d" viewBox="18.24 17.35 24.52 28.3"><path fill="#3A3A3A" d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z"/></svg>
+                    </span>
+                  {%- endif -%}
+
+                  {%- assign img_url = media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img class="animation-delay-{{ forloop.index | times: 3 }} lazyload"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080]"
+                      data-aspectratio="{{ media.preview_image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ media.alt | escape }}">
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <script type="application/json" id="ModelJson-{{ section_id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+{% else %}
+  <div class="product__photos product__photos-{{ section_id }}">
+    <div class="product__main-photos" style="width: 100%">
+      <div id="ProductPhotos-{{ section_id }}">
+        <div data-index="{{ forloop.index0 }}">
+          <a href="#">
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endunless %}
+
+{% else %}
+
+    {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+{% unless product.empty? %}
+  <div
+    data-product-images
+    data-zoom="{{ settings.product_zoom_enable }}"
+    data-has-slideshow="true">
+    <div class="product__photos product__photos-{{ section_id }} product__photos--{{ thumbnail_position }}">
+
+      {% if product.tags contains 'CLEARANCE'%}
+      <span class='product-page-badge' title='CLEARANCE'>CLEARANCE</span>
+      {% endif %}
+      {% if product.tags contains 'BACK IN STOCK'%}
+      <span class='product-page-badge' title='BACK IN STOCK'>BACK IN STOCK</span>
+      {% endif %}
+      {% if product.tags contains 'BACK IN STOCK' and product.tags contains 'NEW COLOR' %}
+      <span class='product-page-badge' title='BACK IN STOCK - NEW COLOR'>BACK IN STOCK - NEW COLOR</span>
+      {% endif %}      
+      
+      <div class="product__main-photos" data-aos>
+        <div id="ProductPhotos-{{ section_id }}">
+          {% for image in product.images %}
+            {%- assign image_alt = image.alt -%}
+            {%- assign has_product_video = false -%}
+            {%- assign video_type = '' -%}
+            {% if image.alt contains '.mp4' %}
+              {%- assign has_product_video = true -%}
+              {%- assign video_type = 'mp4' -%}
+            {% endif %}
+            {% if has_product_video %}
+              {%- assign image_alt = product.title -%}
+            {% endif %}
+            <div class="{% if is_featured %}starting-slide{% else %}secondary-slide{% endif %}" data-index="{{ forloop.index0 }}">
+              <div class="product-image-main product-image-main--{{ section_id }}">
+                {% include 'swym-product-view', product: product %}
+                <button class="swym-button swym-add-to-wishlist-view-product product_{{product.id}}" data-swaction="addToWishlist" data-product-id="{{product.id | json}}"></button>
+                <div class="image-wrap
+                  {% if has_product_video and video_type == 'mp4' %} hide{% endif %}" style="height: 0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%;">
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- assign zoom_img_url = image | img_url: product_zoom_size -%}          
+                  {% if is_featured %}
+                    <img class="{% if settings.product_zoom_enable %}photoswipe__image{% endif %} lazyload"
+                      data-photoswipe-src="{{ zoom_img_url }}"
+                      data-photoswipe-width="{{ image.width }}"
+                      data-photoswipe-height="{{ image.height }}"
+                      data-index="{{ forloop.index }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080]"
+                      data-aspectratio="{{ image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ image_alt | escape }}">
+                    <noscript>
+                      <img class="lazyloaded" src="{{ image | img_url: product_image_size }}" alt="{{ image_alt | escape }}">
+                    </noscript>
+                  {% else %}
+                    <img class="{% if settings.product_zoom_enable %}photoswipe__image{% endif %} lazyload"
+                      data-photoswipe-src="{{ zoom_img_url }}"
+                      data-photoswipe-width="{{ image.width }}"
+                      data-photoswipe-height="{{ image.height }}"
+                      data-index="{{ forloop.index }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080]"
+                      data-aspectratio="{{ image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ image_alt | escape }}">
+                    <noscript>
+                      <img class="lazyloaded" src="{{ image | img_url: product_image_size }}" alt="{{ image_alt | escape }}">
+                    </noscript>
+                  {% endif %}
+
+                  {% if settings.product_zoom_enable %}
+                    <button type="button" class="btn btn--no-animate btn--body btn--circle js-photoswipe__zoom product__photo-zoom">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search arrow" viewBox="0 0 29.17 50"><polygon id="Path" style="fill: black!important;stroke-width: 0px;" points="5.57 0 0 5.9 18.04 25 0 44.11 5.57 50 29.17 25 5.57 0"/></svg>
+                      <span class="icon__fallback-text">{{ 'general.accessibility.close_modal' | t }}</span>
+                    </button>
+                  {% endif %}
+                </div>
+                {% if has_product_video %}
+                  {%- assign aspect_width = settings.product_video_width | divided_by: 100.00 -%}
+                  {%- assign aspect_ratio = settings.product_video_height | divided_by: aspect_width -%}
+                  <div
+                    data-video-type="{{ video_type }}"
+                    class="product__video-wrapper video-new"
+                    data-video-style="{{ settings.product_video_style }}"
+                    >
+                    {% if video_type == 'mp4' %}
+                      <video id="myVideo"
+                        title="TLF {{ product.title }} - {{ product.type | capitalize }}"
+                        loop playsinline muted autoplay
+                        controlsList="nodownload"
+                        data-image-count="{{product.images | size }}"
+                        data-video-type="{{ video_type }}"
+                        data-video-style="{{ settings.product_video_style }}"
+                        {% if isModal %}
+                          data-video-src="{{ image.alt }}"
+                        {% endif %}
+                        id="ProductVideo-{{ section_id }}-{{ forloop.index }}"
+                        class="product__video">
+                        {% unless isModal %}
+                          <source src="{{ image.alt }}" type="video/mp4">
+                        {% endunless %}
+                        Your browser does not support the video tag.
+                      </video>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div
+        id="ProductThumbs-{{ section_id }}"
+        class="product__thumbs product__thumbs--{{ thumbnail_position }} {% if product.images.size == 1 %} hide{% endif %}"
+        data-position="{{ thumbnail_position }}"
+        data-arrows="{{ thumbnail_arrows }}"
+        data-aos>
+        {% if product.images.size > 1 %}
+          {% for image in product.images %}
+            {%- assign image_alt = image.alt -%}
+            {%- assign has_product_video = false -%}
+            {%- assign video_type = '' -%}
+            {% if image.alt contains 'youtube.com/watch' %}
+              {%- assign has_product_video = true -%}
+              {%- assign video_type = 'youtube' -%}
+            {% endif %}
+            {% if image.alt contains 'youtu.be/' %}
+              {%- assign has_product_video = true -%}
+              {%- assign video_type = 'youtube' -%}
+            {% endif %}
+            {% if image.alt contains 'vimeo.com' %}
+              {%- assign has_product_video = true -%}
+              {%- assign video_type = 'vimeo' -%}
+            {% endif %}
+            {% if image.alt contains '.mp4' %}
+              {%- assign has_product_video = true -%}
+              {%- assign video_type = 'mp4' -%}
+            {% endif %}
+            {% if has_product_video %}
+              {%- assign image_alt = product.title -%}
+            {% endif %}
+
+            <div class="product__thumb-item"
+              data-index="{{ forloop.index0 }}"
+                {% if has_product_video %}
+                 onclick="playVid()"
+                  {% endif %}>
+              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%;"   {% if has_product_video %}id="playvideo"{% endif %}>
+                <div
+                  class="product__thumb product__thumb-{{ section_id }} js-no-transition"
+                  data-id="{{ image.id }}">
+                  {% if has_product_video %}
+                    <span class="product__thumb-play">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="0 0 32 32"><style>.st0{fill:#444}</style><path class="st0" d="M9.3 6.2l17.1 9.7-17.1 9.7"/></svg>
+                    </span>
+                  {% endif %}
+
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img class="animation-delay-{{ forloop.index | times: 3 }} lazyload"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080]"
+                      data-aspectratio="{{ image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ image_alt | escape }}">
+                  <noscript>
+                    <img class="lazyloaded" src="{{ image | img_url: product_thumb_size }}" alt="{{ image_alt | escape }}">
+                  </noscript>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="product__photos product__photos-{{ section_id }}">
+    <div class="product__main-photos" style="width: 100%">
+      <div id="ProductPhotos-{{ section_id }}">
+        <div data-index="{{ forloop.index0 }}">
+          <a href="#">
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endunless %}
+{% endif %} 

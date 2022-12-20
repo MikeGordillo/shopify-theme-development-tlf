@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "164788760922d05689": {
+      "type": "media-queries-hero-no-overlay",
+      "blocks": {
+        "16478876095b17a6a4-0": {
+          "type": "image",
+          "settings": {
+            "focal_point": "center center",
+            "title": "Endless\npossibilities.",
+            "title_size": 70,
+            "subheading": "Bring your brand to life",
+            "link": "",
+            "link_text": "SHOP NOW",
+            "text_align": "vertical-bottom horizontal-center",
+            "mobile_title": "Two line\nslide title.",
+            "mobile_title_size": 40,
+            "mobile_subheading": "And an optional subheading",
+            "mobile_link": "",
+            "mobile_link_text": "SHOP NOW",
+            "mobile_text_align": "vertical-bottom horizontal-left"
+          }
+        }
+      },
+      "block_order": [
+        "16478876095b17a6a4-0"
+      ],
+      "settings": {
+        "section_height": "natural",
+        "style": "minimal"
+      }
+    },
+    "1647887696ce9054b2": {
+      "type": "featured-content",
+      "settings": {
+        "title": "Heading",
+        "text": "<p>A sentence or two introducing your brand, what you sell, and what makes your brand compelling to customers.<\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "divider": false
+      }
+    },
+    "1647887792c43aff13": {
+      "type": "map",
+      "settings": {
+        "map_title": "Our retail store",
+        "address": "<p>301 Front St W<br\/>Toronto, Canada<\/p><p>Mon - Fri, 8:30am - 10:30pm<br\/>Saturday, 8:30am - 10:30pm<br\/>Sunday, 8:30am - 10:30pm<\/p>",
+        "map_address": "301 Front St W, Toronto, ON M5V 2T6",
+        "api_key": "",
+        "show_button": true,
+        "background_image": "shopify:\/\/shop_images\/history-bg.jpg",
+        "background_image_position": "center center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "164788760922d05689",
+    "1647887696ce9054b2",
+    "1647887792c43aff13"
+  ]
+}

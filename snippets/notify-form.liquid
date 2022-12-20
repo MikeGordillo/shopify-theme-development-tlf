@@ -1,0 +1,99 @@
+<div id="notify-form">
+    <span style="display:block">Signup for re-stock alerts</span>
+    <form id="notify-form" action="" onSubmit="alert('We will send you a notification as soon as this product is available again.');">
+      <label for="subject">
+        <select id="subject" name="subject" tabindex="4">
+          <option value="XS">X Small / {{ product.variants.first.option1 }}</option>
+          <option value="S">Small / {{ product.variants.first.option1 }}</option>
+          <option value="M">Medium / {{ product.variants.first.option1 }}</option>
+          <option value="L">Large / {{ product.variants.first.option1 }}</option>
+          <option value="XL">X Large / {{ product.variants.first.option1 }}</option>
+        </select>
+      </label>
+    <label for="email">
+      <input type="email" id="email" name="email" placeholder="Email Address" tabindex="2" required="required" />
+      </label>
+    <button name="submit" type="submit" id="submit">NOTIFY WHEN AVAILABLE</button>
+  </form>
+</div>
+
+<style>
+#notify-form {
+    max-width: 400px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+#notify-form input,
+#notify-form select,
+#notify-form textarea,
+#notify-form label {
+  font-size: 15px;
+  margin-bottom: 2px;
+  font-family: Arial, san-serif;
+  display: flex;
+}
+#notify-form input,
+#notify-form select,
+#notify-form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+#notify-form input:focus,
+#notify-form select:focus,
+#notify-form textarea:focus {
+  background-color: #e5e6e7;
+}
+#notify-form textarea {
+  width: 100%;
+  height: 150px;
+}
+#notify-form button[type="submit"] {
+  border-radius: 50px;
+  font-weight: 400;
+  padding: 23px 40px;
+  background-color: #171717;
+  color: #ffffff;
+  width: 100%;
+}
+#notify-form button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+input:required,
+textarea:required {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+}
+#notify-form .required {
+  font-weight: bold;
+  color: #e5e6e7;
+}
+
+/* Hide success/failure message
+   (especially since the php is missing) */
+#failure,
+#success {
+  color: #6ea070;
+  display: none;
+}
+
+/* Make form look nice on smaller screens */
+@media only screen and (max-width: 580px) {
+  #notify-form {
+
+  }
+}
+</style>
+
+<script>
+document.querySelector('#notify-form')addEventListener("submit", function () {
+  zaius.event("account", {
+    action: "back_in_stock_notify",
+    email: "{{customer.email}}",
+    product_id: "{{product.id}}"
+  });
+});
+</script>

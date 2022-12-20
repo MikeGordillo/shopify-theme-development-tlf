@@ -1,0 +1,184 @@
+<div class="newBreadcrumbs" style="display:none">
+  	<div class="newBreadcrumbs__content">
+  		<div id="cartBC" class="newBreadCrumbs__button active">
+          	<a href="/cart">Cart</a>
+      	</div>
+      
+      	<div id="informationBC" class="newBreadCrumbs__button active">
+          	<a href="?step=contact_information">Contact</a>    
+      	</div>
+      
+      	<div id="shippingBC" class="newBreadCrumbs__button">
+          	<a href="?step=shipping_method">Shipping</a>    
+      	</div>
+      
+      	<div id="paymentBC" class="newBreadCrumbs__button">
+          	<a href="?step=payment_method">Payment</a>    
+      	</div>
+  	</div>
+</div>
+
+
+<style>
+  span.order-summary-toggle__inner {
+    display: inline-grid !important;
+}
+.breadcrumb__item.breadcrumb__item--current:before {
+  background-color: #171717;
+  color: #171717;
+}
+a.breadcrumb__link,
+span.breadcrumb__text {
+  bottom: -43px;
+  position: relative;
+}
+.main__header nav {
+  margin: 0 auto;
+  padding: 40px 0 0 0;
+  position: relative;
+  max-width: 903px;
+}
+p#smsbump-consent-message {
+  display: none;
+}
+.fieldset-description {
+  display: grid;
+}
+.main__header {
+  margin-top: 40px;
+}
+.breadcrumb__item--current {
+  font-weight: normal;
+}
+.breadcrumb {
+  counter-reset: step;
+  display: flex;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+.breadcrumb__item {
+  color: #171717;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-transform: none;
+  counter-increment: step;
+  line-height: 0;
+  justify-content: center;
+}
+
+.breadcrumb__item a {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.breadcrumb__item a:hover {
+  opacity: 0.8;
+}
+
+.breadcrumb__item:before {
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid #171717;
+  border-radius: 50%;
+  color: #ffffff;
+  content: counter(step);
+  display: flex;
+  font-size: 0.833rem;
+  height: 38px;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  width: 38px;
+}
+
+.breadcrumb__item:first-child:before {
+  margin-left: 0;
+}
+
+.breadcrumb__item.breadcrumb__item--current {
+  color: #171717;
+}
+
+.breadcrumb__item.breadcrumb__item--current a {
+  color: #171717;
+}
+
+.breadcrumb__item.breadcrumb__item--completed {
+  color: #00d19f;
+}
+
+.breadcrumb__item.breadcrumb__item--completed:before {
+  background-color: #00d19f;
+  border-color: #00d19f;
+  color: #fff;
+  content: url("https://cdn.shopify.com/s/files/1/2665/0346/files/checkmark.svg?v=1639154054");
+}
+
+.breadcrumb__item.breadcrumb__item--completed a {
+  color: #171717;
+}
+
+.breadcrumb__chevron-icon {
+  display: none;
+}
+
+.breadcrumb:before {
+  background-color: #000000;
+  width: 100%;
+  z-index: -2;
+  max-width: 95%;
+}
+
+.breadcrumb:after,
+.breadcrumb:before {
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+}
+
+.breadcrumb:after {
+  background-color: #00d19f;
+  transition: width 1s;
+  width: 0;
+  z-index: -1;
+}
+
+.breadcrumb.progress-25:after {
+  width: 33.33%;
+}
+
+.breadcrumb.progress-34:after {
+  width: 50%;
+}
+
+.breadcrumb.progress-50:after {
+  width: 66.66%;
+}
+
+.breadcrumb.progress-67:after,
+.breadcrumb2.progress-75:after,
+.breadcrumb2.progress-100:after {
+  width: 100%;
+}
+
+@media (max-width: 999px) {
+  .breadcrumb {
+    padding-bottom: 0;
+  }
+}
+
+</style>
+
+<script>
+  
+  	
+  
+</script>

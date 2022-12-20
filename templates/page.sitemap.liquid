@@ -1,0 +1,47 @@
+<div class="page-content">
+
+  {% include 'breadcrumbs' %}
+
+	<div class="grid">
+    <div class="grid__item medium-up--three-quarters medium-up--push-one-eighth">
+ {{ page.content }}
+     <div class="row">
+<div class="col-md-4">
+<h2 id="collections">Collections</h2>
+<ul>
+{% for c in collections %}
+<li>
+<a href="{{ c.url }}">{{ c.title }}</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+<div class="col-md-4">
+<h2 id="products">Products</h2>
+<ul>
+{% paginate collections.all.products by 1000 %}
+{% for product in collections.all.products %}
+<li>
+<a href="{{ product.url }}">{{ product.title }} - {{ product.variants.first.option1 }}</a>
+</li>
+{% endfor %}
+{% endpaginate %}
+</ul>
+</div>
+       <div class="col-md-4">
+<h2 id="pages">Pages</h2>
+<ul>
+{%- paginate pages by 500 -%}
+    {%- for p in pages -%}
+  <li><a href="{{ p.url }}" target="_blank">{{ p.title }}</a></li>
+    {%- endfor -%}
+    {{ paginate | default_pagination: next: 'Older', previous: 'Newer' }} 
+{%- endpaginate -%}
+</ul>
+</div>
+</div>  
+
+    </div>
+  </div>
+
+</div>

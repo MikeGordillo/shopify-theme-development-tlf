@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head><script>GSXMLHttpRequest = XMLHttpRequest;</script>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+  {% include 'hic-tag' %}
+
+    {% if customer %}
+        <script>
+            var user = {'event':'customer_data'};
+            {% if customer.id %}
+                user.id = "{{ customer.id }}";
+            {% endif %}
+            {% if customer.accepts_marketing %}
+                user.accepts_marketing = "{{ customer.accepts_marketing }}";
+            {% endif %}
+            {% if customer.tags %}
+                user.tags = "";
+            {% for tag in customer.tags %}
+                user.tags += ",{{ tag }}";
+            {% endfor %}
+            {% endif %}
+            {% if customer.email %}
+                user.em = "{{ customer.email }}";
+            {% endif %}
+            {% if customer.phone %}
+                user.ph = "{{ customer.phone }}";
+            {% endif %}
+            {% if customer.first_name %}
+                user.fn = "{{ customer.first_name }}";
+                user.fn = user.fn.replace("&#39;","'"); // fixes encoding error with apostrophes
+            {% endif %}
+            {% if customer.last_name %}
+                user.ln = "{{ customer.last_name }}";
+                user.ln = user.ln.replace("&#39;","'"); // fixes encoding error with apostrophes
+            {% endif %}
+            {% if customer.default_address %}
+                user.cn = "{{ customer.default_address.country_code }}";
+                user.st = "{{ customer.default_address.province_code }}";
+                user.ct = "{{ customer.default_address.city }}";
+                user.zp = "{{ customer.default_address.zip }}";
+                user.ph = "{{ customer.default_address.phone }}";
+            {% endif %}
+            {% if customer.total_spent %}
+                user.ltv = {{ customer.total_spent | money_without_currency}};
+            {% endif %}
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(user);
+        </script>
+    {% endif %}
+  
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','GTM-KWCM');
+    </script>
+    <!-- End Google Tag Manager -->  
+    
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+  
+  
+
+  
+  
+  
+    
+    <!-- Route - Updated 09/17/2019 -->
+        <script type="text/javascript" src="https://cdn.routeapp.io/route-widget-shopify/stable/route-widget-shopify-stable-opt-in.min.js"></script>
+        <script>
+          function changeBackground(){
+            if (document.getElementsByClassName("rw-checked").length != 0){
+              document.querySelector('.route-div').setAttribute("style","background-color: rgb(207 248 255);");
+                }
+            else{
+              document.querySelector('.route-div').setAttribute("style","background-color: rgb(233, 233, 233);");
+            }      
+          }
+          start = setInterval(changeBackground, 1000);
+        </script>
+        <style>
+          .route-widget {
+           justify-content: start !important;
+          }
+          .route-div{
+            text-align: left;
+            font-size: 12px;
+            line-height: 15px;
+            border: 1px solid;
+            padding: 10px;
+            margin-top: 23px;
+            background-color: rgb(233, 233, 233);
+            border-color: rgb(177, 177, 177);
+            border-radius: 5px;
+            transition: all 300ms ease 0s;
+          }
+          .route-widget .rw-contents .rw-right {
+            position: absolute;
+            right: 16px;
+          }
+          .route-widget .rw-contents .rw-right .rw-checkbox-span {
+            width: 48px;
+            height: 26px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(204, 204, 204);
+          }
+          .route-widget .rw-contents .rw-right .rw-checkbox-span .rw-slider {
+            background-color: rgb(204, 204, 204);
+            height: 16px;
+            width: 16px;
+          }
+          .route-widget .rw-contents .rw-right .rw-checkbox-span .rw-on-text {
+            font-size: 12px;
+          }
+          .route-widget .rw-contents .rw-right .rw-checkbox-span .rw-off-text {
+            visibility: hidden !important;
+          }
+          .route-widget .rw-contents .rw-right .rw-checkbox-span .rw-off-text::after{
+            content: "Add";
+            position: absolute;
+            visibility: visible;
+            top: 6px;
+            left: 22px;
+            font-size: 12px;
+          }
+        </style>
+    <!-- Route End -->
+    
+  {% include 'qikify-navigator' %}
+  
+  
+  {% include 'qikify-smartmenu' %}
+</head>
+
+
+  <body>
+    {{ skip_to_content_link }}
+
+    <div class="banner" data-header>
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </div>
+
+    {{ order_summary_toggle }}
+        <div class="content" data-content>
+      <div class="wrap">
+        <div class="main" role="main">
+          <div class="main__header">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </div>
+          <div class="main__content">
+            {{ content_for_layout }}
+          </div>
+          <div class="main__footer">
+            {{ content_for_footer }}
+          </div>
+        </div>
+        <div class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content"> 
+            {{ content_for_order_summary }}
+          <strong><span style="color:red">{% render 'icon-cart-exclamation' %} WARNING: </span>
+          <p>ALL SHIPPING PROVIDERS ARE CURRENTLY EXPERIENCING DELAYS DUE TO WEATHER DISRUPTIONS. IN ADDITION, KINDLY BE AWARE THAT DUE TO CIRCUMSTANCES BEYOND OUR CONTROL, SOME ORDERS MAY BE DELAYED BEYOND THE ESTIMATED DELIVERY DATE.</p>
+          </strong>
+          <br>
+            <p style="text-align: center;"><a title="This online store is secured by Shopify" href="//www.shopify.com/pci-compliant?utm_source=secure&amp;utm_medium=shop" target="_blank" rel="noopener"><img src="//cdn.shopify.com/s/images/badges/shopify-secure-badge-light-shadow.png" alt="Shopify secure badge" /></a></p>
+          </div>
+             </div>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+    
+     {% include 'smsbump_checkout_marketing_subscription' %}
+
+ 
+</body>
+
+<script src="{{ 'checkout-changes.min.js' | asset_url }}"></script>
+<!-- Start of Checkout Saving Script -->
+
+
+  
+  <script>
+
+    function doSomething() {
+
+      var items2 = document.getElementsByClassName("total-recap__original-price")[0].innerHTML.replace(/\D/g, ""),
+          cashOut2 = document.getElementsByClassName("total-recap__final-price")[0].innerHTML.replace(/\D/g, ""),
+          sum2 = ((+items2 - +cashOut2)/100).toFixed(2);
+      var defaultCurrency = '{{ settings.default_currency }}';
+	  var shopCurrency = ' {{ shop.currency }}';
+      var currencySymbol = document.getElementsByClassName("payment-due__price")[0].innerHTML.replace(/[^A-Za-z]+/g, '');
+      var symbol = document.getElementsByClassName("payment-due__price")[0].innerHTML.replace(/[\d,.-z""\s]/g, "");
+
+        document.getElementsByClassName("payment-due__discount")[0].innerHTML ="Congrats! You Saved " + symbol + sum2 +  " " + currencySymbol;
+    }
+
+
+    setInterval(doSomething, 1000); // Time in milliseconds
+
+
+  </script>
+  <!-- End of Checkout Saving Script -->
+
+<script>
+
+  function removediscount() {
+    if ($('.total-recap__original-price')[0]) {
+      $('.savings').show();
+    } else {
+      $('.savings').hide();
+    }
+  }
+  
+      setInterval(removediscount, 1000); // Time in milliseconds
+
+</script>
+  
+ 
+  
+<script type='text/javascript'> var _d_site = _d_site || 'B120B6A76F1E0747991693B1'; </script>
+
+
+  <style>
+    .floating-labels .address-fields {
+      display: block !important;
+    }
+  </style>  
+
+  <style>
+    .section--contact-information .section__header p.layout-flex__item {
+      display:block !important; 
+    }
+  </style>
+    <style>
+      .weather {
+    padding-bottom: 10%;
+}
+      .weather img {
+    width: 10px;
+}
+    .rwd-table {
+      background: #34495E;
+      color: #000;
+      border-radius: .4em;
+      overflow: hidden;
+      margin: 10px 0 15px 0;
+    }
+    .shipping_tr {
+      border-color: lighten(#34495E, 10%);
+    }
+  .shipping_th, .shipping_td {
+      margin: .5em 1em;
+    }
+  .shipping_td:before {
+      color: black;
+    }
+
+    @media only screen and (min-width: 600px) { 
+      .shipping_td {
+        padding: 10px 16px !important;
+        text-align: center;
+      }
+
+      .shipping_th{
+        font-weight: bold;
+        color: white;
+        padding-left: 14px !important;
+        padding-right: 21px;
+      }
+
+    }
+
+    .shipping_tr:nth-child(even) {
+      background: ghostwhite;
+    }
+
+    .shipping_tr:nth-child(odd) {
+      background: aliceblue;
+    }
+
+    .shipping_info {
+      width: 100%;
+    }
+
+    .shipping_text {
+      font-size: 1em;
+    }
+
+    .shipping_tr:nth-child(1) {
+      background: #382C8B;
+    }
+
+    .shipping_td {
+      padding: 10px 16px !important;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    .shipping_th{
+      font-weight: bold;
+      color: white;
+      padding-left: 14px !important;
+      padding-right: 21px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }    
+      
+.section.section--shipping-method p {
+    background-color: #F7F7F7;
+    color: black;
+    text-align: left;
+    padding: 10px 20px 15px 30%;
+    background-image: url(https://cdn.shopify.com/s/files/1/2665/0346/files/update.svg?v=1614038759);
+    background-size: 18%;
+    background-repeat: no-repeat;
+    background-position: 6% center;
+    font-size: 12px;
+}
+      
+      .notice--error {
+    border-color: transparent;
+    background-color: transparent;
+}
+      
+      .notice {
+    padding: 0em;
+    border-radius: 0px;
+    border: 0px solid transparent;
+    background-color: transparent;
+}
+    
+      .notice--error .notice__icon {
+    display: none;
+}
+      
+      .notice__content {
+        padding-right: 0em;
+}
+  </style>
+  
+</html>
+

@@ -1,0 +1,457 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+  <style>
+:root {
+    --bs-body-font-size: 1.57rem !important;
+    --bs-font-sans-serif: 'Poppins', Arial, sans-serif !important;
+    }
+    p {
+    margin-top: 5px!important;
+}
+    
+    span.text-uppercase.fac {
+    margin-left: 0!important;
+}
+    
+li.nav-item {
+    padding-left: 2em!important;
+}
+    .navbar-light .navbar-nav .nav-link {
+    color: #2e2e2e;
+}
+    @media (min-width: 992px) {
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 3.15rem;
+    padding-left: 3.15rem;
+    font-weight: 500;
+}
+    }
+    .dropdown-toggle:after {
+      display: none;
+}
+    li.nav-item.dropdown {
+    font-size: medium;
+}
+    
+    .text-uppercase{
+    font-size: 16px!important;
+    }
+    
+    ul.nav.flex-column {
+    margin-top: 0px;
+}
+    .que {
+    font-size: 14px!important;
+}
+    
+    p.mueve {
+    color:#171717;  
+    margin-top: .4em;
+    margin-bottom: 1rem;
+    font-size: 14px!important;
+}
+    span.text-uppercase, li.nav-item h6 {
+    padding-bottom: 7px;
+    display: block;
+    padding-top: 7px;
+}
+    li.nav-item a {
+    padding-bottom: 5px;
+    display: inline-block;
+}
+    li.nav-item {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+    nav, .nav-item, .dropdown-menu, span.text-uppercase, li.nav-item h6 {
+    font-size: 14px;
+    font-family: 'Roboto';
+}
+        .navbar-nav {
+    margin: 0 auto;
+}
+
+/* adds some margin below the link sets  */
+  .navbar .dropdown-menu div[class*="col"] {
+   margin-bottom:1rem;
+}
+
+.navbar .dropdown-menu {
+  border:none;
+}
+
+/* breakpoint and up - mega dropdown styles */
+@media screen and (min-width: 992px) {
+  
+  /* remove the padding from the navbar so the dropdown hover state is not broken */
+.navbar {
+  padding-top:0px;
+  padding-bottom:0px;
+}
+
+/* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
+.navbar .nav-item {
+  padding:.5rem .5rem;
+  margin:0 .25rem;
+}
+
+/* makes the dropdown full width  */
+.navbar .dropdown {
+  position:static;
+  width:100%!important;
+}
+
+.navbar.dropdown.dropdown-menu {
+  position:static;
+  z-index:10;
+  width:100vw;
+  left:51%!important;
+  right:0 auto!important;
+/*  height of nav-item  */
+  top:45px;
+  
+  display:block;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s linear;
+  
+}
+
+a {
+  color: rgb(109, 101, 101);
+  text-decoration:none;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+  
+  span.text-uppercase {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+  
+  .text-uppercase, h6 {
+  font-weight:bold;
+  }
+  
+ 
+
+  
+  /* shows the dropdown menu on hover */
+.navbar .dropdown:hover .dropdown-menu, .navbar .dropdown .dropdown-menu:hover {
+  display:block;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.3s linear;
+}
+  
+    @media (min-width: 992px) {
+ .navbar .dropdown-menu {
+       top: 90%; 
+  }
+}
+  img.fullW {
+  object-fit: fullW;
+  margin: 0 auto ! important; 
+  height:464px
+}
+  
+  .col {
+    margin: 0 auto ! important;
+}
+
+  .vids {
+  height:448px
+  }
+
+  margin: 0 auto ! important;
+  padding-bottom: 0 auto ! important;  
+  margin-bottom: 0 auto ! important;
+  height: 400px;!important;
+    
+  }
+  
+  
+  #navbarDropdown {
+    padding-right: 4em;
+    color:black;
+}
+  
+  
+  
+  .dropdown-menu.container {
+  width:100%;
+  padding:0 auto !important;
+  }
+  
+  @media (min-width: 992px) {
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+position: absolute;
+left: 52.5%;
+transform: translatex(-50%);
+width: 100vw;
+padding-top: 0!important;
+
+}
+}
+    nav.navbar.navbar-expand-lg.navbar-light {
+    margin-top: 1em;
+    margin-bottom: .9em;
+}
+    
+    span.text-uppercase.fac {
+    margin-left: 15px;
+}
+  img.fullW {
+    padding-top: 15px;
+}
+    a.vids {
+    padding-top: 15px;
+}
+    
+  
+    
+  a.header__heading-link.link.link--text.focus-inset {
+    padding-bottom: 2em!important;
+}  
+   
+    
+    
+    @media screen and (max-width: 768px) {
+
+button.navbar-toggler{display: none;}
+
+}
+ 
+</style>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto ">
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="hover" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MEN
+              </a>
+              <div class="dropdown-menu" id="show" aria-labelledby="navbarDropdown">
+      
+                <div class="container">
+                  <div class="row">      
+                    <!-- /.col-md-4  -->
+                    <div class="col">
+                      <span class="text-uppercase" href="#">MEN</span>
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a  href="/collections/all-products/mens">Shop all men</a><br>   
+                            <a  href="/collections/new-releases/mens">New Releases</a><br>
+                            <a  href="/collections/best-sellers/mens">Best Sellers</a><br>
+                            <a  href="/collections/mens-trending-must-haves">Trending Must Haves</a><br>
+                            <a  href="/collections/hats">Seen on social</a><br>
+                            <a  href="/collections/hats">Overstock / Blowout sales</a><br>
+                            <a  href="/collections/hats">Accessories</a><br>
+                            <a  href="/products/tlf-gift-card">E-Gift card</a><br>
+                        </li>
+                        </ul>
+                        <span class="text-uppercase" href="#">Collections</span>
+                      <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a  href="/collections/vital/mens">Vital</a><br>
+                            <a  href="/collections/lift/mens">Lift</a><br>
+                            <a  href="/collections/league/mens">League</a><br>
+                            <a  href="/collections/element/mens">Element</a><br>
+                            <a  href="/collections/core/mens">Core</a><br>
+                            <a  href="/collections/graphix/mens">Graphix</a><br>
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- /.col-md-4  -->
+                    <div class="col">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <span class="text-uppercase fac" href="#">Tops</span>      
+                            <a  href="/collections/short-sleeves/mens">Short sleeves</a><br>
+                            <a  href="/collections/long-sleeves/mens">Long sleeves</a><br>
+                            <a  href="/collections/tank-tops-sleeveless/mens">Tank tops & sleeveless</a><br>
+                            <a  href="/collections/hoodies-sweatshirts-jackets/mens">Hoodies-Sweatshirts & jackets</a><br>
+                            <a  href="/collections/stringers-drop-arm-tanks/mens">Stringers & deep arm tanks</a><br> 
+                            <a  href="/collections/graphic-t-shirts/mens">Graphic t's</a><br>
+                        </li>
+                      </ul>
+                        <span class="text-uppercase" href="#">Bottoms</span>
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a  href="/collections/shorts/mens">Shorts</a><br>
+                            <a  href="/collections/joggers-pants/mens">Joggers & pants</a><br>
+                            <a  href="/collections/leggings-tights/mens">Leggings & tights</a><br>
+                        </li>
+                      </ul>
+<!--                       <span class="text-uppercase" href="#">Accessories</span>
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a  href="/collections/hats">Hats</a><br>
+                        </li>
+                      </ul> -->
+                    </div>
+
+                    <div class="col">
+                      <!-- /.col-md-4  -->
+                         <img class="fullW" src="https://cdn.shopify.com/s/files/1/2665/0346/products/vital-fleece-pullover-hoodie-men-hoodies-sweatshirts-jackets-tlf-black-s-500129_540x.jpg?v=1644419880" >       
+                        <a href="https://dev-tlf-replica.myshopify.com/collections/best-sellers/mens">   
+                      <p class="mueve">Best sellers</p>
+                      </a>
+                   </div>
+                    
+                  <div class="col">
+                     <!-- /.col-md-4  -->
+                           <img class="fullW" src="https://cdn.shopify.com/s/files/1/0566/6393/3065/files/Vital_Air-Tech_Hoodie_-_Men_s_Gym_Hoodies-_Black_1.jpg?v=1649186160" >       
+
+                             <p class="que">Trending must haves</p>
+
+                  </div>
+              
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="hover" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                WOMEN
+              </a>
+              <div class="dropdown-menu" id="show" aria-labelledby="navbarDropdown">
+      
+                <div class="container">
+                  <div class="row">      
+                    <!-- /.col-md-4  -->
+                    <div class="col">
+                        <span class="text-uppercase" href="#">WOMEN</span>
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a  href="/collections/all-products/womens">Shop all women</a><br>   
+                            <a  href="/collections/new-releases/womens">New Releases</a><br>
+                            <a  href="/collections/best-sellers/womens">Best Sellers</a><br>
+                            <a  href="/collections/womens-trending-must-haves">Trending Must Haves</a><br>
+                            <a  href="/collections/hats">Seen on social</a><br>
+                            <a  href="/collections/hats">Overstock / Blowout sales</a><br>
+                            <a  href="/collections/hats">Accessories</a><br>
+                            <a  href="/products/tlf-gift-card">E-Gift card</a><br>
+                        </li>
+                        </ul>
+                        <span class="text-uppercase" href="#">Collections</span>
+                      <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a  href="/collections/tempo-glo/womens">Tempo glo</a><br>
+                            <a  href="/collections/react-seamless/womens">React seamless</a><br>
+                            <a  href="/collections/shine/womens">Shine</a><br>
+                            <a  href="/collections/genesis/womens">Genesis</a><br>
+                            <a  href="/collections/tempo/womens">Tempo</a><br>
+                            <a  href="/collections/train-n-run/womens">Train-n-run</a><br>
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- /.col-md-4  -->
+                    <div class="col">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <span class="text-uppercase fac" href="#">Tops</span>
+                            <a  href="/collections/short-sleeves/womens">Short sleeves</a><br>
+                            <a  href="/collections/long-sleeves/womens">Long sleeves</a><br>
+                            <a  href="/collections/tank-tops-sleeveless/womens">Tank tops & sleeveless</a><br>
+                            <a  href="/collections/hoodies-sweatshirts-jackets/womens">Hoodies-Sweatshirts & jackets</a><br>
+                            <a  href="/collections/crop-tops/womens">Crop tops</a><br>                               
+                            <a  href="/collections/sports-bras/womens">Sports bra</a><br>
+                            <a  href="/collections/graphic-t-shirts/womens">Graphic t's</a><br>
+                         </li>
+                      </ul>
+                        <span class="text-uppercase" href="#">Bottoms</span>
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a  href="/collections/shorts/womens">Shorts</a><br>
+                            <a  href="/collections/joggers-pants/womens">Joggers & pants</a><br>
+                            <a  href="/collections/leggings-tights/womens">Leggings & tights</a><br>
+                        </li>
+                      </ul>
+<!--                       <span class="text-uppercase" href="#">Accessories</span>
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a  href="/collections/hats">Hats</a><br>
+                        </li>
+                      </ul> -->
+                    </div>
+                    <div class="col">
+                      <!-- /.col-md-4  -->
+                      
+                         <img class="fullW" src="https://cdn.shopify.com/s/files/1/2665/0346/products/tempo-workout-sports-bra-women-sports-bras-tlf-418227_720x.jpg?v=1642694014" type=""> 
+                             <a href="https://dev-tlf-replica.myshopify.com/collections/best-sellers/womens">   
+                                 <p class="mueve">Best sellers</p>
+                             </a>
+                   </div>
+                    
+                  <div class="col">
+                     <!-- /.col-md-4  -->
+                           <img class="fullW" src="https://cdn.shopify.com/s/files/1/2665/0346/files/womens-nav-2.jpg?v=1649185560" type="">    
+                             <p class="que">Trending must haves</p>
+
+                  </div>
+              
+            </li>
+                     </div>
+                
+             
+      </nav>
+
+   <script>
+          $(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+
+// breakpoint and up  
+$(window).resize(function(){
+	if ($(window).width() >= 980){	
+
+      // when you hover a toggle show its dropdown menu
+//       $(".navbar .dropdown-toggle").hover(function () {
+//          $(this).parent().toggleClass("show");
+//          $(this).parent().find(".dropdown-menu").toggleClass("show"); 
+//        });
+
+//         // hide the menu when the mouse leaves the dropdown
+//       $( ".navbar .dropdown-menu" ).mouseleave(function() {
+//         $(this).removeClass("show");  
+//       });
+  
+      
+$('nav-item.dropdown-toggle').mouseenter(()=>{
+('.dropdown-menu').show().clearQueue();
+})
+
+$('nav-item.dropdown-toggle').mouseleave(()=>{
+$('.dropdown-menu').stop().delay(2000).hide(0);
+});
+      
+//   menuState = {
+//   menuOpen: false,
+//   timer: false
+// }
+
+// $('#hover, #show').on('mouseover', () => {
+//   clearInterval(menuState.timer)
+//   if (menuState.menuOpen) { return }
+//   $('#show').show();
+//   menuState.menuOpen = true
+// })
+
+// $('#hover, #show').on('mouseout', () => {
+//   menuState.timer = setTimeout( () => {
+//     menuState.menuOpen = false
+//     $('#show').hide()
+//   }, 1000)
+// })
+      
+      
+      
+		// do something here
+	}	
+});  
+  
+  
+
+});
+      </script>

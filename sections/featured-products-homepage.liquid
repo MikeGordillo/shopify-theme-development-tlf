@@ -1,0 +1,67 @@
+
+{% if section.settings.divider %}<div class="section--divider">{% endif %}
+
+<div id="ProductSection-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  {% if settings.product_zoom_enable %}
+    data-image-zoom="true"
+  {% endif %}
+  {% if settings.inventory_enable %}
+    data-inventory="true"
+  {% endif %}
+  {% if settings.inventory_transfers_enable %}
+    data-incoming-inventory="true"
+  {% endif %}
+      class="inline-flex">
+
+  {% include 'product-template-variables' %}
+
+      <div class="grid__item medium-up--one-half">
+        {%- assign product = all_products[section.settings.featured_product_1] -%}
+        {% include 'product-images-slider' %}
+      </div>
+  
+      <div class="grid__item medium-up--one-half">
+        {%- assign product = all_products[section.settings.featured_product_2] -%}
+        {% include 'product-images-slider' %}
+      </div>
+  
+      <div class="grid__item medium-up--one-half">
+        {%- assign product = all_products[section.settings.featured_product_3] -%}
+        {% include 'product-images-slider' %}
+      </div>
+
+</div>
+
+{% if section.settings.divider %}</div>{% endif %}
+
+{% schema %}
+  {
+    "name": "Featured product",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product_1",
+        "label": "Product_1"
+      },
+      {
+        "type": "product",
+        "id": "featured_product_2",
+        "label": "Product_2"
+      },
+      {
+        "type": "product",
+        "id": "featured_product_3",
+        "label": "Product_3"
+      }
+    ],
+    "presets": [
+      {
+        "name": "T3s",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}

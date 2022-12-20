@@ -1,0 +1,45 @@
+    {% if template contains 'collection' %}
+    {% for tag in product.tags %}
+    
+    {% if tag contains 'Swatch_Lizard' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-lizard'><span class="dot green"></span></a>
+    {% endif %}
+    
+    {% if tag contains 'Swatch_Dusky Orchid' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-dusky-orchid'><span class="dot pink"></span></a>
+    {% endif %}
+    
+    {% if tag contains 'Swatch_Wine' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-wine'><span class="dot wine"></span></a>
+    {% endif %}
+
+    {% if tag contains 'Swatch_Mineral Heather' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-mineral-heather'><span class="dot wine"></span></a>
+    {% endif %}
+
+    {% if tag contains 'Swatch_Army Green' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-army-green'><span class="dot army-green"></span></a>
+    {% endif %}
+
+    {% if tag contains 'Swatch_Pewter' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-pewter'><span class="dot pewter"></span></a>
+    {% endif %}
+
+    {% if tag contains 'Swatch_Deep Navy' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-deep-navy'><span class="dot deep-navy"></span></a>
+    {% endif %}
+
+    {% if tag contains 'Swatch_Deep Navy' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-deep-navy'><span class="dot deep-navy"></span></a>
+    {% endif %}
+
+    {% if tag contains 'Swatch_Titanium' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-titanium'><span class="dot titanium"></span></a>
+    {% endif %}
+
+    {% if tag contains 'Swatch_Stargazer' %}
+      <a href='/product/tlf-{{ product.title | handleize}}-stargazer'><span class="dot stargazer"></span></a>
+    {% endif %}
+
+    {% endfor %}
+    {% endif %}

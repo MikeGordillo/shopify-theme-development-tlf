@@ -1,0 +1,425 @@
+<!-- place all page titles here 
+	MEN'S BOTTOMS | TLF APPAREL
+-->
+
+{% if template == 'collection' %}  
+
+{% assign meta_data = collection.metafields.global %}
+<title>{% if current_tags contains 'WOMENS' %}Women's{% elsif current_tags contains 'MENS' %}Men's{% endif %} {{ collection.title }} | TLF Apparel</title>
+{% if current_tags == blank %}
+<title>{{ collection.title }} | TLF Apparel</title>
+{% endif %}
+
+
+<!-- Best Sellers -->
+{% if collection.handle == 'best-sellers' and collection.tags contains 'WOMENS' %}
+
+<title>		
+TLF Official Store | Best Sellers | Women's Workout & Gym Clothes | Gym-To-Street Wear | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+{% elsif collection.handle == 'best-sellers' and collection.tags contains 'MENS' %}
+
+<title>		
+TLF Official Store | Best Sellers | Men's Workout & Gym Clothes | Gym-To-Street Wear | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+<!-- Clearance -->
+{% elsif collection.handle == 'clearance' and collection.tags contains 'WOMENS' %}
+
+<title>		
+TLF Official Store | Clearance | Women's Workout & Gym Clothes | Gym-To-Street Wear | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+{% elsif collection.handle == 'clearance' and collection.tags contains 'MENS' %}
+
+<title>		
+TLF Official Store | Clearance | Men's Workout & Gym Clothes | Gym-To-Street Wear | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+<!-- Bottoms -->
+{% elsif collection.handle == 'bottoms' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's {{ collection.title }} | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+{% elsif collection.handle == 'bottoms' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's {{ collection.title }} | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+<!-- Shorts -->
+{% elsif collection.handle == 'shorts' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Workout Shorts | TLF Apparel
+</title>    
+<meta name="description" content="Work out at the gym or go for a run in TLF's comfortable, stylish shorts for women. Shop now to get free shipping and returns on all orders." />
+
+{% elsif collection.handle == 'shorts' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Workout Shorts | TLF Apparel
+</title>    
+<meta name="description" content="Work out at the gym or go for a run in TLF's comfortable, performance-driven shorts for men. Shop now to get free shipping and returns on all orders." />
+
+<!-- Joggers & Pants -->
+{% elsif collection.handle == 'joggers-pants' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Joggers & Pants | TLF Apparel
+</title>    
+<meta name="description" content="TLF redefines the typical jogger with its edgy design and unequaled comfort. Wear these traveling, training, running errands, or any occasion." />
+
+{% elsif collection.handle == 'joggers-pants' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Joggers & Pants | TLF Apparel
+</title>    
+<meta name="description" content="TLF redefines the typical jogger with its edgy design and unequaled comfort. Wear these traveling, training, running errands, or any occasion." />
+
+<!-- Tops -->
+{% elsif collection.handle == 'tops' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Tops | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+{% elsif collection.handle == 'tops' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Tops | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+<!-- Tank-tops Sleeveless -->
+{% elsif collection.handle == 'hoodies-sweatshirts-jackets' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Hoodies, Sweatshirts, and Jackets | TLF Apparel
+</title>    
+<meta name="description" content="Inspire your next workout with trendy and comfortable hoodies, sweatshirts, and jackets. Shop now for your favorite colors and styles and get free shipping on all orders." />
+
+{% elsif collection.handle == 'hoodies-sweatshirts-jackets' and current_tags contains 'MENS' %}
+<title>		
+Men's Hoodies, Sweatshirts, and Jackets | TLF Apparel
+</title>    
+<meta name="description" content="Inspire your next workout with trendy and comfortable hoodies, sweatshirts, and jackets. Shop now for your favorite colors and styles and get free shipping on all orders." />
+<!-- Tank-tops Sleeveless -->
+{% elsif collection.handle == 'tank-tops-sleeveless' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Workout Tanks | TLF Apparel
+</title>    
+<meta name="description" content="Inspire your next workout with trendy and comfortable workout tanks. Shop now for your favorite colors and styles and get free shipping on all orders." />
+
+{% elsif collection.handle == 'tank-tops-sleeveless' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Workout Tanks | TLF Apparel
+</title>    
+<meta name="description" content="Inspire your next workout with trendy and comfortable workout tanks. Shop now for your favorite colors and styles and get free shipping on all orders." />
+
+<!-- Long Sleeves -->
+{% elsif collection.handle == 'long-sleeves' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Long Sleeve Workout Tops | TLF Apparel
+</title>    
+<meta name="description" content="Shop women's high-performance long sleeves for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+{% elsif collection.handle == 'long-sleeves' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Long Sleeve Workout Tops | TLF Apparel
+</title>    
+<meta name="description" content="Shop men's high-performance long sleeves for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+<!-- Short Sleeves -->
+{% elsif collection.handle == 'short-sleeves' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Short Sleeve Workout Tops | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's high-performance short sleeves for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+{% elsif collection.handle == 'short-sleeves' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Short Sleeve Workout Tops | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's high-performance short sleeves for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+<!-- Crop Tops -->
+{% elsif collection.handle == 'crop-tops' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Crop Tops | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's high-performance crop tops for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+<!-- Sports Bras -->
+{% elsif collection.handle == 'sports-bras' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Sports Bras | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's high-performance sports bras for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+<!-- Capris Crops -->
+{% elsif collection.handle == 'capris-crops' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Capris - Crops | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's high-performance carpis & crops for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+<!-- Leggings and Tights -->
+{% elsif collection.handle == 'leggings-tights' and collection.tags contains 'WOMENS' %}
+
+<title>		
+Women's Leggings - Tights | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's high-performance legggings & tights for every active lifestyle. Choose your favorite colors and styles and get free shipping." />
+
+{% elsif collection.handle == 'leggings-tights' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Leggings - Tights | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's high-performance legggings & tights to take your training to the next level. Choose your favorite colors and styles and get free shipping." />
+
+
+<!-- Ease -->
+{% elsif collection.handle == 'ease' and collection.tags contains 'WOMENS' %}
+ 
+<meta name="description" content="The All-Day Ease Collection is comfy yet training practical. The Ease Comfy Joggers, Ease Cropped Pullover Sweatshirt, and Training Tank Tops meet all your workout and loungewear needs. Featuring an ultra-soft, stretchy, fit allowing you to move freely during your training sessions, while delivering the versatility to lounge. " />
+
+<!-- Ease -->
+{% elsif collection.handle == 'chromatic' and collection.tags contains 'WOMENS' %}
+
+<title>		
+WOMEN'S CHROMATIC COLLECTION | TLF Apparel
+</title>    
+<meta name="description" content="A futuristic remix to the classic camo print and a sleek shine to your favorite training styles. Featuring lightweight camo joggers, running shorts, and a camo gym jacket with water-resistant fabric. Mix and match with our high-waisted leggings and our medium impact padded sports bra. Gym-To-Street™ ready style." />
+
+{% elsif collection.handle == 'collegiate' and collection.tags contains 'WOMENS' %}
+
+<title>		
+TLF Women's Collegiate – women's athletic shorts, crop hoodies
+</title>    
+<meta name="description" content="Empowered through sport. Our Collegiate capsule features sport-inspired workout matching sets styled for the streets and designed to take on every challenge or rep, including: cropped hoodies and gym shorts. Ideal for all types of workouts and sports, Collegiate will take it all to the next level." />
+
+{% elsif collection.handle == 'hyper-onyx' and collection.tags contains 'WOMENS' %}
+
+<title>		
+HYPER-ONYX COLLECTION - REDEFINING WOMEN’S WORKOUT & GYM TO STREET ACTIVEWEAR
+</title>    
+<meta name="description" content="TLF’s high waisted shiny leggings, shorts, and high impact sports bras provide a contoured compression fit and stretchy-soft-lightweight-moisture wicking fabrics. Our women’s workout training joggers, sleeveless crop gym hoodies, and mesh workout jackets are style and performance-driven women’s activewear–REDEFINED." />
+
+{% elsif collection.handle == 'electric' and collection.tags contains 'WOMENS' %}
+
+<title>		
+TLF Women's Electric Collection – gym hoodie, shirt, leggings
+</title>    
+<meta name="description" content="Women who train hard in-n-out the gym - this is the radiating Electric energy TLF was built on. The women’s Electric collection features workout outfits, including: cropped and short-sleeve hoodies, short-sleeve shirts, high-waisted leggings and more. Few activewear sets combine style and sports use, but this one does." />
+
+{% elsif collection.handle == 'airfit' and collection.tags contains 'WOMENS' %}
+
+<title>		
+TLF Women Airfit – Mesh workout leggings, biker shorts, tanks
+</title>    
+<meta name="description" content="Beat the heat this Spring with workout clothes that take your training to the next level. Airfit feels like a second skin thanks to mesh paneling on all crop top hoodies, sports bras and leggings for extra breathability. Mix and match with HyperOnyx, or add a bomber jacket for added comfort in the gym or on rest days." />
+
+{% elsif collection.handle == 'swift' and collection.tags contains 'MENS' %}
+
+<title>		
+TLF Men’s Swift – Gym Shorts, hoodies, joggers, tanks and more 
+</title>    
+<meta name="description" content="The TLF Swift Collection offers a wide array of products perfect for comfort during the day and flexibility at the gym during an intense workout. Ultra-soft, lightweight, and breathable fabrics make up one of our most diverse performance training gear sets." />
+
+{% elsif collection.handle == 'gravity' and collection.tags contains 'MENS' %}
+
+<title>		
+TLF Men’s Gravity – Hoodies, tanks, joggers and more for the gym 
+</title>    
+<meta name="description" content="TLF Men’s Gravity Collection delivers! A hybrid of street style with the fit and performance of rugged durable gym clothing. The collection packs it in with various men’s joggers and gym shorts. Hoodies, Tanks, ¾ sleeve shirts complete the look that is ready for wherever the day or night takes you." />
+
+{% elsif collection.handle == 'core' and collection.tags contains 'MENS' %}
+
+<title>		
+TLF Men’s Core – Comfortable gym shorts, short sleeve shorts and more
+</title>    
+<meta name="description" content="TLF Men’s Core Collection has a diverse product offering. Utilizing different styles to accentuate body shape, the Command Joggers, bamboo tanks, element shorts and the rest are ready for the vigor of the gym while keeping you in style outside of the weight room." />
+
+{% elsif collection.handle == 'graphix' and collection.tags contains 'MENS' %}
+
+<title>		
+TLF Men’s Graphix - perfect apparel for fitness | TLF Apparel
+</title>    
+<meta name="description" content="TLF Men’s Graphix Collection is the perfect complement to many of our other styles. With various T-shirt designs to keep you looking great both in the gym and out. The performance cap brings moisture wicking properties and a stretch fit for style and comfort." />
+
+
+{% elsif collection.handle == 'camo' and collection.tags contains 'MENS' %}
+
+<title>		
+Men's Camo Collection – Be seen in camo! | TLF Apparel
+</title>    
+<meta name="description" content="TLF Men's Camo Collection – Be seen in camo!" />
+
+{% elsif collection.handle == 'gift-guide' and collection.tags contains "FATHER'S DAY" %}
+
+<title>		
+FATHER'S DAY GIFT GUIDE COLLECTION | TLF Apparel
+</title>    
+<meta name="description" content="Show dad some love! Father’s Day is just around the corner, and it’s time to celebrate her. If you’ve been searching for that perfect gift for mom, look no further. Give the gift of fitness. Sweat it out with a virtual home workout in matching outfits or chill in loungewear. Get dad styled in the best training shorts, and tank tops or relax in post-workout worthy comfy joggers." />
+
+
+{% elsif collection.handle == 'revive' and current_tags contains 'WOMENS' %}
+
+<title>		
+Women's Revive Collection | High-Waisted Leggings | 2 in 1 Shorts | TLF Apparel
+</title>    
+<meta name="description" content="TLF’s Women’s Revive Collection features a range of go-to Summer styles including High-Waisted Workout Shorts, Long Sleeve & Gym Crop Tops, High-Waisted Leggings, and Medium Impact Sports Bras. Whether your gearing up for a run, spin class, or gym session, the women’s Revive Collection is ready to perform." />
+
+{% elsif collection.handle == 'fit-of-the-week' and current_tags contains 'WOMENS' %}
+
+<title>		
+Women's Fit Of The Week Collection | TLF Apparel
+</title>    
+<meta name="description" content="Women's Fit Of The Week Collection." />
+
+{% elsif collection.handle == 'shine' and current_tags contains 'WOMENS' %}
+
+<title>		
+Women's Shine Collection | TLF Apparel
+</title>    
+<meta name="description" content="Women's Fit Of The Week Collection." />
+
+{% elsif collection.handle == 'fit-of-the-week' and current_tags contains 'MENS' %}
+
+<title>		
+Men's Fit Of The Week Collection | TLF Apparel
+</title>    
+<meta name="description" content="Men's Fit Of The Week Collection." />
+
+{% elsif collection.handle == 'emerge' and current_tags contains 'WOMENS' %}
+
+<title>		
+Women's Emerge Collection | TLF Apparel
+</title>    
+<meta name="description" content="Women's Emerge Collection." />
+
+{% elsif collection.handle == 'shiny' and current_tags contains 'WOMENS' %}
+
+<title>		
+Women's Shiny Collection | TLF Apparel
+</title>    
+<meta name="description" content="Women's Shiny Collection." />
+
+{% elsif collection.handle == 'train-n-run' and current_tags contains 'WOMENS' %}
+
+<title>		
+Women's Train-N-Run Collection | TLF Apparel
+</title>    
+<meta name="description" content="Women's Train-N-Run Collection." />
+
+{% elsif collection.handle == 'air-flex' and current_tags contains 'MENS' %}
+
+<title>		
+Men's Air-Flex Collection | TLF Apparel
+</title>    
+<meta name="description" content="Men's Air-Flex Collection." />
+
+{% elsif collection.handle == 'tlf-train' and current_tags contains 'MENS' %}
+
+<title>		
+Men's TLF Train Collection | TLF Apparel
+</title>    
+<meta name="description" content="Men's TLF Train Collection." />
+
+<!-- Summer Styles -->
+
+{% elsif collection.handle == 'summer-styles' and current_tags contains 'MENS' %}
+
+<title>		
+Men's Summer Styles | TLF Apparel
+</title>    
+<meta name="description" content="Men's Summer Styles for 2020." />
+
+{% elsif collection.handle == 'summer-styles' and current_tags contains 'WOMENS' %}
+
+<title>		
+Women's Summer Styles | TLF Apparel
+</title>    
+<meta name="description" content="Women's Summer Styles for 2020." />
+
+{% elsif collection.handle == 'all-products' and current_tags contains 'TRAINING BELTS' %}
+
+<title>		
+Training Belts | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF training belts." />
+
+{% elsif collection.handle == 'all-products' and current_tags contains 'LIFTING STRAPS' %}
+
+<title>		
+Lifting Straps | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF lifting straps." />
+{% endif %}
+
+{% if collection.handle == 'all-products' and current_tags contains 'HATS' %}
+
+<title>		
+Hats | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF hats." />
+
+{% elsif collection.handle == 'all-products' and current_tags contains 'ACCESSORIES' %}
+
+<title>		
+Accessories | TLF Apparel
+</title>    
+<meta name="description" content="TLF Accessories. Hats, training belts, and lifting straps." />
+
+{% elsif collection.handle == 'back-in-stock' and current_tags contains 'MENS' %}
+
+<title>		
+MEN'S BACK IN STOCK | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's restocked best selling styles for men." />
+
+{% elsif collection.handle == 'back-in-stock' and current_tags contains 'WOMENS' %}
+
+<title>		
+WOMEN'S BACK IN STOCK | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's restocked best selling styles for women." />
+
+{% elsif collection.handle == 'all-products' and current_tags contains 'BACK IN STOCK' %}
+
+<title>		
+BACK IN STOCK | TLF Apparel
+</title>    
+<meta name="description" content="Shop TLF's restocked best selling styles." />
+
+{% else %}
+
+<meta name="description" content="{{ meta_data.description_tag }}" />
+{% endif %}
+
+
+{% else %}
+{% include 'seo-title' %}
+<title>{{ seo_title }}</title>
+{% endif %}

@@ -1,0 +1,143 @@
+{% assign number_of_comments = article.comments_count %}
+
+{% if comment %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+<div class="page-content career">
+
+  <div class="grid">
+    <article class="grid__item article">
+
+      {% include 'breadcrumbs' %}
+
+      <header class="section-header careers">
+        <h1 class="section-header__title">{{ article.title }}</h1>
+        {% if section.settings.blog_show_author %}
+          <div class="article__author">by {{ article.author }}</div>
+        {% endif %}
+      {% if section.settings.social_sharing_blog %}
+        {% include 'social-sharing-career', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+      {% endif %}
+      </header>
+
+      {% if section.settings.blog_show_image and article.image %}
+        <div class="image-wrap aos-animate article__featured-image" style="height: 0; padding-bottom: {{ 100 | divided_by: article.image.aspect_ratio }}%;">
+          {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="lazyload"
+              data-src="{{ img_url }}"
+              data-widths="[360, 540, 750, 900, 1080, 1600]"
+              data-aspectratio="{{ article.image.aspect_ratio }}"
+              data-sizes="auto"
+              alt="{{ article.image.alt }}">
+          <noscript>
+            <img class="lazyloaded" src="{{ article.image | img_url: '1000x' }}" alt="{{ block.settings.image.alt }}">
+          </noscript>
+        </div>
+      {% endif %}
+
+      <div class="article__body rte rte--indented-images">
+        {% render 'career-top-info' %}
+        {{ article.content }}
+      </div>
+
+<a href="#" class="aft-modalButton" data-popup="popupTen"><button onclick="ApplyFunction()" style="border-radius:60px;background-color:#2e2e2e;color:#ffffff;font-family:'Poppins', sans-serif;padding: 16px 26px;border:none;font-size: 15px;font-weight: 400;">Apply now</button></a>
+
+{% render 'apply-resume' %}
+
+<div class="text-left article">
+    <a href="{{ blog.url }}" class="return-link" style="font-family: 'Poppins', sans-serif;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.69418 1.74367C9.40835 1.45784 8.94751 1.45784 8.66168 1.74367L3.81418 6.59117C3.58668 6.81867 3.58668 7.18617 3.81418 7.41367L8.66168 12.2612C8.94751 12.547 9.40835 12.547 9.69418 12.2612C9.98001 11.9753 9.98001 11.5145 9.69418 11.2287L5.47085 6.9995L9.70001 2.77034C9.98001 2.49034 9.98001 2.02367 9.69418 1.74367Z" fill="#2E2E2E" /></svg>Go back</a>
+  </div>
+
+    </article>
+
+  </div>
+
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "articleBody": {{ article.content | strip_html | json }},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ shop.url | append: article.url | json }}
+  },
+  "headline": {{ article.title | json }},
+  {% if article.excerpt != blank %}
+    "description": {{ article.excerpt | strip_html | json }},
+  {% endif %}
+  {% if article.image %}
+    {% assign image_size = article.image.width | append: 'x' %}
+    "image": [
+      {{ article | img_url: image_size | prepend: "https:" | json }}
+    ],
+  {% endif %}
+  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+  "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+  "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+  "author": {
+    "@type": "Person",
+    "name": {{ article.author | json }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    {% if settings.share_image %}
+      {% assign image_size = settings.share_image.width | append: 'x' %}
+      "logo": {
+        "@type": "ImageObject",
+        "height": {{ settings.share_image.height | json }},
+        "url": {{ settings.share_image | img_url: image_size | prepend: "https:" | json }},
+        "width": {{ settings.share_image.width | json }}
+      },
+    {% endif %}
+    "name": {{ shop.name | json }}
+  }
+}
+</script>
+
+{% schema %}
+  {
+    "name": "Article pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_image",
+        "label": "Show article image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_comments",
+        "label": "Show comment count",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_sharing_blog",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

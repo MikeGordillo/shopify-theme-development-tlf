@@ -1,0 +1,251 @@
+<script>
+  (function() {
+    var __hic = window.__hic = {};
+    __hic.version = '1.0.0';
+    __hic.data = {};
+    __hic.data.platform = 'shopify';
+    __hic.data.siteId = 'G1sv8wRr';
+    __hic.data.cu = {{ shop.currency | json }};
+    __hic.data.moneyFormat = {{ shop.money_format | json }};
+    __hic.data.loc = {{ shop.locale | json }};
+    __hic.data.page = {};
+    __hic.data.page.bc = [];
+
+    {% if collection %}
+      __hic.data.cat = {
+        id: {{ collection.id | json }},
+        nm: {{ collection.title | json }},
+        apc: {{ collection.all_products_count }},
+        pub: {{ collection.published_at | date: "%Y-%m-%d %H:%M:%S %Z" | json }},
+        pc: {{ collection.products_count }},
+        url: {{ collection.url | json }},
+        img: {{ collection.featured_image | json }},
+        cType: {{ collection.current_type | json }},
+        cVendor: {{ collection.current_vendor | json }},
+        dSort: {{ collection.default_sort_by | json }},
+        sort: {{ collection.sort_by | json }},
+        sortOptions: [],
+        aTags: [],
+        tags: [],
+        types: [],
+        filters: [],
+        vendors: []
+      };
+
+      {%- for tag in collection.all_tags limit:50 -%}
+        __hic.data.cat.aTags.push({{ tag | json }});
+      {%- endfor -%}
+
+      {%- for tag in collection.tags limit:50 -%}
+        __hic.data.cat.tags.push({{ tag | json }});
+      {%- endfor -%}
+
+      {%- for vendor in collection.all_vendors limit:50 -%}
+        __hic.data.cat.vendors.push({{ vendor | json }});
+      {%- endfor -%}
+
+      {%- for type in collection.all_types limit:50 -%}
+        __hic.data.cat.types.push({{ type | json }});
+      {%- endfor -%}
+
+      {%- for filter in collection.filters limit:50 -%}
+        __hic.data.cat.filters.push({{ filter.label | json }});
+      {%- endfor -%}
+
+      {%- for option in collection.sort_options limit:50 -%}
+        __hic.data.cat.sortOptions.push({{ option.value | json }});
+      {%- endfor -%}
+    {% endif %}
+
+    {% if collection.title %}
+      __hic.data.page.cat = {{ collection.title | json }};
+    {% endif %}
+    {% if collection.id %}
+      __hic.data.page.catId = {{ collection.id | json }};
+    {% endif %}
+
+    {%- unless template == 'index' or template == 'cart' or template == 'list-collections' -%}
+      {%- if template contains 'page' -%}
+        __hic.data.page.bc.push({{page.title | json }});
+      {%- elsif template contains 'product' -%}
+        {%- if collection.url -%}
+          __hic.data.page.bc.push({{ collection.title | json }});
+        {%- endif -%}
+        __hic.data.page.bc.push({{ product.title | json }});
+      {%- elsif template contains 'collection' and collection.handle -%}
+        __hic.data.page.bc.push({{ collection.title | json }});
+        {%- if current_tags -%}
+          __hic.data.page.bc.push({{ current_tags | join: " + " | json }});
+        {%- endif -%}
+      {%- elsif template == 'blog' -%}
+        __hic.data.page.bc.push({{ blog.title | json }});
+        {%- if current_tags -%}
+          __hic.data.page.bc.push({{ current_tags | join: " + " | json }});
+        {%- endif -%}
+      {%- elsif template == 'article' -%}
+        __hic.data.page.bc.push({{ blog.title | json }});
+        __hic.data.page.bc.push({{ article.title | json }});
+      {%- elsif template == '404' -%}
+        __hic.data.page.kind = '404';
+        __hic.data.page.bc.push({{ page_title | json }});
+      {%- elsif page_title -%}
+        __hic.data.page.bc.push({{ page_title | json }});
+      {%- endif -%}
+    {%- endunless -%}
+
+    {%- if cart -%}
+      __hic.data.cart = {
+        tt: {{ cart.total_price | divided_by: 100.0 }},
+        qt: {{ cart.item_count }},
+        cu: {{ cart.currency.iso_code | json }},
+        li: []
+      };
+      {%- for item in cart.items -%}
+        __hic.data.cart.li.push({
+          tt: {{ item.line_price | divided_by: 100.0 }},
+          pr: {{ item.price | divided_by: 100.0 }},
+          qt: {{ item.quantity }},
+          {%- if item.variant.inventory_quantity -%}
+          iq: {{ item.variant.inventory_quantity }},
+          {%- endif -%}
+          ds: {{ item.total_discount | divided_by: 100.0 }},
+          opr: {{ item.original_price | divided_by: 100.0 }},
+          id: {{ item.product_id | json }},
+          varid: {{ item.variant_id | json }},
+          brand: {{ item.vendor | json }},
+          url: {{ item.url | json }},
+          img: {{ item| img_url: '240x' | json }},
+          nm: {{ item.product.title | json }},
+          desc: {{ item.product.description | json }},
+          sku: {{ item.sku | json }},
+          cat: [],
+          catIds: [],
+          tags: []
+        });
+
+        {%- unless item.variant.title contains 'Default' -%}
+          var opts = {};
+          {%- for option in item.product.options -%}
+            opts[{{ option | json}}] = {{ item.variant.options[forloop.index0] | json }};
+
+          {%- endfor -%}
+
+          __hic.data.cart.li[__hic.data.cart.li.length-1].opts = opts;
+        {%- endunless -%}
+
+
+        {%- for category in item.product.collections -%}
+          __hic.data.cart.li[__hic.data.cart.li.length-1].cat.push({{ category.title | json }});
+          __hic.data.cart.li[__hic.data.cart.li.length-1].catIds.push({{ category.id | json }});
+        {%- endfor -%}
+        {%- for tag in item.product.tags limit:50 -%}
+          __hic.data.cart.li[__hic.data.cart.li.length-1].tags.push({{ tag | json }});
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if product -%}
+      __hic.data.product = {
+        id: {{ product.id | json }},
+        varid: {{ product.selected_or_first_available_variant.id | json }},
+        nm: {{ product.title | json }},
+        url: {{ product.url | json }},
+        img: {{ product.featured_image | json }},
+        desc: {{ product.description | json }},
+        brand: {{ product.vendor | json }},
+        pr: {{ product.price | divided_by: 100.0 }},
+        cat: [],
+        catIds: [],
+        tags: []
+      };
+      {%- for category in product.collections -%}
+        __hic.data.product.cat.push({{ category.title | json }});
+        __hic.data.product.catIds.push({{ category.id | json }});
+      {%- endfor -%}
+      {%- for tag in product.tags limit:50 -%}
+        __hic.data.product.tags.push({{ tag | json }});
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if customer -%}
+      __hic.data.user = {
+        id: {{ customer.id | json }},
+        tr: {{ customer.orders_count }},
+        email: {{ customer.email | json }},
+        nm: {{ customer.name | json }},
+        ts: {{ customer.total_spent | divided_by: 100.0 }},
+        auth: true
+      };
+    {%- elsif checkout.customer and checkout.customer.id -%}
+      __hic.data.user = {
+        id: {{ checkout.customer.id | json }},
+        tr: {{ checkout.customer.orders_count }},
+        email: {{ checkout.customer.email | json }},
+        nm: {{ checkout.customer.name | json }},
+        ts: {{ checkout.customer.total_spent | divided_by: 100.0 }},
+      };
+    {%- endif -%}
+
+    {%- if checkout.order_id or checkout.order_number -%}
+      __hic.data.tr = {
+        id: {{ checkout.order_id | json }},
+        num: {{ checkout.order_number | json }},
+        nm: {{ checkout.order_name | json }},
+        st: {{ checkout.subtotal_price | divided_by: 100.0 }},
+        tx: {{ checkout.tax_price | divided_by: 100.0 }},
+        tt: {{ checkout.total_price | divided_by: 100.0 }},
+        ds: {{ checkout.discounts_amount | divided_by: 100.0 }},
+        sh: {{ checkout.shipping_price | divided_by: 100.0 }},
+        shm: {{ checkout.shipping_method.title | json }},
+        cu: {{ checkout.currency | json }},
+        li: []
+      };
+
+      __hic.data.tr.gw = {{ checkout.transactions.first.gateway | json }};
+      __hic.data.tr.ct = {{ checkout.transactions.first.payment_details.credit_card_company | json }};
+
+      {%- for item in checkout.line_items -%}
+        __hic.data.tr.li.push({
+          tt: {{ item.line_price | divided_by: 100.0 }},
+          pr: {{ item.price | divided_by: 100.0 }},
+          qt: {{ item.quantity }},
+          {%- if item.variant.inventory_quantity -%}
+          iq: {{ item.variant.inventory_quantity }},
+          {%- endif -%}
+          opr: {{ item.original_price | divided_by: 100.0 }},
+          ds: {{ item.total_discount | divided_by: 100.0 }},
+          id: {{ item.product_id | json }},
+          varid: {{ item.variant_id | json }},
+          brand: {{ item.vendor | json }},
+          url: {{ item.url | json }},
+          img: {{ item| img_url: '240x' | json }},
+          nm: {{ item.product.title | json }},
+          desc: {{ item.product.description | json }},
+          sku: {{ item.sku | json }},
+          cat: [],
+          catIds: [],
+          tags: []
+        });
+
+        {%- unless item.variant.title contains 'Default' -%}
+         var opts = {};
+         {%- for option in item.product.options -%}
+           opts[{{ option | json }}] = {{ item.variant.options[forloop.index0] | json }};
+         {%- endfor -%}
+
+          __hic.data.tr.li[__hic.data.tr.li.length-1].opts = opts;
+        {%- endunless -%}
+
+
+        {%- for category in item.product.collections -%}
+          __hic.data.tr.li[__hic.data.tr.li.length-1].cat.push({{ category.title | json }});
+          __hic.data.tr.li[__hic.data.tr.li.length-1].catIds.push({{ category.id | json }});
+        {%- endfor -%}
+        {%- for tag in item.product.tags limit:50 -%}
+          __hic.data.tr.li[__hic.data.tr.li.length-1].tags.push({{ tag | json }});
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endif -%}
+  })();
+</script>
+<script id="obv_loader" src="https://cdn.obviyo.net/dynamic/loader/prod/G1sv8wRr?v=1" async type="text/javascript"></script>

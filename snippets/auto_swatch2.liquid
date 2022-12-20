@@ -1,0 +1,22 @@
+{% if product.metafields.variantColorsSlider.color_variant_slider != blank %}
+<label class="colors_label">COLOR</label>
+<div style="width:100%;margin:0 auto;padding-bottom:10px;">
+  <div style="float:left; width: inherit;">
+    <div id="thumbnail-slider">
+      <div class="inner">
+        <ul>
+        {{product.metafields.variantColorsSlider.color_variant_slider}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}  
+
+
+{% if product.metafields.variantColors.color_variant != blank %}
+<label class="colors_label">COLOR</label>
+        {{product.metafields.variantColors.color_variant}}
+{% endif %}  
+<div id="tlf_product_hover_color"></div>
+<div id="tlf_color">{{product.metafields.variantColors.main_color}}</div>

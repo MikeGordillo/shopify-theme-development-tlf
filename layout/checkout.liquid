@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+  {% render 'elevar-head-listener' %}
+  {% render 'elevar-head' %}
+<script>GSXMLHttpRequest = XMLHttpRequest;</script>
+    
+    
+    <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/vLM_160_KqQPL2l55GpovQ" async></script>
+	<div class="yotpo-widget-instance" data-yotpo-instance-id="33210"></div>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <title>{{ page_title }}</title>
+  {% include 'hic-tag' %}
+
+    {% if customer %}
+        <script>
+            var user = {'event':'customer_data'};
+            {% if customer.id %}
+                user.id = "{{ customer.id }}";
+            {% endif %}
+            {% if customer.accepts_marketing %}
+                user.accepts_marketing = "{{ customer.accepts_marketing }}";
+            {% endif %}
+            {% if customer.tags %}
+                user.tags = "";
+            {% for tag in customer.tags %}
+                user.tags += ",{{ tag }}";
+            {% endfor %}
+            {% endif %}
+            {% if customer.email %}
+                user.em = "{{ customer.email }}";
+            {% endif %}
+            {% if customer.phone %}
+                user.ph = "{{ customer.phone }}";
+            {% endif %}
+            {% if customer.first_name %}
+                user.fn = "{{ customer.first_name }}";
+                user.fn = user.fn.replace("&#39;","'"); // fixes encoding error with apostrophes
+            {% endif %}
+            {% if customer.last_name %}
+                user.ln = "{{ customer.last_name }}";
+                user.ln = user.ln.replace("&#39;","'"); // fixes encoding error with apostrophes
+            {% endif %}
+            {% if customer.default_address %}
+                user.cn = "{{ customer.default_address.country_code }}";
+                user.st = "{{ customer.default_address.province_code }}";
+                user.ct = "{{ customer.default_address.city }}";
+                user.zp = "{{ customer.default_address.zip }}";
+                user.ph = "{{ customer.default_address.phone }}";
+            {% endif %}
+            {% if customer.total_spent %}
+                user.ltv = {{ customer.total_spent | money_without_currency}};
+            {% endif %}
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(user);
+        </script>
+    {% endif %}
+  
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+
+    <!-- Route Code Edited 07/18/2022 -->
+    <script type="text/javascript" src="https://cdn.routeapp.io/route-widget-shopify/v2/route-widget-shopify-stable-v2.min.js"></script>
+    <!-- Route Code End -->
+
+  {% include 'qikify-navigator' %}
+  
+ 
+  {% include 'qikify-smartmenu' %}
+</head>
+
+
+  <body>
+    
+    
+    
+  {% render 'elevar-checkout-end' %}
+    {{ skip_to_content_link }}
+
+    <div class="banner" data-header>
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </div> 
+    {{ order_summary_toggle }}
+        <div class="content" data-content>
+      <div class="wrap">
+        <div class="main" role="main">
+          <div class="main__header">
+            {{ content_for_logo }}
+            {% include 'checkout_changes_replace_js' %}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </div>
+          <div class="main__content">
+            {{ content_for_layout }}
+          </div>
+        </div>
+        
+        
+        <div class="sidebar" role="complementary">
+        <div style="margin:10px;">
+          {% comment %}
+   <strong><span style="color:red">{% render 'icon-cart-exclamation' %} WARNING: </span>
+          <p>ALL SHIPPING PROVIDERS ARE CURRENTLY EXPERIENCING DELAYS DUE TO WEATHER DISRUPTIONS. IN ADDITION, KINDLY BE AWARE THAT DUE TO CIRCUMSTANCES BEYOND OUR CONTROL, SOME ORDERS MAY BE DELAYED BEYOND THE ESTIMATED DELIVERY DATE.</p>
+          </strong>
+          {% endcomment %}
+          <br> 
+            </div>
+        <div class="outlet-info">
+          {% for item in checkout.line_items %}
+          {% if item.product.tags contains 'OUTLET' %}
+          <div class="outlet-div">
+          <strong><span style="color:red">{% render 'icon-cart-exclamation' %} FINAL SALE ITEMS: </span>NO EXCHANGES, RETURNS, OR REFUNDS. CANNOT BE COMBINED WITH DISCOUNT CODES OR OTHER PROMOTIONS. SUBJECT TO AVAILABILITY.
+          </strong>
+          <br>
+          </div>
+          {% break %}
+          {% endif %}
+          {% endfor %}
+       
+          
+        </div>
+                
+    
+
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content"> 
+ 
+            {{ content_for_order_summary }}
+            <p style="text-align: center;"><a title="This online store is secured by Shopify" href="//www.shopify.com/pci-compliant?utm_source=secure&amp;utm_medium=shop" target="_blank" rel="noopener"><img src="//cdn.shopify.com/s/images/badges/shopify-secure-badge-light-shadow.png" alt="Shopify secure badge" /></a></p>
+          </div>
+             </div>
+      </div>
+    </div>
+          <div class="main__footer">
+            {{ content_for_footer }}
+          </div>
+
+    {{ tracking_code }}
+     
+
+ {% include 'smsbump_checkout_marketing_subscription' %}
+</body>
+<!-- Start of Checkout Saving Script -->
+
+  
+  <script>
+
+    function doSomething() {
+
+      var items2 = document.getElementsByClassName("total-recap__original-price")[0].innerHTML.replace(/\D/g, ""),
+          cashOut2 = document.getElementsByClassName("total-recap__final-price")[0].innerHTML.replace(/\D/g, ""),
+          sum2 = ((+items2 - +cashOut2)/100).toFixed(2);
+      var defaultCurrency = '{{ settings.default_currency }}';
+	  var shopCurrency = ' {{ shop.currency }}';
+      var currencySymbol = document.getElementsByClassName("payment-due__price")[0].innerHTML.replace(/[^A-Za-z]+/g, '');
+      var symbol = document.getElementsByClassName("payment-due__price")[0].innerHTML.replace(/[\d,.-z""\s]/g, "");
+
+        document.getElementsByClassName("payment-due__discount")[0].innerHTML ="Congrats! You Saved " + symbol + sum2 +  " " + currencySymbol;
+    }
+
+
+    setInterval(doSomething, 1000); // Time in milliseconds
+
+
+  </script>
+  <!-- End of Checkout Saving Script -->
+
+<script>
+
+  function removediscount() {
+    if ($('.total-recap__original-price')[0]) {
+      $('.savings').show();
+    } else {
+      $('.savings').hide();
+    }
+  }
+  
+      setInterval(removediscount, 1000); // Time in milliseconds
+
+</script>
+  
+ 
+  
+<script type='text/javascript'> var _d_site = _d_site || 'B120B6A76F1E0747991693B1'; </script>
+
+
+  <style>
+    .field.field--optional.field--show-floating-label .section__content {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+    .yotpo-widget-checkout-redemptions-widget.margin-top {
+    margin: 25px auto 25px!important;
+}
+    .yotpo-widget-checkout-redemptions-widget .yotpo-not-enough-points-text, .yotpo-widget-checkout-redemptions-widget .yotpo-point-balance-text {
+    text-align: center !important;
+}
+.outlet-info .outlet-div {
+    padding: 10px 20px!important;
+    background: #e1e1e1;
+    border-radius: 10px;
+    color: black;
+    font-size: 12px!important;
+    margin-bottom: 1.5em!important;
+    margin-top: 1.5em!important;
+    line-height: 20px;
+}
+    .outlet-info {
+    padding: 0!important;
+    }
+    
+  /*    .cardBadge-final {
+    padding: 10px 20px!important;
+    background: #5d4aff;
+    border-radius: 10px;
+    color: white;
+    font-size: 11px!important;
+    margin-bottom: 1.5em!important;
+    margin-top: 1.5em!important;
+          line-height: 16px;
+} */
+    
+    .order-summary__section.order-summary__section--discount p {
+    font-size: 12px;
+    padding-top: 10px;
+}
+    .floating-labels .address-fields {
+      display: block !important;
+    }
+  </style>  
+
+  <style>
+    .section--contact-information .section__header p.layout-flex__item {
+      display:block !important; 
+    }
+  </style>
+    <style>
+
+	.checkbox__label[for="checkout_buyer_accepts_marketing"]{
+		font-size: 14px;
+		font-weight: 700;
+		margin-bottom: 1px;
+     
+	}
+      .weather {
+    padding-bottom: 10%;
+}
+      .weather img {
+    width: 10px;
+}
+    .rwd-table {
+      background: #34495E;
+      color: #000;
+      border-radius: .4em;
+      overflow: hidden;
+      margin: 10px 0 15px 0;
+    }
+    .shipping_tr {
+      border-color: lighten(#34495E, 10%);
+    }
+  .shipping_th, .shipping_td {
+      margin: .5em 1em;
+    }
+  .shipping_td:before {
+      color: black;
+    }
+
+    @media only screen and (min-width: 600px) { 
+      .shipping_td {
+        padding: 10px 16px !important;
+        text-align: center;
+      }
+
+      .shipping_th{
+        font-weight: bold;
+        color: white;
+        padding-left: 14px !important;
+        padding-right: 21px;
+      }
+
+    }
+
+    .shipping_tr:nth-child(even) {
+      background: ghostwhite;
+    }
+
+    .shipping_tr:nth-child(odd) {
+      background: aliceblue;
+    }
+
+    .shipping_info {
+      width: 100%;
+    }
+
+    .shipping_text {
+      font-size: 1em;
+    }
+
+    .shipping_tr:nth-child(1) {
+      background: #382C8B;
+    }
+
+    .shipping_td {
+      padding: 10px 16px !important;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    .shipping_th{
+      font-weight: bold;
+      color: white;
+      padding-left: 14px !important;
+      padding-right: 21px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }    
+      
+.section.section--shipping-method p {
+    background-color: #F7F7F7;
+    color: black;
+    text-align: left;
+    padding: 10px 20px 15px 30%;
+    background-image: url(https://cdn.shopify.com/s/files/1/2665/0346/files/update.svg?v=1614038759);
+    background-size: 18%;
+    background-repeat: no-repeat;
+    background-position: 6% center;
+    font-size: 12px;
+}
+      
+      .notice--error {
+    border-color: transparent;
+    background-color: transparent;
+}
+      
+      .notice {
+    padding: 0em;
+    border-radius: 0px;
+    border: 0px solid transparent;
+    background-color: transparent;
+}
+    
+      .notice--error .notice__icon {
+    display: none;
+}
+      
+      .notice__content {
+        padding-right: 0em;
+}
+      ul.policy-list {
+    margin: 0 auto;
+    display: table;
+}
+      .sidebar {
+        width: auto !important;
+        border-left: none !important;
+        margin: 0 auto;
+        max-width: 500px;
+        min-height: inherit !important;
+}
+      
+.order-summary.order-summary--is-collapsed {
+    display: none;
+}
+      
+/*////////////////////////////////////////////////////*/
+/*///////////ORDER CONFIRMATION PAGE STYLE////////////*/
+/*////////////////////////////////////////////////////*/
+
+        .main.RCT-left-bar-custom {
+            display: flex!important;
+            flex-direction: row!important;
+            padding-right: 0!important;
+        }
+
+        .main__content {
+            padding-right: 25px!important;
+          	width: auto!important;
+        }
+        
+        @media(max-width: 999px) {
+
+			.main.RCT-left-bar-custom {
+                display: grid!important;
+       			grid-template-columns: 1fr!important;
+              	padding-top: 0!important;
+            }
+          
+          	.main__content {
+              	grid-row-start: 2!important;
+                padding-right: 0!important;
+              	margin-top: 25px!important;
+              	width: 100%!important;
+            }
+          
+          	.sidebar {
+              	grid-row-start: 1!important;
+              	padding-top: 20px!important;
+                border: none !important;
+                max-width: 100%!important;
+            }
+
+        }
+  </style>
+  
+</html>
+
+<style>
+  .reduction-code__text {
+    font-size: .75em;
+}
+  
+  /*////////////////////////////////////////////////*/
+  /*/ Contact Information Page Styling STARTS Here /*/
+  /*////////////////////////////////////////////////*/
+  	.sidebar {
+       display: block;
+       overflow: visible !important;
+  	}
+  
+  .order-summary.order-summary--transition.order-summary--is-expanded {
+    min-height: 300px;
+    overflow: auto;
+  }
+  
+    aside{
+      	background-color: #FAFAFA;
+    }
+  
+  	.sidebar::after {
+        display: none;
+    }
+  
+  	.page--banner .banner {
+    	padding: 0;
+      	height: 171px;
+        display: flex;
+      	align-items: center;
+      	justify-content: center;
+      	background: none;
+	}
+  
+    a.logo.logo--left {
+        text-align: center;
+    }
+  
+  	body {
+      font-family: 'Montserrat';
+      line-height: 1.5em !important;
+      letter-spacing: .3px !important;
+    }
+  
+  .payment-due__price {
+    letter-spacing: .3px !important;
+}
+  
+    .shown-if-js {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  	}
+  
+  	.dynamic-checkout {
+        width: 60%;
+    }
+  	
+  	.field.field--optional.field--show-floating-label .section__content, .fieldset-description .section__content {
+        padding: 0px!important;
+      	margin: 6px 0 10px 0;
+    }
+  
+    .floating-labels .field--half {
+        width: 100%;
+    }
+
+  	.main {
+        padding-right: 0!important;
+    }
+  
+    .main__content {
+        padding-left: 0!important;
+      	padding-right: 0!important;
+        width: 60%!important;
+        margin: auto!important;
+    }
+  
+    .ar64 span {
+        font-family: 'Montserrat';
+    }
+  
+    .section--shipping-address {
+        padding: 0;
+        margin-top: 30px;
+      	margin-bottom: 35px;
+    }
+
+    h2.dynamic-checkout__title, h2#main-header, p.layout-flex__item, h2#section-delivery-title {
+        font-family: 'Montserrat', sans-serif;
+    }
+  
+  	p.layout-flex__item a {
+      	text-decoration: underline;
+      	font-weight: 500;
+    }
+  
+    form.edit_checkout.animate-floating-labels {
+        display: grid;
+    }
+  
+    .checkbox__label[for="smsbump-checkout-messages-subscription"] {
+		font-size: 10px!important;
+      	font-family: 'Montserrat', sans-serif;
+      	font-weight: 300;
+      
+    }
+  
+  	.checkbox__label[for="checkout_buyer_accepts_marketing"], .checkbox__label[for="smsbump-checkout-messages-subscription"] span{
+    	font-size: 14px!important;
+    	font-weight: 400!important;
+    	margin-bottom: 1px;
+      	font-family: 'Montserrat', sans-serif;
+      
+	}
+  
+  	span.step__footer__previous-link-content {
+        font-family: 'Montserrat';
+        font-weight: 500;
+    }
+  
+    button#continue_button {
+        font-size: 16px;
+        font-weight: 500;
+        font-family: 'Montserrat';
+        border-radius: 50px;
+        box-shadow: none;
+    }
+  
+    button#continue_button:focus {
+      	outline: none;
+    }
+  
+    p#smsbump-consent-message {
+      	font-family: 'Montserrat';
+  	}
+  
+    p#smsbump-consent-message a {
+      	font-weight: 600;
+  	}
+  
+    div[data-address-field="country"] {
+        bottom: 131px;
+    }
+  
+    p#smsbump-consent-message {
+        grid-row-start: 2;
+    }
+  
+    .step__footer {
+      	margin-top: 35px;
+		display: flex;
+     	align-items: center;
+      	justify-content: space-between;
+    }
+  
+    button#continue_button {
+        background-color: #171717;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 40px;
+        height: fit-content;
+        font-family: 'Montserrat';
+        padding: 9px 20px;
+        transition: all .25s ease;
+        min-width: 0;
+        width: 45%;
+    }
+  
+  	button#continue_button:hover {
+        background-color: #464646;
+    }
+  
+    .fieldset-description {
+        height: 35px;
+        margin: auto;
+        width: 98%;
+    }
+  
+    .shown-if-js button#continue_button {
+        background-color: #171717;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 40px;
+        height: fit-content;
+        font-family: 'Montserrat';
+        padding: 9px 20px;
+        transition: all .25s ease;
+        min-width: 0;
+        width: 100%;
+  	}
+  
+  	.shown-if-js button#continue_button:hover {
+  		background-color: #464646;  
+    }
+  
+    .step__footer .shown-if-js {
+        width: 45%;
+    }
+  
+    .shown-if-js {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+  
+    .alternative-payment-separator {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+  
+  	
+  
+  	/* Breadcrumbs styling below */
+    .main__header {
+		padding-bottom: 40px;
+    }
+  
+    .main__header nav {
+      	margin-top: 25px;
+    }
+
+  	.inactive {
+    	background-color: #dddddd!important;
+    }
+  
+  	.inactive a, .inactive span {
+  		color: black!important;
+  	}
+      
+    .inactive:before {
+      	border-left-color: #dddddd!important;
+    }
+  
+  	#payment__order__summary .sidebar::after {
+        background: transparent;
+    }
+  
+  	h2.section__title {
+        font-family: 'Montserrat';
+    }
+  
+    .shown-if-js .section__content {
+        width: 100%;
+    }
+  
+    .step__sections form .shown-if-js {
+        align-items: flex-start;
+    }
+  
+  	p#remember-me-opt-in-description {
+        margin-top: 20px;
+        height: 75px;
+    }
+  
+    #order-summary{
+      	height: min-content!important;
+		transition: none!important;
+      	-webkit-transition: none!important;
+      
+    }
+
+    @media(max-width: 999px) {   
+      	div#order-summary {
+            overflow: initial;
+        }
+      
+      	.order-summary__section.order-summary__section--product-list {
+            margin-top: 25px!important;
+        }
+      
+      	.order-summary__section__content {
+            margin-top: 60px;
+        }
+
+      	.page--banner .banner {
+            height: 125px;
+        }
+      
+		.wrap {
+            max-width: 80%;
+        }
+      
+        .newBreadcrumbs {
+            width: 100%;
+        }
+      
+        .main__content {
+            width: 85%!important;
+          	grid-template-columns: 1fr!important;
+        }
+      
+      	span.order-summary-toggle__icon-wrapper {
+            width: 10%;
+        }
+      
+        .display-table .order-summary-toggle__total-recap {
+          	display: block;
+          	width: 10%;
+        }
+      
+        dd {
+            margin-left: 0;
+        }
+      
+        .sidebar .outlet-info, .sidebar .sidebar__content {
+			max-width: 80%!important;
+        }
+     
+      
+      	/*// Payment Page Order Summary //*/
+        #payment__order__summary {
+            height: min-content;
+            grid-row-start: 1;
+          	margin-left: 0!important;
+          	margin-top: 30px!important;
+          	background-color: transparent!important;
+        }
+      
+        #payment__order__summary .sidebar {
+          	overflow: hidden!important;
+          	padding-bottom: 90px;
+          	padding-top: 0!important;
+        }
+      
+      	#payment__order__summary .order-summary--is-collapsed {	
+            visibility: visible;
+        }
+      
+      	#payment__order__summary .order-summary--is-collapsed {
+            height: 100%;
+        }
+      
+      	.main__header.payment__page__header {
+            padding-bottom: 0;
+        }
+      
+        .main__header.payment__page__header .newBreadcrumbs {
+            margin-bottom: 0;
+        }
+      
+        .order-summary__section__content {
+            margin-top: 0;
+        }
+      
+        #payment__order__summary .order-summary__section__content {
+            margin-top: 0;
+        }
+  
+        #payment__order__summary .sidebar__content p {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 30px;
+        }
+      
+        aside .order-summary__section.order-summary__section--total-lines, aside .order-summary__section.order-summary__section--product-list, aside .order-summary__section.order-summary__section--discount {
+			width: 85%!important;
+        }
+      
+        .order-summary__section.order-summary__section--product-list {
+			margin-top: 0!important;
+        }
+      
+        .section.section--reductions.hidden-on-desktop {
+            display: none;
+        }
+      
+      .dynamic-checkout {
+          width: 85%;
+      }
+	
+    }
+  
+    @media(max-width: 768px) {
+      	.page--banner .banner {
+            height: 100px;
+        }
+      
+		.wrap {
+            max-width: 90%;
+        }
+      
+        .main__content {
+            width: 90%!important;
+        }
+      
+        .main__header {
+            padding-bottom: 25px;
+        }
+      
+      	.newBreadCrumbs__button a {
+        	font-size: 14px;
+      	}
+      
+      	.payment__page__header .newBreadCrumbs__button a {
+            font-size: 14px!important;
+        }
+      
+      	.fieldset-description {
+    		margin-top: 476px;
+		}
+      
+      	span.order-summary-toggle__icon-wrapper {
+            width: 10%;
+        }
+      
+      	.display-table .order-summary-toggle__total-recap {
+            width: 10%;
+        }
+      
+      	dd {
+    		margin: 0;
+		}
+      
+      	.sidebar {
+            margin-top: 25px;
+        }
+      
+      	.sidebar .outlet-info, .sidebar .sidebar__content {
+			max-width: 90%!important;
+        }
+      
+      	.dynamic-checkout {
+            width: 90%;
+        }
+    }
+  
+    @media(max-width: 749px) {
+        .fieldset-description {
+            margin-top: 650px;
+        }
+    }
+  
+    @media(max-width: 650px) {
+      .newBreadCrumbs__button a {
+          padding-left: 15px;
+      }
+      
+      .payment__page__header .newBreadCrumbs__button a {
+          padding-left: 15px;
+      }
+    }
+  
+    @media(max-width: 622px) {
+		button#continue_button {
+            width: 55%;
+          min-width: 230px;
+        }
+    }
+  
+    @media(max-width: 589px) {
+      .newBreadcrumbs {
+      	  margin-top: 20px;
+          margin-bottom: 20px;
+      }
+      
+      .newBreadCrumbs__button a {
+          font-size: 12px;
+      }
+      
+      .payment__page__header .newBreadCrumbs__button a {
+          font-size: 12px!important;
+      }
+      
+      .newBreadCrumbs__button {
+          padding: 10px 10px;
+      }
+      
+      .newBreadCrumbs__button:before {
+          content: "";
+          position: absolute;
+          right: -20px;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: 20px solid #dddddd;
+          border-top: 21px solid transparent;
+          border-bottom: 20px solid transparent;
+          z-index: 9999;
+      }
+      
+      .active:before {
+          border-left-color: black;
+      }
+      
+      .newBreadCrumbs__button:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: 20px solid white;
+          border-top: 21px solid transparent;
+          border-bottom: 20px solid transparent;
+      }
+      
+      .dynamic-checkout {
+          width: 100%;
+      }
+      
+      .step__footer {
+          flex-direction: column;
+          row-gap: 25px;
+      }
+      
+      span.order-summary-toggle__icon-wrapper {
+          width: 5%;
+      }
+      
+      .display-table .order-summary-toggle__total-recap {
+          padding-left: 0;
+      }
+    }
+  
+    @media(max-width: 555px) {
+      .payment__page__header .newBreadCrumbs__button a {
+          padding-left: 10px;
+      }
+    }
+  
+    @media(max-width: 531px) {
+      .payment__page__header .newBreadCrumbs__button {
+          padding: 10px 0px;
+      }
+      
+      .payment__page__header .newBreadCrumbs__button a {
+          padding-left: 20px;
+      }
+    }
+  
+  	
+  
+    @media(max-width: 519px) {
+		.payment__page__header .newBreadCrumbs__button a {
+            font-size: 10px;
+        }
+      
+      	.payment__page__header .newBreadCrumbs__button a {
+            font-size: 10px!important;
+        }	
+    }
+  
+    @media(max-width: 514px) {
+		.checkbox__label[for="checkout_buyer_accepts_marketing"], .checkbox__label[for="smsbump-checkout-messages-subscription"] span {
+            font-size: 12px!important;
+            font-weight: 400!important;
+            margin-bottom: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+      
+		label.checkbox__label {
+            font-size: 12px;
+        }
+      
+        .main__content {
+            width: 100%!important;
+        }
+      
+        aside .order-summary__section.order-summary__section--total-lines, aside .order-summary__section.order-summary__section--product-list, aside .order-summary__section.order-summary__section--discount {
+          width: 100%!important;
+        }
+    }
+  
+    @media(max-width: 500px) {
+		.payment__page__header
+    }
+  
+    @media(max-width: 495px) {
+      p#remember-me-opt-in-description {
+          height: 85px;
+      }
+    }
+  
+    @media(max-width: 464px) {
+		.wrap {
+            max-width: 95%;
+        }
+    }
+  
+    @media(max-width: 441px) {
+		.newBreadCrumbs__button a {
+            font-size: 9px;
+        }
+      	
+      	.payment__page__header .newBreadCrumbs__button a {
+            font-size: 9px!important;
+        }
+    }
+  
+    @media(max-width: 438px) {
+		button#continue_button {
+            width: 65%;
+          min-width: 230px;
+        }
+    }
+  
+    @media(max-width: 420px) {
+      	.wrap {
+            padding: 0;
+            width: 92%;
+        }
+      
+		.newBreadCrumbs__button a {
+          	font-size: 10px;
+          	padding-left: 5px;
+        }
+      
+      	.payment__page__header .newBreadCrumbs__button a {
+            font-size: 10px!important;
+            padding-left: 5px;
+        }	
+
+        .newBreadCrumbs__button {
+          	padding: 4px 10px;
+        }
+      
+        .payment__page__header .newBreadCrumbs__button {
+          	padding: 4px 10px;
+      	}
+      	
+      
+        .newBreadCrumbs__button:before {
+            content: "";
+            position: absolute;
+            right: -13px;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 13px solid #dddddd;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            z-index: 9999;
+        }
+      
+        .active:before {
+          	border-left-color: black;
+        }
+      
+        .newBreadCrumbs__button:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 13px solid white;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+      
+      	.sidebar .outlet-info, .sidebar .sidebar__content {
+            max-width: 92%!important;
+          	padding: 0!important;
+        }
+      
+      	.main-content {
+        	width: 100%!important;  
+        }
+      
+      
+    }
+  
+    @media(max-width: 380px) {
+		.newBreadCrumbs__button {
+            padding: 4px 0px;
+        }
+      
+        .payment__page__header .newBreadCrumbs__button {
+  			padding: 4px 0px;
+        }
+    }
+  
+    @media(max-width: 372px) {
+		.checkbox__label[for="checkout_buyer_accepts_marketing"], .checkbox__label[for="smsbump-checkout-messages-subscription"] span {
+            font-size: 10px!important;
+        }
+      
+        .field.field--optional.field--show-floating-label .section__content, .fieldset-description .section__content {
+            padding: 0px!important;
+            margin: 6px 2px 10px 2px;
+        }
+      
+        .fieldset-description {
+            margin-top: 650px;
+        }
+    }
+  
+    @media(max-width: 360px) {
+		.newBreadCrumbs__button a {
+            font-size: 8px;
+          	padding: 4px 0px 4px 10px;
+        }
+      
+        .payment__page__header .newBreadCrumbs__button a {
+			font-size: 8px!important;
+          	padding: 4px 0px 4px 10px;
+        }
+    }
+  
+    @media(max-width: 357px) {
+		button#continue_button {
+            font-size: 14px;
+            padding: 7px 20px;
+          min-width: 230px;
+        }
+    }
+
+  
+  /*//////////////////////////////////////////////*/
+  /*/ Contact Information Page Styling ENDS Here /*/
+  /*//////////////////////////////////////////////*/
+  
+  
+  /*/ ORDER SUMMARY ON CUSTOMER INFO PAGE STYLING /*/
+  
+</style>
+
+<script>
+  	// Function to mark SMS checkdox "CHECKED"
+    function markDiscountCheckbox() {
+		document.getElementById("smsbump-checkout-messages-subscription").checked = false;
+    }
+  
+    function uncheckExclusiveOffersCheckBox() {
+		document.getElementById("checkout_buyer_accepts_marketing").checked = false;
+    }
+  
+  	// Function to reorganize the DOM when JavaScript gets loaded. Moves a checkbox div to the bottom of the page.
+  	function onloadScript() {
+   		let checkBoxParentDiv = document.querySelector(".section--shipping-address .section__content .fieldset");
+        let exclusiveOffers = document.querySelector(".fieldset-description");
+      
+      	exclusiveOffers.remove();
+      
+      	checkBoxParentDiv.appendChild(exclusiveOffers);
+  	}
+  	
+  	// This calls markCheckbox function. It is marking the checkbox after page load, it was the only way to make it work. Not sure if it's good UX...
+    window.onload = function() {
+		markDiscountCheckbox();
+    }
+  	
+  	uncheckExclusiveOffersCheckBox();
+  
+  	onloadScript();   
+  
+</script>
+
+<script>
+
+// TRY THIS CODE BELOW IF THERE ARE STILL ISSUES WITH THE PAGE NOT LOADING CORRECTLY!!!!!
+//   document.addEventListener("DOMContentLoaded", function() {
+//       alert('Page is loaded');
+//   });
+  		
+  window.addEventListener("load", function() {
+  
+  	let currentUrl = window.location.href;
+      
+        if(currentUrl || currentUrl.includes("previous_step=contact_information&step=shipping_method") || currentUrl.includes("?step=shipping_method") || currentUrl.includes("?step=contact_information") && !currentUrl.includes("previous_step=shipping_method&step=payment_method")) {
+    		let orderSummary = document.querySelector(".sidebar");
+          	let orderSummaryHideToggle = document.querySelector("span.order-summary-toggle__text--hide");
+          	let orderSummaryHideText = document.querySelector("span.order-summary-toggle__text--hide span");
+          	let orderSummaryHideSvg = document.querySelector("span.order-summary-toggle__text--hide svg");
+          	let addOrderSummaryHere = document.querySelector("aside");
+          	let outletInfo = document.querySelector(".outlet-info");
+          
+         	orderSummaryHideText.style.display = "none";
+          	orderSummaryHideSvg.style.display = "none";
+          	outletInfo.style.display = "none";
+            document.querySelector(".sidebar__content p a").style.setProperty("all", "unset");
+          	document.querySelector(".sidebar__content p a img").style.setProperty("all", "unset");
+          
+          	let newOrderSummaryChildDiv = document.createElement("div");
+          	newOrderSummaryChildDiv.classList.add("hide_text_wrapper");
+                    
+          	newOrderSummaryChildDiv.appendChild(orderSummaryHideText);
+          	orderSummaryHideText.style.display = "block";
+          
+          	newOrderSummaryChildDiv.appendChild(orderSummaryHideSvg);
+          	orderSummaryHideSvg.style.display = "block";
+          
+          	document.querySelector("span.order-summary-toggle__text--hide").appendChild(newOrderSummaryChildDiv);
+          
+          	addOrderSummaryHere.appendChild(orderSummary);
+          	// Appending FINAL PRICES text to the Amount Due section
+          	document.querySelector(".order-summary__section.order-summary__section--total-lines").appendChild(outletInfo);
+          	outletInfo.style.display = "block";
+
+          	// GRID SYSTEM FOR THE DROPDOWN STARTS HERE...
+          	document.querySelector(".display-table .order-summary-toggle__inner").style.display = "flex";
+          	document.querySelector(".display-table .order-summary-toggle__inner").style.alignItems = "center";
+          	document.querySelector(".display-table .order-summary-toggle__inner").style.gridTemplateColumns = "repeat(10, 1fr)";
+          
+          
+          	document.querySelector("span.order-summary-toggle__text.order-summary-toggle__text--show").style.gridRowStart = "1";
+          	document.querySelector("span.order-summary-toggle__text.order-summary-toggle__text--show").style.gridColumnStart = "2";
+          	document.querySelector("span.order-summary-toggle__text.order-summary-toggle__text--show").style.gridColumnEnd = "10";
+          
+          	document.querySelector("span.order-summary-toggle__text.order-summary-toggle__text--hide").style.gridRowStart = "1";
+          	document.querySelector("span.order-summary-toggle__text.order-summary-toggle__text--hide").style.gridColumnStart = "2";
+          	document.querySelector("span.order-summary-toggle__text.order-summary-toggle__text--hide").style.gridColumnEnd = "10";
+
+            document.querySelector("span.order-summary-toggle__icon-wrapper").style.gridRowStart = "1";
+            document.querySelector("span.order-summary-toggle__icon-wrapper").style.gridColumnStart = "1";
+            document.querySelector("span.order-summary-toggle__icon-wrapper").style.gridColumnEnd = "2";
+            
+          	document.querySelector("dl.order-summary-toggle__total-recap.total-recap").style.gridRowStart = "1";
+          	document.querySelector("dl.order-summary-toggle__total-recap.total-recap").style.gridColumnStart = "10";
+          	// GRID SYSTEM FOR DROPDOWN ENDS HERE^^^
+                    
+          	document.querySelector(".display-table .order-summary-toggle__icon-wrapper").style.display = "block";
+          
+          	document.querySelector(".hide_text_wrapper").style.display = "flex";
+          	document.querySelector(".hide_text_wrapper").style.alignItems = "center";
+          
+          	document.querySelector(".hide_text_wrapper span").style.marginRight = "10px";
+          
+          	document.querySelector(".main").style.paddingTop = "0";
+          	document.querySelector(".main__header").style.paddingBottom = "0";
+          
+          	document.querySelector(".sidebar").style.maxWidth = "none";
+            document.querySelector(".sidebar").style.setProperty("width", "100%", "important");
+            document.querySelector(".sidebar").style.paddingLeft = "0";
+            document.querySelector(".sidebar").style.paddingRight = "0";
+          	document.querySelector(".sidebar").style.paddingTop = "0";
+          	document.querySelector(".sidebar").style.margin = "auto";
+          	document.querySelector(".sidebar").style.setProperty("margin-top", "0");
+            document.querySelector(".sidebar").style.minHeight = "550px";
+          	document.querySelector(".sidebar").style.overflowY = "scroll";
+          	document.querySelector(".sidebar").style.overflowX = "hidden";
+   
+            document.querySelector(".sidebar .outlet-info").style.maxWidth = "78.5714285714em";
+            document.querySelector(".sidebar .outlet-info").style.margin = "auto";
+            document.querySelector(".sidebar .outlet-info").style.marginTop = "25px";
+          	document.querySelector(".sidebar .outlet-info").style.padding = "0 5%";
+          
+            document.querySelector(".sidebar .sidebar__content").style.margin = "auto";
+            document.querySelector(".sidebar .sidebar__content").style.maxWidth = "78.5714285714em";
+          	document.querySelector(".sidebar .sidebar__content").style.padding = "0 5%";
+          
+          	document.querySelector(".outlet-info").style.setProperty("font-weight", "400", "important");
+            document.querySelector(".outlet-info").style.setProperty("font-size", "12px");
+          
+          	document.querySelector(".order-summary__sections").style.height = "none";
+          	document.querySelector(".order-summary__sections").style.height = "100%";
+          
+          	document.querySelector(".order-summary__section.order-summary__section--product-list").style.margin = "auto";
+          	document.querySelector(".order-summary__section.order-summary__section--product-list").style.marginTop = "30px";
+          	document.querySelector(".order-summary__section.order-summary__section--product-list").style.width = "60%";
+          
+          	document.querySelector(".order-summary__section.order-summary__section--discount").style.width = "60%";
+            document.querySelector(".order-summary__section.order-summary__section--discount").style.margin = "auto";
+          	
+          	document.querySelector(".order-summary__section.order-summary__section--total-lines").style.width = "60%";
+            document.querySelector(".order-summary__section.order-summary__section--total-lines").style.margin = "auto";
+        
+        }
+      
+        if(currentUrl.includes("previous_step=contact_information&step=shipping_method") || currentUrl.includes("?step=shipping_method") || document.getElementById("continue_button").innerText == "Continue to payment") {
+            document.getElementById("shippingBC").classList.add("active");   
+        }
+      
+        else if(currentUrl.includes("previous_step=shipping_method&step=payment_method") || document.getElementById("continue_button").innerText == "Pay now") {
+          
+          	let paymentOrderSummary = document.createElement('div');
+          	let outletInfo = document.querySelector(".outlet-info");
+          	paymentOrderSummary.setAttribute('id', 'payment__order__summary');
+            document.querySelector(".main__header").classList.add("payment__page__header");
+      
+          	outletInfo.style.display = "none";
+          
+          	document.querySelector("aside").style.display = "none";	
+          
+			document.getElementById("shippingBC").classList.add("active");
+			document.getElementById("paymentBC").classList.add("active");
+          	document.querySelector(".sidebar").style.display = "block";
+          
+          	// Appending FINAL PRICES text to the Amount Due section
+          	document.querySelector(".order-summary__section.order-summary__section--total-lines").appendChild(outletInfo);
+            outletInfo.style.margin = "auto";
+          	outletInfo.style.marginTop = "25px";
+          	outletInfo.style.display = "block";
+          
+          	document.querySelector(".newBreadcrumbs").style.removeProperty("width");
+          	document.querySelector(".newBreadcrumbs").style.setProperty("width", "93%", "important");
+          	document.querySelector(".newBreadcrumbs").style.setProperty("margin-left", "2%", "important");
+          
+          	document.querySelector("#cartBC a").style.removeProperty("font-size");
+          	document.querySelector("#cartBC a").style.setProperty("font-size", "16px");
+          
+          	document.querySelector("#informationBC a").style.removeProperty("font-size");
+          	document.querySelector("#informationBC a").style.setProperty("font-size", "16px");
+          
+          	document.querySelector("#shippingBC a").style.removeProperty("font-size");
+          	document.querySelector("#shippingBC a").style.setProperty("font-size", "16px");
+          
+          	document.querySelector("#paymentBC a").style.removeProperty("font-size");
+          	document.querySelector("#paymentBC a").style.setProperty("font-size", "16px");
+          
+          	document.querySelector(".main").style.paddingTop = "25px";
+          	document.querySelector(".main__header").style.paddingBottom = "25px";
+          
+          	document.querySelector(".main__content").appendChild(paymentOrderSummary);
+          	paymentOrderSummary.appendChild(document.querySelector(".sidebar"));
+          	document.querySelector(".main__content").style.removeProperty("width");
+          	document.querySelector(".main__content").style.setProperty("width", "90%", "important");
+          	document.querySelector(".main__content").style.display = "grid";
+          	document.querySelector(".main__content").style.gridTemplateColumns = "1fr 1fr";
+            document.querySelector("#payment__order__summary").style.marginLeft = "50px";
+          	document.querySelector("#payment__order__summary").style.backgroundColor = "#FAFAFA";
+          
+          	document.querySelector(".outlet-info").style.setProperty("font-weight", "400", "important");
+            document.querySelector(".outlet-info").style.setProperty("font-size", "12px");
+          
+          	document.querySelector(".order-summary__section.order-summary__section--product-list").style.width = "100%";
+          	document.querySelector(".order-summary__section.order-summary__section--product-list").style.marginTop = "0px";
+            document.querySelector(".order-summary__section.order-summary__section--product-list").style.paddingTop = "10px";
+          
+          	document.querySelector(".order-summary__section.order-summary__section--discount").style.width = "100%";
+          	
+          	document.querySelector(".order-summary__section.order-summary__section--total-lines").style.width = "100%";
+          
+          	let paymentMethods = document.querySelector("fieldset.content-box").childNodes;
+          	
+            for(let i = 0; i < paymentMethods.length; i++) {
+              if(paymentMethods[i].textContent.includes("Buy now, pay later with Klarna") && !paymentMethods[i].classList.contains("hidden")) {
+                let klarnaLabel = paymentMethods[i].children[1].children[0];
+                let klarnaIcon = paymentMethods[i].children[1].children[1];
+                
+                klarnaIcon.before(klarnaLabel);
+              }
+            }
+          
+        }
+    
+    // DROPDOWN button click
+    document.querySelector("aside button.shown-if-js").addEventListener("click", function() {
+      if(document.querySelector("aside button.shown-if-js").classList.contains("order-summary-toggle--show")) {
+      	 document.querySelector(".sidebar").style.display = "block";
+      }	
+      
+	  else if(document.querySelector("aside button.shown-if-js").classList.contains("order-summary-toggle--hide")) {
+         document.querySelector(".sidebar").style.display = "none";
+      }
+    });
+ 
+  });
+    
+
+</script>

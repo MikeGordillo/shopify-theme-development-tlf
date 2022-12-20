@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+div#redeem-bg {
+  background-color: #fbeedf !important;
+}
+section#refer-bg {
+  background-image: url({{"refer-bgg.png"|asset_url}});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 92vh;
+}
+
+#tlf-loyalty-atf {
+  height: 75vh;
+  background-image: url({{"tlf-header-bg.png"|asset_url}});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%); */
+}
+#atf-content {
+  display: flex;
+  width: 70%;
+  height: 70%;
+  flex-flow: column;
+  justify-content: flex-end;
+  padding-top: 300px;
+  text-align: center;
+  align-items: flex-start;
+  margin-left: 7.5%;
+  background: transparent;
+}
+#tlf-title-atf,
+#tlf-atf-buttons {
+  width: 60%;
+}
+
+#tlf-title-atf h1 {
+  font-size: 79px !important;
+  color: #2b2b2b;
+  font-weight: normal;
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  font-weight: bold;
+}
+
+#tlf-title-atf p {
+  color: #2b2b2b;
+  font-size: 16px;
+  margin-bottom: 35px;
+  font-family: "Poppins", sans-serif;
+}
+
+div#tlf-logo {
+  margin-bottom: -55px;
+  position: relative;
+  z-index: 1;
+  margin-left: 20px;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+button:hover,
+button:focus {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+#tlf-atf-buttons {
+  display: flex;
+  height: 50px;
+  justify-content: left;
+  width: 40%;
+}
+#tlf-atf-buttons .prim-btn,
+#tlf-atf-buttons .sec-btn {
+  padding: 12px 0;
+  background-color: #fff;
+  border: none;
+  color: #000;
+  margin-right: 10px;
+  text-decoration: none;
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border-radius: 100px; */
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+#tlf-atf-buttons .prim-btn {
+  color: #000;
+}
+/* #tlf-atf-buttons .sec-btn{
+  margin-top: 15px;
+  background-color:none !important;   
+  border:none;
+  color: #fff;
+  text-decoration: underline;
+  font-family: 'gotham-bold';
+} */
+
+#atf-content-mobile {
+  display: none;
+}
+
+#tlf-out {
+  width: 100vw !important;
+}
+
+@media only screen and (max-width: 1440px) {
+  #atf-content {
+    width: 75% !important;
+  }
+  #tlf-title-atf {
+    width: 100% !important;
+  }
+  div#tlf-title-atf p {
+    width: 50% !important;
+    margin: 5px auto;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  section#refer-bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-size: cover !important;
+  }
+  #tlf-loyalty-atf {
+    height: 46vh !important;
+    background-size: contain;
+  }
+  div#tlf-title-atf p {
+    width: 100% !important;
+  }
+
+  #atf-content {
+    display: flex;
+    padding-left: 50px;
+    height: 40vh;
+    width: 95% !important;
+    padding: 0 !important;
+    margin: unset !important;
+  }
+  article#tlf-atf-buttons {
+    margin-left: 65px;
+  }
+
+  #tlf-title-atf h1 {
+    font-size: 58px !important;
+  }
+
+  #tlf-title-atf p {
+    font-size: 14px !important;
+  }
+  #tlf-title-atf,
+  #tlf-atf-buttons {
+    width: 75% !important;
+  }
+  #tlf-atf-buttons .prim-btn,
+  #tlf-atf-buttons .sec-btn {
+    width: 15% !important;
+    height: 70% !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #tlf-atf-buttons .prim-btn,
+  #tlf-atf-buttons .sec-btn {
+    width: 23% !important;
+  }
+
+  #tlf-loyalty-atf {
+    height: 40vh !important;
+  }
+  #atf-content {
+    padding: 0 !important;
+    height: 33vh !important;
+  }
+  #tlf-atf-buttons {
+    height: 50px;
+  }
+  #tlf-atf-buttons .prim-btn {
+    padding: 6px 0;
+    font-size: 16px;
+  }
+  article#tlf-atf-buttons {
+    width: 40% !important;
+  }
+
+  article#tlf-atf-buttons a {
+    font-size: 13px !important;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  div#atf-content {
+    display: none;
+  }
+  #atf-content-mobile {
+    display: flex;
+  }
+  #atf-content-mobile .prim-btn,
+  #atf-content-mobile .sec-btn {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  article#tlf-atf-buttons {
+    width: 100% !important;
+  }
+  article#tlf-atf-buttons {
+    margin-left: 0px !important;
+  }
+  #atf-content-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  #tlf-atf-buttons .prim-btn,
+  #tlf-atf-buttons .sec-btn {
+    height: 100% !important;
+  }
+
+  div#tlf-title-atf {
+    padding-top: 35px;
+  }
+  section#refer-bg {
+    background-image: url(refer-mobile.png) !important;
+    background: transparent;
+    background-size: cover;
+  }
+  .yotpo-widget-referral-widget .yotpo-tile {
+    min-height: 523px !important;
+  }
+  article#tlf-atf-buttons {
+    margin-top: 40px;
+  }
+  #tlf-atf-buttons .prim-btn,
+  #tlf-atf-buttons .sec-btn {
+    width: 73% !important;
+  }
+  #tlf-loyalty-atf {
+    height: 58vh !important;
+    background-size: cover;
+    background-position: 55%;
+  }
+
+  article#tlf-atf-buttons {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px !important;
+  }
+
+  #tlf-title-atf h1 {
+    font-size: 41px !important;
+  }
+  #tlf-atf-buttons .prim-btn,
+  #tlf-atf-buttons .sec-btn,
+  #tlf-title-atf p,
+  #tlf-atf-buttons p {
+    font-size: 14px !important;
+  }
+  #tlf-atf-buttons .prim-btn {
+    margin-top: 10px;
+    padding: 12px 0;
+  }
+
+  #atf-content {
+    display: flex;
+    width: 80%;
+    flex-flow: column;
+    justify-content: flex-end;
+    padding-left: 0px;
+    align-items: center;
+    margin: auto;
+    height: 45% !important;
+    padding: 0 !important;
+  }
+
+  #tlf-loyalty-atf {
+    background-image: url({{"tlf-mobile-bg.png"|assset_url}});
+    background-size: contain !important;
+  }
+}
+@media only screen and (max-width: 320px) {
+  #tlf-loyalty-atf {
+    height: 45vh !important;
+    background-size: cover;
+    background-position: 53%;
+  }
+  #tlf-title-atf h1 {
+    font-size: 35px !important;
+  }
+  #atf-content {
+    display: flex;
+    width: 95%;
+    flex-flow: column;
+    justify-content: flex-end;
+    padding-left: 0px;
+    align-items: center;
+    margin: auto;
+    height: 60% !important;
+    padding: 0 !important;
+  }
+}

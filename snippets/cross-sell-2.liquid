@@ -1,0 +1,438 @@
+
+{% if template contains 'product' %}
+{% assign xs_currentpage = 'product' %}
+{% endif %}
+{% if template == 'cart' %}
+{% assign xs_currentpage = 'cart' %}
+{% assign xs_smartcart = 'on' %}
+{% endif %}
+
+{% assign xs_cartitems = ''%}
+{% for item in cart.items %}
+{% if forloop.first == true %}
+{% capture xs_cartitems %}{{ item.product.handle }}{% endcapture %}
+{% else %}
+{% capture xs_cartitems %}{{ xs_cartitems }},{{ item.product.handle }}{% endcapture %}
+{% endif %}
+{% endfor %}
+
+{% if template contains 'index' %}
+{% assign xs_currentpage = 'cart' %}
+{% assign xs_smartcart = 'on' %}
+{% endif %}
+
+{% comment %}
+{% if cart.item_count == 0 %}
+{% if template contains 'product' %}
+{% assign xs_currentpage = 'product' %}
+{% else %}
+<div class="noproducts">
+  <div class="mainmessage">Your cart is currently empty<br><br>Browse</div>
+  <div class="mainmessagetwo">
+    <div class="messagebutton">
+      <a class="tlf-upsell-options" href="https://tlfapparel.myshopify.com/collections/mens-new-releases">Men's New Arrivals</a>
+    </div>
+    <div class="messagebutton">
+      <a class="tlf-upsell-options" href="https://tlfapparel.com/collections/womens-new-releases">Women's New Arrivals</a>
+    </div>
+  </div>
+</div>
+<style>
+  #cross-sell {
+   display:none; 
+  }
+</style>
+{% endif %}
+{% endif %}
+{% endcomment %}
+
+{% if shop.metafields.shopCrosssell.settings != null %}
+<style>
+  .xs-clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+
+
+  
+  li.carousel-item .active .image {
+    margin: 0 10px; 
+    width: 159px;
+    height: 239px;
+  }
+
+  li.carousel-item .image {
+    margin: 0 10px;
+    width: 159px;
+    height: 239px;
+    
+  }
+
+  
+  .carousel-control-next-icon, .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+  }
+  
+  .cross-sell .flickity-slider {
+   width: 100% !important; 
+  }
+
+  .carousel-control-prev {
+   left: 0 !important; 
+  }
+  
+  .carousel-control-next {
+   left: unset !important; 
+  }
+  
+  #cross-sell {
+    margin-top:20px !important; 
+  }
+
+  .cross-sell.flickity-enabled {
+    margin: unset !important; 
+  }
+  
+
+  .cross-sell .flickity-viewport {
+    height:350px !important; 
+  }
+
+  .cross-sell .flickity-slider>li {
+    width:170px !important;
+    margin-left:10px !important;
+  }
+
+  .flickity-slider {
+    list-style:none;
+    transform: none !important;
+  }
+
+  .cross-sell .flickity-prev-next-button.previous:hover,
+  .cross-sell .flickity-prev-next-button.next:hover {
+    background-color:transparent !important; 
+    background: transparent !important;
+  }
+  
+  .carousel {
+   margin: 0; 
+  }
+  
+  .carousel-inner {
+    position: relative !important;
+    width: unset !important;
+    overflow: unset !important;
+    display: flex !important;
+  }
+  
+  .carousel-inner {
+   left: 0 !important; 
+  }
+  
+  
+  .cross-sell .flickity-viewport {
+   overflow: unset !important; 
+  }
+  
+  .carousel-item {
+    backface-visibility: hidden;
+    perspective: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px !important;
+  }
+  
+   .carousel-inner .carousel-item.active,
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    display: flex;
+  }
+
+  .carousel-inner .carousel-item-right.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+
+  .carousel-inner .carousel-item-left.active, 
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+
+  .carousel-inner .carousel-item-right,
+  .carousel-inner .carousel-item-left{ 
+    transform: translateX(0);
+
+  }
+  
+  a.carousel-control-next {
+   transform: rotate(180deg); 
+  }
+  
+  li.carousel-item.active {
+   place-content: center; 
+  }
+  
+  @media only screen and (max-width: 589px) {
+    #cross-sell {
+      height: 190px; 
+      margin-top: 0px !important;
+      border-bottom: 1px solid #e8e8e1;
+    }
+
+    .drawer--right {
+      width: 420px;
+    }
+
+    .drawer {
+      max-width: 100%;
+    }
+
+    #upsellmain{
+      width: 100% !important;
+      position: relative;
+      top: 20px !important;
+      height: 130px;
+    }
+
+    .drawer__fixed-header {
+      top: 0 !important;
+    }
+
+    .drawer__inner {
+      top: 0px !important;
+    }
+
+    #CartDrawer{
+      margin-top: 0px !important;
+    }
+
+    #DrawerInner {
+      top: 260px !important; 
+      overflow-y: hidden !important;
+    }
+    
+    .cross-sell.flickity-enabled {
+     height: 160px !important; 
+    }
+    
+    .cross-sell .flickity-viewport {
+     height: 160px !important; 
+    }
+    
+    h3.crossselltitle {
+     width: 100%; 
+    }
+    
+    .carousel-control-next, .carousel-control-prev {
+     width: 4%; 
+    }
+    
+    #discounttext {
+     font-size: 0.9em; 
+    }
+    
+    .ajaxcart__row {
+     padding-bottom: 0px; 
+    }
+    
+    .producttitle {
+      font-size: .7em;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    
+    #upsell-money {
+      font-size: .8em 
+    }
+    
+    .productcontainer:nth-child(3) {
+      display: block !important; 
+    }
+    
+    li.carousel-item .image {
+      width: 90px !important;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    
+    h3.crossselltitle {
+      font-size: 1em !important; 
+      color: black;
+    }
+    
+    .upbutton {
+     display: none; 
+    }
+    
+    .productcontainer {
+      margin: 0;
+      padding-top: 0;
+      height: 130px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    
+    .productcontainer:nth-child(4) {
+      display: none;
+    }
+    
+    .image>a>img {
+     width: 60px; 
+    }
+    
+    button.flickity-button.flickity-prev-next-button.previous, 
+    button.flickity-button.flickity-prev-next-button.next {
+      display: none;
+      visibility: hidden;
+    }
+
+    .carousel-control-next, .carousel-control-prev {
+      background: black; 
+      height: 90%;
+    }
+    
+  }
+    #upsell-money {
+      font-size: .8em 
+    }
+    
+</style>
+<div class="xs-clearfix"></div>
+<div id="cross-sell"></div>
+<div class="xs-clearfix"></div>
+
+<script type="text/javascript" charset="utf-8">
+
+  var xsellSettings = xsellSettings || {};
+  {% if xs_cartitems %}
+  var cartitems = '{{ xs_cartitems }}';
+  xsellSettings.cartitems = cartitems.split(',');
+  {% else %}
+  xsellSettings.cartitems = [];
+  {% endif %}
+
+  xsellSettings.shopMetafields = eval({{ shop.metafields.shopCrosssell | json }});
+  xsellSettings.crosssellsettings = eval({{ shop.metafields.shopCrosssell.settings | json }});
+  xsellSettings.money_format = {{ shop.money_format | json }};
+  xsellSettings.xsmainproducthandle = '{{ product.handle }}';
+  xsellSettings.currentpagetype = '{{ xs_currentpage }}';
+  xsellSettings.xsimagesize = 'large';
+
+  xsellSettings.xsrandomizeproductpage = xsellSettings.crosssellsettings[0]['randomizeproductpage'];
+  xsellSettings.xsrandomizecartpage = xsellSettings.crosssellsettings[0]['randomizecartpage'];
+  xsellSettings.xsmustbeavailable = xsellSettings.crosssellsettings[0]['mustbeavailable'];
+  xsellSettings.xshideifincart = xsellSettings.crosssellsettings[0]['hideifincart'];
+
+  xsellSettings.xsdisplaycompareatprice = xsellSettings.crosssellsettings[0]['displaycompareatprice'];
+  xsellSettings.xsdisplaysalebadge = xsellSettings.crosssellsettings[0]['displaysalebadge'];
+  xsellSettings.xsdisplaypricevarieslabel = xsellSettings.crosssellsettings[0]['displaypricevarieslabel'];
+  xsellSettings.xsdisplayvendor = xsellSettings.crosssellsettings[0]['displayvendor'];
+
+  {% if xs_currentpage == 'product' %}
+  //product specific settings
+  var crossselltitleproductpage = xsellSettings.crosssellsettings[0]['titleproductpage'];
+  var crossselltitleproductpagedefault = xsellSettings.crosssellsettings[0]['titleproductpagedefault'];
+  var crosssellshowdefault = xsellSettings.crosssellsettings[0]['showdefault'];
+
+  xsellSettings.crosssellmaxitems = xsellSettings.crosssellsettings[0]['productpagemaxitems'];
+  {% else if xs_currentpage == 'cart' %}
+  //cart/basket settings
+  var crossselltitlecheckoutpage = xsellSettings.crosssellsettings[0]['titlecheckoutpage'];
+  var crosssellshowcheckout = xsellSettings.crosssellsettings[0]['showcheckout'];
+
+  xsellSettings.crosssellmaxitems = xsellSettings.crosssellsettings[0]['checkoutpagemaxitems'];
+  {% endif %}
+
+  var using_recommedations = false;
+  if(xsellSettings.crosssellsettings && xsellSettings.crosssellsettings[0]['use_recommendations']) {
+    using_recommedations = true
+  } 
+</script>
+
+{% endif %}
+
+<script type="text/javascript" charset="utf-8">
+  var xsproductsData = '';
+  xsellSettings.xstitle = "";
+  {% if xs_currentpage == 'product' %}
+
+  if(crosssellshowdefault != '4'){
+    {% if product.metafields.productDetails.crosssell != null %}
+    xsellSettings.product_crosssells = eval({{ product.metafields.productDetails.crosssell | json }});
+    xsproductsData = xsellSettings.product_crosssells;
+    xsellSettings.cross_sell_set = 'product';
+    if(crossselltitleproductpage.length){
+      xsellSettings.xstitle = crossselltitleproductpage;
+    }
+    {% endif %}
+  }
+  if(crosssellshowdefault == '1' || (crosssellshowdefault == '2' && xsproductsData == '')){
+    xsellSettings.default_crosssells = ''
+    {% if shop.metafields.shopCrosssell.default != null %}
+    xsellSettings.default_crosssells = eval({{ shop.metafields.shopCrosssell.default | json }});
+    {% endif %}
+    xsproductsData = xsellSettings.default_crosssells;
+    xsellSettings.cross_sell_set = 'default';
+    if(crossselltitleproductpagedefault.length){
+      xsellSettings.xstitle = crossselltitleproductpagedefault;
+    }
+  }
+  {% else %}
+  if(crosssellshowcheckout == '2'){
+    {% if shop.metafields.shopCrosssell.settings != null %}
+    {% assign xs_settings = shop.metafields.shopCrosssell.settings | replace: ' ', '' %}
+    {% if xs_settings contains '"cssmartcart":"off"' %}
+    {% capture xs_smartcart %}'off'{% endcapture %}
+    {% endif %}
+
+    {% if xs_smartcart == 'on' %}
+    {% for item in cart.items %}
+    {% assign xs_item = all_products[item.product.handle] %}
+    {% if xs_item.metafields.productDetails.crosssell != null %}
+    {% assign xs_itemmetafield = xs_item.metafields.productDetails.crosssell %}
+    {% capture xs_smartcartxsells %}{{ xs_itemmetafield }}{% endcapture %}
+    {% break %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if shop.metafields.shopCrosssell.checkout != null %}
+    {% assign xs_defaultcartxsells = shop.metafields.shopCrosssell.checkout %}
+    {% endif %}
+
+    {% if xs_smartcart == 'on' and xs_smartcartxsells != null and xs_smartcartxsells != '[]' %}
+    {% assign xs_productsData = xs_smartcartxsells %}
+    xsellSettings.cross_sell_set = 'cart_product';
+    {% else %}
+    {% assign xs_productsData = xs_defaultcartxsells %}
+    xsellSettings.cross_sell_set = 'cart_default';
+    {% endif %}
+    {% endif %}
+
+    xsproductsData = eval({{ xs_productsData | json }});
+
+    if(crossselltitlecheckoutpage.length){
+      xsellSettings.xstitle = crossselltitlecheckoutpage;
+    }
+  }
+  {% endif %}
+  var xsLoaded = xsproductsData && xsproductsData.length && (xsproductsData[0] !== '');
+  if (xsLoaded || using_recommedations){
+    window.xsellData = {
+      data: xsproductsData,
+      settings: xsellSettings
+    }
+  } else {
+    var elem = document.getElementById("cross-sell");
+    if (elem){
+      elem.parentNode.removeChild(elem);
+    }
+  }
+  
+
+</script>
+

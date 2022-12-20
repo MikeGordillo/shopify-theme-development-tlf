@@ -1,0 +1,840 @@
+<header class="section-header collectiontitle">
+      <h1 class="section-header__title collection-title">
+        {% if current_tags contains 'WOMENS' and collection.metafields.title.women %}
+        {{ collection.metafields.title.women }}
+        {% elsif current_tags contains 'MENS' and collection.metafields.title.men %}
+        {{ collection.metafields.title.men }}
+        {% else %}
+        {% if current_tags contains 'WOMENS' %}WOMEN {% elsif current_tags contains 'MENS' %}MEN {% endif %} {{ collection.title }}
+        {% endif %}      
+      </h1>
+ 
+      {%- unless collection.title contains 'Blowout' -%}
+      {% if collection.metafields.custom.actionlink %}
+<span class="action-link">Click here to see </span><a class="action-link" href="{{ collection.metafields.custom.actionlink }}" target="_blank">{{ collection.title }} In Action</a><br>
+      {% endif %}
+   {% comment %}    <button class="accordion">Learn more about {{ collection.title | remove: "Collection" | upcase }} +</button> {% endcomment %}
+      {%- endunless -%}
+  
+  
+   {% comment %} 
+  {%- unless collection.title contains 'Blowout' -%}
+      {% if collection.metafields.custom.actionlink %}
+      <br>Click here to see <a class="action-link" href="{{ collection.metafields.custom.actionlink }}" target="_blank">{{ collection.title }} In Action</a><br>
+      {% endif %}
+      <button class="accordion">Learn more about {{ collection.title | remove: "Collection" | upcase }} +</button>
+      {%- endunless -%}
+      <div class="panel"{%- if collection.title contains 'Blowout' -%}style="max-height:100%;"{%- endif -%}>
+      <h2 class="rte new-collection-description">
+        {% if current_tags contains 'WOMENS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+        {% elsif current_tags contains 'MENS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+        {% else %}
+        {{ collection.description }}
+        {% endif %}
+      </h2>
+  {%- unless collection.title contains 'Deals' -%}
+</div>
+      {%- endunless -%}
+  
+  {% endcomment %}
+
+  
+  
+  
+   <div class="collection-description">
+      <h2 class="rte new-collection-description">
+        {% comment %} UNISEX   {% endcomment %}
+        {% if current_tags contains 'WOMENS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+        {% endif %}      
+        {% if current_tags contains 'MENS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+        {% endif %}
+         {% if current_tags contains 'NEW RELEASES' and current_tags contains 'MENS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+        {% endif %}
+        {% if current_tags contains 'NEW RELEASES' and current_tags contains 'WOMENS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+        {% endif %} 
+        {% if current_tags contains 'MENS' and current_tags contains 'BEST SELLERS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+        {% endif %}
+         {% if current_tags contains 'WOMENS' and current_tags contains 'BEST SELLERS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+         {% if current_tags contains 'WOMENS' and current_tags contains 'BOTTOMS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'BOTTOMS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+         {% if current_tags contains 'WOMENS' and current_tags contains 'SHORTS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'SHORTS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+        {% if current_tags contains 'WOMENS' and current_tags contains 'LONG SLEEVE' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'LONG SLEEVE' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+           {% if current_tags contains 'WOMENS' and current_tags contains 'SHORT SLEEVE' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'SHORT SLEEVE' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+            {% if current_tags contains 'WOMENS' and current_tags contains 'TANK TOP SLEEVELESS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'TANK TOP SLEEVELESS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+        {% if current_tags contains 'WOMENS' and current_tags contains 'LEGGINGS TIGHTS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'LEGGINGS TIGHTS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+          {% if current_tags contains 'WOMENS' and current_tags contains 'JOGGERS PANTS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'JOGGERS PANTS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+             {% if current_tags contains 'WOMENS' and current_tags contains 'HOODIES SWEATSHIRTS JACKETS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'HOODIES SWEATSHIRTS JACKETS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+         {% if current_tags contains 'WOMENS' and current_tags contains 'BACK IN STOCK' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'BACK IN STOCK' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+         {% if current_tags contains 'TRENDING MUST HAVES FOR HER' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+        {% endif %}
+         {% if current_tags contains 'Trending Must Haves For Him' and current_tags contains 'MENS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+   		  {% endif %} 
+          {% if current_tags contains 'WOMENS' and current_tags contains 'LEGGINGS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'MENS' and current_tags contains 'LEGGINGS' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}
+        
+        
+        {% comment %} WOMENS   {% endcomment %}
+        {% if current_tags contains 'WOMENS' and current_tags contains 'TEMPO GLO' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %} 
+        {% if current_tags contains 'WOMENS' and current_tags contains 'Shine' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}  
+         {% if current_tags contains 'WOMENS' and current_tags contains 'GENESIS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+         {% if current_tags contains 'WOMENS' and current_tags contains 'TEMPO' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %} 
+         {% if current_tags contains 'WOMENS' and current_tags contains 'TRAIN' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'WOMENS' and current_tags contains 'WINTER ESSENTIALS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+         {% if current_tags contains 'WOMENS' and current_tags contains 'ESSENTIALS' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+         {% if current_tags contains 'WOMENS' and current_tags contains 'CROP TOP' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        {% if current_tags contains 'WOMENS' and current_tags contains 'SPORTS BRA' and collection.metafields.desc.women %}
+        {{ collection.metafields.desc.women }}
+         {% endif %}
+        
+        {% comment %} MENS   {% endcomment %}
+        {% if current_tags contains 'MENS' and current_tags contains 'VITAL' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %} 
+        {% if current_tags contains 'MENS' and current_tags contains 'LIFT' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %} 
+        {% if current_tags contains 'MENS' and current_tags contains 'LEAGUE' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}  
+        {% if current_tags contains 'MENS' and current_tags contains 'ELEMENT' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}   
+        {% if current_tags contains 'MENS' and current_tags contains 'CORE' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}  
+        {% if current_tags contains 'MENS' and current_tags contains 'GRAPHIX' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}  
+        {% if current_tags contains 'MENS' and current_tags contains 'STRINGER' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+         {% endif %}  
+        {% if current_tags contains 'MENS' and current_tags contains 'GRAPHIC' and collection.metafields.desc.men %}
+        {{ collection.metafields.desc.men }}
+        
+        {% else %}
+        {{ collection.description }}
+        {% endif %}
+      </h2>
+  </div>
+<!--   men categories -->
+    {% if collection.url == '/collections/free-gift-with-purchase-holiday-deals-app-exclusive' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+    {% if collection.url == '/collections/mens' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-new-releases' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-best-sellers' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-fall-essentials' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-trending-must-haves' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+          
+   {% if collection.url == '/collections/mens-oversized-fits' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-5-inch-shorts-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-joggers-sweatpants' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-shorts' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-leggings-baselayers' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-hoodies-sweatshirts-jackets' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-tanks-sleeveless' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-stringers-drop-arm-tanks' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-long-sleeves' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-short-sleeves' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+          {% if collection.url == '/collections/mens-graphic-t' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+<!--           end men categories -->
+
+            
+<!--             men collections -->
+       {% if collection.url == '/collections/mens-take-life-further-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+
+{% if collection.url == '/collections/mens-redefine-impossible-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-gym-to-street-performance-drops' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-new-gym-to-street-lifestyle-drops' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-vital-performance-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-vital' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-league' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-element' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/mens-core' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+          {% if collection.url == '/collections/mens-graphix' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+          <!-- end men collections -->
+  
+<!--   women categories -->
+
+                {% if collection.url == '/collections/womens' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-new-releases' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-best-sellers' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-fall-essentials' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-trending-must-haves' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+          
+   {% if collection.url == '/collections/womens-oversized-fits' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-shorts' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-joggers-sweatpants' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-leggings' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-hoodies-sweatshirts-jackets' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-tanks-sleeveless' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-sports-bras' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-crop-tops' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-long-sleeves' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-short-sleeves' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+<!--           end women categories -->
+
+            
+<!--             women collections -->
+       {% if collection.url == '/collections/women-hyper-power-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/cosmic-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-sculpt-seamless-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-gym-to-street-performance-drops' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-new-gym-to-street-lifestyle-drops' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-boost-collection' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-contour' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-tempo-glo' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-react-seamless' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+{% if collection.url == '/collections/womens-tempo-ribbed' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+          {% if collection.url == '/collections/womens-shine' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+           {% if collection.url == '/collections/womens-genesis' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+           {% if collection.url == '/collections/womens-tempo' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+           {% if collection.url == '/collections/womens-train-n-run' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+           {% if collection.url == '/collections/womens-essentials' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="https://tlfapparel.page.link/app">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/50_20-COLLECTION-BANNER-MOBILE.jpg?v=1671052508">
+          </a>
+          </div>
+          {% endif %}
+<!--           end women collections -->
+            
+        
+<!-- outlet collection mens & womens  -->
+          {% if collection.url == '/collections/mens-outlet' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="/collections/mens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-TOPS-MOBILE_bd1149d8-64f1-412a-bc32-8f7a40c4d535.jpg?v=1670969107" alt="Men's Overstock Tops">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/mens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-BOTTOMS-MOBILE_af725c83-1b52-4633-b74e-e3eb6f5220c0.jpg?v=1670969107" alt="Men's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/mens-outlet-tops' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="/collections/mens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-ALL-MOBILE_b995e910-645c-4f5d-b4fa-cffa27f0bff9.jpg?v=1670969107" alt="Men's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/mens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-BOTTOMS-MOBILE_af725c83-1b52-4633-b74e-e3eb6f5220c0.jpg?v=1670969107" alt="Men's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/mens-outlet-bottoms' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="/collections/mens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-ALL-MOBILE_b995e910-645c-4f5d-b4fa-cffa27f0bff9.jpg?v=1670969107" alt="Men's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/mens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/MEN-TOPS-MOBILE_bd1149d8-64f1-412a-bc32-8f7a40c4d535.jpg?v=1670969107" alt="Men's Overstock Tops">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/womens-outlet' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="/collections/womens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-TOPS-MOBILE_a6c06016-a020-4ab4-a387-0f87171e863a.jpg?v=1670969107" alt="Women's Overstock Tops">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/womens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-BOTTOMS-MOBILE_0af9037c-871c-4663-9908-190d3e2b093d.jpg?v=1670969107" alt="Women's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/womens-outlet-tops' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="/collections/womens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-ALL-MOBILE_fb2f1f74-2112-4b3f-980a-c30ea81890a7.jpg?v=1670969107" alt="Women's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/womens-outlet-bottoms">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-BOTTOMS-MOBILE_0af9037c-871c-4663-9908-190d3e2b093d.jpg?v=1670969107" alt="Women's Overstock Bottoms">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+          {% if collection.url == '/collections/womens-outlet-bottoms' %}
+          <div id="overstock-images" class="mobile-version">
+          <div class="tops-image">
+          <a href="/collections/womens-outlet">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-ALL-MOBILE_fb2f1f74-2112-4b3f-980a-c30ea81890a7.jpg?v=1670969107" alt="Women's Overstock">
+          </a>
+          </div>
+          <div class="bottoms-image">
+          <a href="/collections/womens-outlet-tops">
+          <img src="https://cdn.shopify.com/s/files/1/2665/0346/files/WOMEN-TOPS-MOBILE_a6c06016-a020-4ab4-a387-0f87171e863a.jpg?v=1670969107" alt="Women's Overstock Tops">
+          </a>
+          </div>
+          </div>
+          {% endif %}
+  
+</header>
+
+<style>
+  span.action-link {
+    text-decoration: none;
+    font-size: 14px;
+}
+    h1.section-header__title.collection-title {
+    font-size: 1.25em; 
+    text-transform: uppercase;
+  }
+  .action-link {
+    text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 14px;
+  }
+  .collection-description h2, .collection-description span {
+    color: #868686;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 20px;
+}
+  h1.section-header__title.collection-title {
+    margin-bottom: 8px;
+    margin-top: 10px;
+}
+.collection-description {
+    margin-top: 5px;
+  margin-bottom: 5px;
+}
+  .collectiontitle, .collection-description {
+    letter-spacing: 0;
+}
+  @media only screen and (min-width: 768px) {
+  #overstock-images.mobile-version {
+    display: none;
+}
+  .tags--vertical #overstock-images {
+    margin-left: 20px;
+    margin-bottom: 25px;
+    margin-right: 5px;
+}
+}
+  #overstock-images {
+    display:flex;
+    justify-content:center;
+    margin: 0 auto;
+  }
+  .tops-image, .bottoms-image {
+/*     display: none!important; */
+    display: flex;
+    width:50%;
+    padding:0 10px;
+  }
+  @media only screen and (max-width: 767px) {
+    span.action-link {
+    font-size: 12px;
+}
+    .action-link {
+    font-size: 12px;
+}
+    .collection-description h2, .collection-description span {
+    font-size: 12px;
+    line-height: 18px;
+}
+    h1.section-header__title.collection-title {
+      font-size: 16px;
+    }
+      ul.tags.tags--vertical {
+    display: none;
+}
+    #overstock-images {
+          flex-direction: column;
+    }
+    .tops-image, .bottoms-image {
+    display: flex;
+    width: 100%;
+    padding: 8px 0;
+    }
+  }
+</style>

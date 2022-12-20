@@ -1,0 +1,272 @@
+{% if section.settings.divider %}<div class="section--divider">{% endif %}
+
+<div class="page-width">
+  {% if section.settings.title != blank %}
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="grid{% if section.settings.enable_gutter %} grid--small-gutters{%else%} grid--no-gutters{% endif %}">
+
+    {%- assign isEmpty = true -%}
+
+    {% if section.blocks.size > 0 %}
+      {%- assign isEmpty = false -%}
+    {% endif %}
+
+    {% for block in section.blocks limit: collection_limit %}
+      {%- assign collection = collections[block.settings.collection] -%}
+      {% case block.settings.size %}
+      {% when 'square-small' %}
+        {%- assign grid_item_width = 'medium-up--one-quarter small--one-half collection--square-small' -%}
+      {% when 'wide' %}
+        {%- assign grid_item_width = 'medium-up--one-half collection--wide' -%}
+      {% when 'tall' %}
+        {%- assign grid_item_width = 'medium-up--one-quarter small--one-half collection--tall' -%}
+      {% when 'square-large' %}
+        {%- assign grid_item_width = 'medium-up--one-half collection--square-large' -%}
+      {% endcase %}
+      {% assign background_position = block.settings.focal_point %}
+    
+{% unless grid_item_width %}
+{%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+{% endunless %}
+
+{% unless background_position %}
+  {%- assign background_position = 'center center' -%}
+{% endunless %}
+
+<div class="grid__item {{ grid_item_width }} skrim__item" data-aos="skrim__animation">
+  <a href="{{ collection.url }}" class="skrim__link skrim__item-content">
+    {% if collection.empty? %}
+      {%- assign collection_title = 'home_page.onboarding.collection_title' | t -%}
+    {% else %}
+      {%- assign collection_title = collection.title | escape -%}
+    {% endif %}
+
+    {% if collection.image %}
+      {%- assign collection_image = collection.image -%}
+    {% else %}
+      {%- assign collection_image = collection.products.first.featured_media.preview_image -%}
+    {% endif %}
+
+    {% if collection.empty? %}
+      {% capture placeholder %}collection-{% cycle 1,2,3,4,5,6 %}{% endcapture %}
+      <div class="skrim__overlay grid__image">{{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}</div>
+    {% else %}
+      <div
+        class="skrim__overlay grid__image lazyload"
+        data-sizes="auto"
+        style="background-image: url({{ block.settings.desktop_image | img_url: '1000x' }});background-position: {{ background_position }};">
+      </div>
+      <noscript>
+        <div
+          class="skrim__overlay grid__image"
+          style="background-image: url({{ block.settings.desktop_image | img_url: '1000x' }}); background-position: {{ background_position }};">
+        </div>
+      </noscript>
+    {% endif %}
+
+    <div class="skrim__title">
+      <div class="skrim__underline-me">
+        {{ block.settings.title2 }}
+      </div>
+    </div>
+  </a>
+</div>
+    {% endfor %}
+
+    {% if isEmpty %}
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="rte">
+              {{ 'home_page.onboarding.no_content' | t }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% if section.settings.divider %}</div>{% endif %}
+
+<style>
+  @media only screen and (max-width: 600px) {
+  #shopify-section-featured-collections .grid__item:first-child .skrim__overlay {
+    background-image: url(//cdn.shopify.com/s/files/1/2665/0346/files/mens-tops2.jpg?v=1657662839) !important;
+    background-size: contain;
+}
+  #shopify-section-featured-collections .grid__item:nth-child(2) .skrim__overlay {
+    background-image: url(//cdn.shopify.com/s/files/1/2665/0346/files/mens-bottoms2.jpg?v=1657662839) !important;
+    background-size: contain;
+}
+  #shopify-section-featured-collections .grid__item:nth-child(3) .skrim__overlay {
+    background-image: url(//cdn.shopify.com/s/files/1/2665/0346/files/womens-tops2.jpg?v=1657662839) !important;
+    background-size: contain;
+}
+  #shopify-section-featured-collections .grid__item:nth-child(4) .skrim__overlay {
+    background-image: url(//cdn.shopify.com/s/files/1/2665/0346/files/womens-bottoms2.jpg?v=1657662839) !important;
+    background-size: contain;
+}
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "class": "index-section",
+    "max_blocks": 15,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "checkbox",
+        "id": "divider",
+        "label": "Show section divider",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_gutter",
+        "label": "Add spacing",
+        "default": false
+      }
+    ],
+    "presets": [{
+      "name": "Collection list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "collection",
+          "settings": {
+            "size": "wide"
+          }
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "size": "wide"
+          }
+        }
+      ]
+    }],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "text",
+            "id": "title2",
+            "label": "Heading",
+            "default": "Collection list"
+          },
+          {
+            "type": "image_picker",
+            "id": "desktop_image",
+            "label": "Desktop Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "select",
+            "id": "focal_point",
+            "label": "Focal point",
+            "info": "Used to keep the subject of your photo in view.",
+            "default": "center center",
+            "options": [
+              {
+                "value": "top left",
+                "label": "Top left"
+              },
+              {
+                "value": "top center",
+                "label": "Top center"
+              },
+              {
+                "value": "top right",
+                "label": "Top right"
+              },
+              {
+                "value": "center left",
+                "label": "Left"
+              },
+              {
+                "value": "center center",
+                "label": "Center"
+              },
+              {
+                "value": "center right",
+                "label": "Right"
+              },
+              {
+                "value": "bottom left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "bottom right",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "size",
+            "label": "Size",
+            "default": "square-small",
+            "options": [
+              {
+                "label": "Square (small)",
+                "value": "square-small"
+              },
+              {
+                "label": "Wide",
+                "value": "wide"
+              },
+              {
+                "label": "Tall",
+                "value": "tall"
+              },
+              {
+                "label": "Square (large)",
+                "value": "square-large"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

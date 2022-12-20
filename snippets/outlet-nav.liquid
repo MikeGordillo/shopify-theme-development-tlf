@@ -1,0 +1,152 @@
+<style>
+  .colorfilter2 {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    float: left;
+    margin: 0px 6px 6px 0px;
+    display: inline-grid;
+}
+  li.sizes2 {
+    display: inline-block;
+    padding-bottom: 20px;
+}
+  
+.colorfilter2 .colorContainer2 {
+    border-radius: 4px;
+}
+  
+  .size2 {
+    display: inline-block;
+    float: left;
+    list-style: none;
+    background: #eee;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0px 2px 2px 0px;
+    cursor: pointer;
+}
+</style>
+<nav class="nav-new">
+  <ul class="list">
+            <li>
+      <a href="javascript:void(0)" class="title">MEN CATEGORIES</a>
+      <ul>
+        <li>
+          <a href="/collections/mens">ALL PRODUCTS</a>
+        </li>
+        <li>
+          <a href="/collections/mens-stringers-drop-arm-tanks">MEN TOPS</a>
+        </li>
+         <li>
+          <a href="/collections/mens-joggers-sweatpants">MEN BOTTOMS</a>
+        </li>
+      </ul>
+    </li>
+                <li>
+      <a href="javascript:void(0)" class="title">WOMEN CATEGORIES</a>
+      <ul>
+        <li>
+          <a href="/collections/womens">ALL PRODUCTS</a>
+        </li>
+        <li>
+          <a href="/collections/womens-tanks-sleeveless">WOMEN TOPS</a>
+        </li>
+        <li>
+          <a href="/collections/womens-joggers-sweatpants">WOMEN BOTTOMS</a>
+        </li>
+      </ul>
+    </li>
+    
+                  <li>
+        <a href="javascript:void(0)" class="title">BUY 1 GET 2 FREE BLOWOUT DEALS</a>
+      <ul>
+        <li>
+          <a href="/collections/daily-deals-womens">ALL PRODUCTS</a>
+        </li>
+        <li>
+          <a href="/collections/daily-deals-womens-tops">WOMEN TOPS</a>
+        </li>
+        <li>
+          <a href="/collections/daily-deals-womens-bottoms">WOMEN BOTTOMS</a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+        <a href="javascript:void(0)" class="title">BUY 1 GET 2 FREE BLOWOUT DEALS</a>
+      <ul>
+        <li>
+          <a href="/collections/daily-deals-mens">ALL PRODUCTS</a>
+        </li>
+        <li>
+          <a href="/collections/daily-deals-mens-tops">MEN TOPS</a>
+        </li>
+        <li>
+          <a href="/collections/daily-deals-mens-bottoms">MEN BOTTOMS</a>
+        </li>
+      </ul>
+    </li>
+    
+    
+    
+    <a href="/collections/hats" class="title">ACCESSORIES</a>
+
+    <li class="sizes2">
+      <a href="javascript:void(0)" class="title">SIZE</a>
+      <div class="sizes2">
+        <a href="{{collection.url}}/in-stock-xsmall{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="sizefilter2" data-size="xsmall">
+          <div class="size2" data-size-select="xsmall">
+            XS
+          </div>
+        </a>
+        <a href="{{collection.url}}/in-stock-small{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="sizefilter2" data-size="small">
+          <div class="size2" data-size-select="small">
+            S                            
+          </div>
+        </a>
+        <a href="{{collection.url}}/in-stock-medium{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="sizefilter2" data-size="medium">
+          <div class="size2" data-size-select="medium">
+            M
+          </div>
+        </a>
+        <a href="{{collection.url}}/in-stock-large{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="sizefilter2" data-size="large">
+          <div class="size2" data-size-select="large">
+            L
+          </div>
+        </a>
+        <a href="{{collection.url}}/in-stock-xlarge{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="sizefilter2" data-size="xlarge">
+          <div class="size2" data-size-select="xlarge">
+            XL
+          </div>
+        </a>
+        <a href="{{collection.url}}/in-stock-2xlarge{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="sizefilter2" data-size="2xlarge">
+          <div class="size2" data-size-select="2xlarge">
+            2XL
+          </div>
+        </a>
+      </div>
+    </li>
+    <li>
+      <a href="javascript:void(0)" class="title">COLOR</a>
+      <div class="nav-cp">
+        <div class="colorPicker2">
+          <div class="colorList2">
+            <a href="{{collection.url}}/black{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="black"><div title="#FF6900" class="colorContainer2" style="background: rgb(0, 0, 0);"></div></a>
+            <a href="{{collection.url}}/white{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="white"><div title="#FF6900" class="colorContainer2" style="border: 1px solid black;"></div></a>
+            <a href="{{collection.url}}/gray{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="gray"><div title="#FF6900" class="colorContainer2" style="background: rgb(128, 128, 128)"></div></a>
+            <a href="{{collection.url}}/blue{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="blue"><div title="#FF6900" class="colorContainer2" style="background: rgb(1, 0, 205);"></div></a>
+            <a href="{{collection.url}}/red{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="red"><div title="#FF6900" class="colorContainer2" style="background: rgb(255, 0, 0);"></div></a>
+            <a href="{{collection.url}}/green{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="green"><div title="#FF6900" class="colorContainer2" style="background: rgb(0, 128, 0)"></div></a>
+            <a href="{{collection.url}}/yellow{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="yellow"><div title="#FF6900" class="colorContainer2" style="background: rgb(255, 255, 2)"></div></a>
+            <a href="{{collection.url}}/purple{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="purple"><div title="#FF6900" class="colorContainer2" style="background: rgb(148, 0, 211)"></div></a>
+            <a href="{{collection.url}}/brown{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="brown"><div title="#FF6900" class="colorContainer2" style="background: rgb(140, 69, 20)"></div></a>
+            <a href="{{collection.url}}/orange{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="orange"><div title="#FF6900" class="colorContainer2" style="background: rgb(255, 153, 0)"></div></a>
+            <a href="{{collection.url}}/pink{% if current_tags contains 'MENS' %}+mens{% endif %}{% if current_tags contains 'WOMENS' %}+womens{% endif %}" class="colorfilter2" data-color="orange"><div title="#FF6900" class="colorContainer2" style="background: rgb(255, 105, 181)"></div></a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>

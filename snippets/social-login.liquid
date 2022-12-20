@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://shop.miniorange.com/social-login/css/bootstrap-social.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+<style>
+  .btn-social>:first-child {
+    border-right: none !important;
+}
+  .btn-social {
+    position: relative !important;
+    font-size: 14px;
+}
+  .btn-social>:first-child {
+    position: relative !important;
+    left: auto !important;
+}
+  .btn-google:hover, .btn-google:focus, .btn-google:active, .btn-google.active, .open>.dropdown-toggle.btn-google {
+    background: none !important;
+}
+  a.btnL.btn-mo.btn-block.btn-social.btn-linkedin.btn-custom-dec.login-button {
+    background-image: none !important;
+    background-color: #2867B2;
+}
+</style>
+<center> {% assign mo_appname = "facebook,google,linkedin" | split: "," %}{% for value in mo_appname %}
+{% if value == "google" %}<a href="https://shop.miniorange.com/social-login/openidcallback/{{value}}?shop=tlfapparel.myshopify.com&hosts={{ request.host }}" style="display: -webkit-inline-box;text-decoration: none;background-color: #DE5246 !important;width: 380px !important;padding-top:6px !important;padding-bottom:6px !important;margin-bottom: 9px !important;border-color: rgba(79, 113, 232, 1);border-bottom-width: thin;" class="btnL btn-mo btn-block btn-social btn-google btn-custom-dec login-button">
+<i class="fab fa-google"></i><span style="color:#ffffff;"> Sign in with Google</span></a><br>
+{% else %} <a href="https://shop.miniorange.com/social-login/openidcallback/{{value}}?shop=tlfapparel.myshopify.com&hosts={{ request.host }}" class="btnL btn-mo btn-block btn-social btn-{{value}} btn-custom-dec login-button" style="display: -webkit-inline-box;text-decoration: none;width: 380px !important;padding-top:6px !important;padding-bottom:6px !important;margin-bottom: 9px !important;"><i class="fab fa-{{value}}"></i> Sign in with {{ value | capitalize }}</a><br> {% endif %} {% endfor %} </center>
